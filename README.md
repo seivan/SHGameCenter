@@ -1,0 +1,1 @@
+Documentation at http://cocoadocs.org/docsets/SHGameCenter

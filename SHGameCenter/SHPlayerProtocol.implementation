@@ -1,0 +1,7 @@
+
+-(BOOL)SH_isEqual:(id)object; {
+  BOOL isEqual = NO;
+  if([object respondsToSelector:@selector(playerID)])
+    isEqual = [self.playerID isEqualToString:((id<SHPlayerProtocol>)object).playerID];
+    return isEqual;
+}

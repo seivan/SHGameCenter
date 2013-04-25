@@ -1,13 +1,6 @@
-//
-//  GKLocalPlayer+SHGameCenter.h
-//
-//  Created by Seivan Heidari on 4/11/13.
-//  Copyright (c) 2013 Seivan Heidari. All rights reserved.
-//
-#import <GameKit/GameKit.h>
 
 #import "SHGameCenterBlockDefinitions.h"
-#import "SHPlayerProtocol.h"
+
 #pragma mark -
 #pragma mark Keys
 static NSString * const SHGameCenterErrorKey = @"SHGameCenterError";
@@ -17,7 +10,7 @@ static NSString * const SHGameCenterAttributeFriendsKey   = @"SHGameCenterAttrib
 static NSString * const SHGameCenterAttributeMatchesKey   = @"SHGameCenterAttributeMatchesKey";
 
 @interface GKLocalPlayer (SHGameCenter)
-<SHPlayerProtocol>
+
 
 #pragma mark -
 #pragma mark Authentication

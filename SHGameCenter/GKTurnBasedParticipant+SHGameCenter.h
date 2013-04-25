@@ -1,11 +1,7 @@
-//
-//  GKTurnBasedParticipant+SHGameCenter.h
-//
-//  Created by Seivan Heidari on 4/11/13.
-//  Copyright (c) 2013 Seivan Heidari. All rights reserved.
-//
+
 #import "SHPlayerProtocol.h"
-#import <GameKit/GameKit.h>
+
+#import "SHGameCenterBlockDefinitions.h"
 
 enum {
   SHTurnBasedMatchOutcomeNone         = 0,        // Participants who are not done with a match have this state
@@ -51,6 +47,7 @@ typedef NSInteger SHTurnBasedMatchOutcome;
 @property(nonatomic,readonly) BOOL SH_isActiveOrInvited;
 @property(nonatomic,readonly) BOOL SH_isInvited;
 @property(nonatomic,readonly) BOOL SH_isActive;
+@property(nonatomic,readonly) BOOL SH_isMatching;
 @property(nonatomic,readonly) BOOL SH_isDone;
 
 #pragma mark -

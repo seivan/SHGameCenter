@@ -1,0 +1,14 @@
+#import "SHGameCenter.h"
+
+@interface SHGameCenter (Privates)
+#pragma mark -
+#pragma mark Getters
++(NSString *)aliasForPlayerId:(NSString *)thePlayerId;
++(UIImage *)photoForPlayerId:(NSString *)thePlayerId;
+
+#pragma -
+#pragma Cache
++(void)updateCachePlayersFromPlayerIdentifiers:(NSSet *)thePlayerIdentifiers
+                           withCompletionBlock:(SHGameCompletionBlock)theBlock;
+
+@end

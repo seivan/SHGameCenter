@@ -1,21 +1,99 @@
-//
-//  GKTurnBasedMatch+SHGameCenter.m
-//
-//  Created by Seivan Heidari on 4/11/13.
-//  Copyright (c) 2013 Seivan Heidari. All rights reserved.
-//
 #import "NSEnumerable+Utilities.h"
-#import <BlocksKit/BlocksKit.h>
+#import "NSOrderedSet+BlocksKit.h"
+#import "NSArray+BlocksKit.h"
+#import "NSOrderedSet+BlocksKit.h"
+#import "NSSet+BlocksKit.h"
+
 #import "GKTurnBasedMatch+SHGameCenter.h"
-#import "GKLocalPlayer+SHGameCenter.h"
-#import "GKTurnBasedParticipant+SHGameCenter.h"
+
+#import "SHGameCenter.h"
+
+#include "SHGameCenter.privates"
+
+static NSString * const SHGameMatchEventTurnKey     = @"SHGameMatchEventTurnKey";
+static NSString * const SHGameMatchEventEndedKey    = @"SHGameMatchEventEndedKey";
+static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesKey";
+
+@interface SHTurnBasedMatchManager : NSObject
+<GKTurnBasedEventHandlerDelegate>
+@property(nonatomic,strong) NSMapTable          * mapBlocks;
+
+#pragma mark -
+#pragma mark Singleton Methods
++(instancetype)sharedManager;
+
+@end
+
+@implementation SHTurnBasedMatchManager
+#pragma mark -
+#pragma mark Init & Dealloc
+-(instancetype)init; {
+  self = [super init];
+  if (self) {
+    GKTurnBasedEventHandler.sharedTurnBasedEventHandler.delegate = self;
+    self.mapBlocks    = [NSMapTable weakToStrongObjectsMapTable];
+  }
+  
+  return self;
+}
+
+#pragma mark -
+#pragma mark Singleton Methods
++(instancetype)sharedManager; {
+  static SHTurnBasedMatchManager *_sharedInstance;
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    _sharedInstance = [[SHTurnBasedMatchManager alloc] init];
+    
+  });
+  
+  return _sharedInstance;
+  
+}
+
+
+#pragma mark -
+#pragma mark <GKTurnBasedEventHandlerDelegate>
+-(void)handleInviteFromGameCenter:(NSArray *)playersToInvite; {
+  for (NSDictionary * blocks in self.mapBlocks.objectEnumerator) {
+    SHGameMatchEventInvitesBlock block = blocks[SHGameMatchEventInvitesKey];
+    block(playersToInvite.toOrderedSet);
+  }
+  
+}
+
+-(void)handleTurnEventForMatch:(GKTurnBasedMatch *)match didBecomeActive:(BOOL)didBecomeActive; {
+  [SHGameCenter updateCachePlayersFromPlayerIdentifiers:match.SH_playerIdentifiers.set withCompletionBlock:^{
+    for (NSDictionary * blocks in self.mapBlocks.objectEnumerator) {
+      SHGameMatchEventTurnBlock block = blocks[SHGameMatchEventTurnKey];
+      block(match, didBecomeActive);
+    }
+  }];
+  
+  
+}
+
+// handleMatchEnded is called when the match has ended.
+-(void)handleMatchEnded:(GKTurnBasedMatch *)match; {
+  [SHGameCenter updateCachePlayersFromPlayerIdentifiers:match.SH_playerIdentifiers.set withCompletionBlock:^{
+    for (NSDictionary * blocks in self.mapBlocks.objectEnumerator) {
+      SHGameMatchEventEndedBlock block = blocks[SHGameMatchEventEndedKey];
+      block(match);
+    }
+  }];
+  
+}
+
+@end
 
 @implementation GKTurnBasedMatch (SHGameCenter)
+
+
 #pragma mark -
 #pragma mark Player Getters
 -(GKTurnBasedParticipant *)SH_meAsParticipant; {
   return [self.participants match:^BOOL(GKTurnBasedParticipant * participant) {
-    return [participant isEqual:GKLocalPlayer.SH_me];
+    return [participant SH_isEqual:GKLocalPlayer.SH_me];
   }];
 }
 
@@ -52,11 +130,30 @@
   return [self.participants map:^id(GKTurnBasedParticipant * obj) { return obj.playerID; }].toOrderedSet;
 }
 
+#pragma mark -
+#pragma mark Observer
++(void)SH_setObserver:(id)theObserver
+matchEventTurnBlock:(SHGameMatchEventTurnBlock)theMatchEventTurnBlock
+matchEventEndedBlock:(SHGameMatchEventEndedBlock)theMatchEventEndedBlock
+matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock; {
+  
+  NSAssert(theObserver, @"Must pass an observer!");
+  
+  NSMutableDictionary * blocks = @{}.mutableCopy;
+  
+  if(theMatchEventTurnBlock)    blocks[SHGameMatchEventTurnKey]    = [theMatchEventTurnBlock copy];
+  if(theMatchEventEndedBlock)   blocks[SHGameMatchEventEndedKey]   = [theMatchEventEndedBlock copy];
+  if(theMatchEventInvitesBlock) blocks[SHGameMatchEventInvitesKey] = [theMatchEventInvitesBlock copy];
+  
+  [SHTurnBasedMatchManager.sharedManager.mapBlocks setObject:blocks.copy forKey:theObserver];
+  
+}
+
 
 #pragma mark -
 #pragma mark Conditions
 -(BOOL)SH_isMyTurn; {
-  return [self.currentParticipant isEqualToParticipant:GKLocalPlayer.SH_me];
+  return [self.currentParticipant SH_isEqual:GKLocalPlayer.SH_me];
 }
 -(BOOL)SH_hasIncompleteParticipants; {
   return [self.participants any:^BOOL(GKTurnBasedParticipant * participant) {
@@ -95,8 +192,6 @@
   BOOL isEqual = NO;
   if([object respondsToSelector:@selector(matchID)])
    isEqual = [self.matchID isEqualToString:((GKTurnBasedMatch *)object).matchID];
-  else
-    isEqual = [super isEqual:object];
   return isEqual;
 }
 
@@ -112,30 +207,36 @@
 
 #pragma mark -
 #pragma mark Match Setters
+//Need to refactor here. Things are still uncertain. 
 -(void)SH_resignWithBlock:(SHGameMatchBlock)theBlock; {
-  [self.participants each:^(GKTurnBasedParticipant * participant) {
-    participant.matchOutcome = GKTurnBasedMatchOutcomeQuit;
-  }];
-    
+//  [self.participants each:^(GKTurnBasedParticipant * participant) {
+//    participant.matchOutcome = GKTurnBasedMatchOutcomeQuit;
+//  }];
+  
 //  if(self.SH_isMatchStatusEnded)
-//    theBlock(self, nil);
-  if(self.SH_isMyTurn) {
-     [self endMatchInTurnWithMatchData:self.matchData completionHandler:^(NSError *error) {
-      theBlock(self,error);
+//    theBlock(self,nil);
+//  else
+    [self endMatchInTurnWithMatchData:self.matchData completionHandler:^(NSError *error) {
+      if(error)
+        [self participantQuitOutOfTurnWithOutcome:GKTurnBasedMatchOutcomeQuit withCompletionHandler:^(NSError *error) {
+          theBlock(self, error);
+        }];
+      else
+        theBlock(self,error);
     }];
-  }
-  else
-    [self participantQuitOutOfTurnWithOutcome:GKTurnBasedMatchOutcomeQuit withCompletionHandler:^(NSError *error) {
-      theBlock(self, error);
-    }];
+
   
 
 }
 
 -(void)SH_deleteWithBlock:(SHGameMatchBlock)theBlock; {
+  
+  
   [self SH_resignWithBlock:^(GKTurnBasedMatch *match, NSError *error) {
-    [match removeWithCompletionHandler:^(NSError *error) {
-      theBlock(match, error);
+    if(error) theBlock(match, error);
+    else 
+    [self removeWithCompletionHandler:^(NSError *error) {
+      theBlock(self, error);
     }];
   }];
 }
@@ -144,10 +245,12 @@
 -(NSOrderedSet *)SH_rejectParticipants:(NSSet *)theParticipantsToRject; {
  return [self.participants reject:^BOOL(GKTurnBasedParticipant * participant) {
    return[theParticipantsToRject match:^BOOL(GKTurnBasedParticipant * participantToRemove) {
-     return [participant isEqual:participantToRemove];
+     return [participant SH_isEqual:participantToRemove];
    }];
   }].toOrderedSet;
 }
+
+
 
 
 @end

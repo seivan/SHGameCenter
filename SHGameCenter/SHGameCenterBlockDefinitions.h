@@ -1,14 +1,5 @@
-//
-//  NSObject_GKSHGameCenterBlockDefinitions.h
-//  Telepathic
-//
-//  Created by Seivan Heidari on 4/11/13.
-//  Copyright (c) 2013 Seivan Heidari. All rights reserved.
-//
-
 
 #import <GameKit/GameKit.h>
-
 
 #pragma mark -
 #pragma mark Authentication

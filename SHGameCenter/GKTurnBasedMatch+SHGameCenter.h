@@ -1,12 +1,5 @@
-//
-//  GKTurnBasedMatch+SHGameCenter.h
-//
-//  Created by Seivan Heidari on 4/11/13.
-//  Copyright (c) 2013 Seivan Heidari. All rights reserved.
-//
 
 #import "SHGameCenterBlockDefinitions.h"
-#import <GameKit/GameKit.h>
 
 @interface GKTurnBasedMatch (SHGameCenter)
 
@@ -28,6 +21,14 @@
 @property(nonatomic,readonly) BOOL SH_isMatchStatusMatching;
 @property(nonatomic,readonly) BOOL SH_isMatchStatusEnded;
 @property(nonatomic,readonly) BOOL SH_isMatchStatusUnknown;
+
+
+#pragma mark -
+#pragma mark Observer
++(void)SH_setObserver:(id)theObserver
+matchEventTurnBlock:(SHGameMatchEventTurnBlock)theMatchEventTurnBlock
+matchEventEndedBlock:(SHGameMatchEventEndedBlock)theMatchEventEndedBlock
+matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock;
 
 
 #pragma mark -

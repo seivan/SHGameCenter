@@ -1,17 +1,10 @@
-//
-//  GKLocalPlayer+SHGameCenter.m
-//
-//  Created by Seivan Heidari on 4/11/13.
-//  Copyright (c) 2013 Seivan Heidari. All rights reserved.
-//
-
 #import "NSEnumerable+Utilities.h"
-#import <BlocksKit/BlocksKit.h>
 
-#import "SHGameCenter.h"
+#import "NSOrderedSet+BlocksKit.h"
+
 #import "GKLocalPlayer+SHGameCenter.h"
-#import "GKTurnBasedMatch+SHGameCenter.h"
-#import "SHPlayerProtocol.h"
+
+#include "SHGameCenter.privates"
 
 @interface SHLocalPlayerManager : NSObject
 
@@ -126,9 +119,12 @@
       NSOrderedSet * friendsPlayerIds = [((NSOrderedSet*)attributeForFriends[SHGameCenterSetKey]) map:^id(GKPlayer * player) {
         return player.playerID;
       }];
+      
       [setOfPlayerIds addObjectsFromArray:friendsPlayerIds.array];
       
       [SHGameCenter updateCachePlayersFromPlayerIdentifiers:setOfPlayerIds.copy withCompletionBlock:^{
+        
+        
         theBlock(@{SHGameCenterAttributeMatchesKey : attributeForMatches,
                  SHGameCenterAttributeFriendsKey : attributeForFriends,
                  });
@@ -182,20 +178,6 @@
 
 }
 
-#pragma mark -
-#pragma mark Equal <SHPlayerProtocol>
--(BOOL)isEqualToParticipant:(id)object; {
-  BOOL isEqual = NO;
-  if([object respondsToSelector:@selector(playerID)])
-    isEqual = [self.playerID isEqualToString:((id<SHPlayerProtocol>)object).playerID];
-  else
-    isEqual = [super isEqual:object];
-  return isEqual;
-}
-
--(BOOL)isEqualToPlayer:(id)object; {
-  return [self isEqualToPlayer:object];
-}
 
 
 @end

@@ -1,14 +1,25 @@
-//
-//  GKPlayer+SHGameCenter.m
-//
-//  Created by Seivan Heidari on 4/23/13.
-//  Copyright (c) 2013 Seivan Heidari. All rights reserved.
-//
 
 #import "GKPlayer+SHGameCenter.h"
+
 #import "SHGameCenter.h"
+
+#include "SHGameCenter.privates"
+
 @implementation GKPlayer (SHGameCenter)
+#pragma mark -
+#pragma mark Getter
+
 -(UIImage *)SH_photo; {
   return [SHGameCenter photoForPlayerId:self.playerID];
 }
+
+
+#pragma mark -
+#pragma mark Equal
+
+#pragma mark -
+#pragma mark <SHPlayerProtocol>
+#include "SHPlayerProtocol.implementation"
+
+
 @end

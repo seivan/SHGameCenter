@@ -1,10 +1,7 @@
-//
-//  GKTurnBasedParticipant+SHGameCenter.m
-//
-//  Created by Seivan Heidari on 4/11/13.
-//  Copyright (c) 2013 Seivan Heidari. All rights reserved.
-//
-#import "SHGameCenter.h"
+
+#import "GKTurnBasedParticipant+SHGameCenter.h"
+
+#include "SHGameCenter.privates"
 
 @implementation GKTurnBasedParticipant (SHGameCenter)
 #pragma mark -
@@ -21,13 +18,13 @@
 #pragma mark -
 #pragma mark Conditions
 -(BOOL)SH_isMe; {
-  return [self.playerID isEqualToString:GKLocalPlayer.SH_me.playerID];
+  return [self SH_isEqual:GKLocalPlayer.SH_me];
 }
 #pragma mark -
 #pragma mark GKTurnBasedParticipantStatus
 
 -(BOOL)SH_isActiveOrInvited; {
-  return self.SH_isActive || self.SH_isInvited;
+  return self.SH_isActive || self.SH_isInvited || self.SH_isMatching;
 }
 -(BOOL)SH_isInvited; {
   return self.status == GKTurnBasedParticipantStatusInvited;
@@ -35,9 +32,14 @@
 -(BOOL)SH_isActive; {
   return self.status == GKTurnBasedParticipantStatusActive;
 }
+-(BOOL)SH_isMatching; {
+  return self.status == GKTurnBasedParticipantStatusMatching;
+}
+
 -(BOOL)SH_isDone; {
   return self.status == GKTurnBasedParticipantStatusDone;
 }
+
 
 #pragma mark -
 #pragma mark GKTurnBasedMatchOutcome
@@ -57,20 +59,11 @@
   && self.matchOutcome <= SHTurnBasedMatchOutcomeTwelvth;
 }
 
+#pragma mark -
+#pragma mark Equal
 
 #pragma mark -
-#pragma mark Equal <SHPlayerProtocol>
--(BOOL)isEqualToParticipant:(id)object; {
-  BOOL isEqual = NO;
-  if([object respondsToSelector:@selector(playerID)])
-    isEqual = [self.playerID isEqualToString:((id<SHPlayerProtocol>)object).playerID];
-  else
-    isEqual = [super isEqual:object];
-  return isEqual;
-}
-
--(BOOL)isEqualToPlayer:(id)object; {
-  return [self isEqualToPlayer:object];
-}
+#pragma mark <SHPlayerProtocol>
+#include "SHPlayerProtocol.implementation"
 
 @end

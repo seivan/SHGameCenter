@@ -197,7 +197,7 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock; 
         
         
         theBlock(@{SHGameCenterAttributeMatchesKey : attributeForMatches,
-                 SHGameCenterAttributeFriendsKey : attributeForFriends,
+                   SHGameCenterAttributeFriendsKey : attributeForFriends,
                  });
         
         

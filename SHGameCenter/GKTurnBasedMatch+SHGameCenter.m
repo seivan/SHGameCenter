@@ -8,7 +8,7 @@
 
 #import "SHGameCenter.h"
 
-#include "SHGameCenter.privates"
+#include "SHGameCenter.private"
 
 static NSString * const SHGameMatchEventTurnKey     = @"SHGameMatchEventTurnKey";
 static NSString * const SHGameMatchEventEndedKey    = @"SHGameMatchEventEndedKey";
@@ -17,6 +17,13 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
 @interface SHTurnBasedMatchManager : NSObject
 <GKTurnBasedEventHandlerDelegate>
 @property(nonatomic,strong) NSMapTable          * mapBlocks;
+
+@property(nonatomic,assign)   NSNotification           * notificationEnterForeground;
+
+@property(nonatomic,copy) SHGameAttributesBlock          matchesAndFriendsBlock;
+
+@property(nonatomic,copy) SHGameNotificationWillEnterForegroundBlock    notificationBlock;
+
 
 #pragma mark -
 #pragma mark Singleton Methods
@@ -32,10 +39,20 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
   if (self) {
     GKTurnBasedEventHandler.sharedTurnBasedEventHandler.delegate = self;
     self.mapBlocks    = [NSMapTable weakToStrongObjectsMapTable];
+    self.notificationEnterForeground = [NSNotificationCenter.defaultCenter addObserverForName:UIApplicationWillEnterForegroundNotification object:nil queue:NSOperationQueue.mainQueue usingBlock:^(NSNotification *note) {
+      self.notificationEnterForeground = note;
+      [GKTurnBasedMatch SH_requestWithNotificationEnterForegroundBlock:self.notificationBlock matchesAndFriendsWithBlock:self.matchesAndFriendsBlock];
+    }];
+
   }
   
   return self;
 }
+
+-(void)dealloc; {
+  [NSNotificationCenter.defaultCenter removeObserver:self.notificationEnterForeground];
+}
+
 
 #pragma mark -
 #pragma mark Singleton Methods
@@ -148,6 +165,75 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock; 
   [SHTurnBasedMatchManager.sharedManager.mapBlocks setObject:blocks.copy forKey:theObserver];
   
 }
+
+#pragma mark -
+#pragma mark Preloaders
++(void)SH_requestMatchesAndFriendsWithBlock:(SHGameAttributesBlock)theBlock; {
+  NSAssert(theBlock, @"Must pass a SHGameAttributesBlock");
+  
+  [GKTurnBasedMatch SH_requestMatchesWithBlock:^(NSOrderedSet * list, NSError * error) {
+    NSMutableDictionary   * attributeForMatches           = @{}.mutableCopy;
+    attributeForMatches[SHGameCenterSetKey]  = list ? list : @[].toOrderedSet;
+    if(error)               attributeForMatches[SHGameCenterErrorKey] = error;
+    
+    [GKLocalPlayer SH_requestFriendsWithBlock:^(NSOrderedSet * list, NSError * error) {
+      NSMutableDictionary * attributeForFriends           = @{}.mutableCopy;
+      attributeForFriends[SHGameCenterSetKey]  = list ? list : @[].toOrderedSet;
+      if(error)             attributeForFriends[SHGameCenterErrorKey] = error;
+      
+      NSMutableSet * setOfPlayerIds = @[].toSet.mutableCopy;
+      
+      [attributeForMatches[SHGameCenterSetKey] each:^(GKTurnBasedMatch * match) {
+        [setOfPlayerIds addObjectsFromArray:match.SH_playerIdentifiers.array];
+      }];
+      
+      NSOrderedSet * friendsPlayerIds = [((NSOrderedSet*)attributeForFriends[SHGameCenterSetKey]) map:^id(GKPlayer * player) {
+        return player.playerID;
+      }];
+      
+      [setOfPlayerIds addObjectsFromArray:friendsPlayerIds.array];
+      
+      [SHGameCenter updateCachePlayersFromPlayerIdentifiers:setOfPlayerIds.copy withCompletionBlock:^{
+        
+        
+        theBlock(@{SHGameCenterAttributeMatchesKey : attributeForMatches,
+                 SHGameCenterAttributeFriendsKey : attributeForFriends,
+                 });
+        
+        
+        
+      }];
+      
+      
+    }];
+  }];
+  
+}
+
++(void)SH_requestWithNotificationEnterForegroundBlock:(SHGameNotificationWillEnterForegroundBlock)theWillEnterForegroundBlock
+                           matchesAndFriendsWithBlock:(SHGameAttributesBlock)theBlock; {
+  
+  NSAssert(theWillEnterForegroundBlock, @"Must pass a SHGameNotificationWillEnterForegroundBlock");
+  SHTurnBasedMatchManager.sharedManager.notificationBlock = theWillEnterForegroundBlock;
+  theWillEnterForegroundBlock(SHTurnBasedMatchManager.sharedManager.notificationEnterForeground);
+  [self SH_requestMatchesAndFriendsWithBlock:theBlock];
+  SHTurnBasedMatchManager.sharedManager.matchesAndFriendsBlock = theBlock;
+}
+
++(void)SH_recursiveRequestMatchesAndFriendsWithBlock:(SHGameAttributesBlock)theBlock continuouslyEverySecond:(NSUInteger)theSeconds; {
+  if(theSeconds < 3) theSeconds = 2;
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [self SH_requestMatchesAndFriendsWithBlock:theBlock];
+  });
+  double delayInSeconds = 2.0;
+  dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+  dispatch_after(popTime, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^(void){
+    [self SH_recursiveRequestMatchesAndFriendsWithBlock:theBlock continuouslyEverySecond:theSeconds];
+  });
+  
+}
+
+
 
 
 #pragma mark -

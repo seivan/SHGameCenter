@@ -1,0 +1,20 @@
+PODS:
+  - BlocksKit (1.8.2):
+    - libffi
+  - libffi (3.0.11)
+  - SHGameCenter (0.1.0):
+    - BlocksKit (~> 1.8)
+
+DEPENDENCIES:
+  - SHGameCenter (from `../`)
+
+EXTERNAL SOURCES:
+  SHGameCenter:
+    :local: ../
+
+SPEC CHECKSUMS:
+  BlocksKit: 7396526b0816734103f6133fbb1a520c8b04e80c
+  libffi: 8a1d9ba43c0c84b546b42c6f742714e73aa07ae1
+  SHGameCenter: f72008df58abf10bff0dd145b552177193d51f2b
+
+COCOAPODS: 0.18.1

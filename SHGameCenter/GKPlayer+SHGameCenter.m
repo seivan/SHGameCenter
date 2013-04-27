@@ -3,7 +3,7 @@
 
 #import "SHGameCenter.h"
 
-#include "SHGameCenter.privates"
+#include "SHGameCenter.private"
 
 @implementation GKPlayer (SHGameCenter)
 #pragma mark -

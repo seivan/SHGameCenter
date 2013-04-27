@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
+	<key>CFBundleIdentifier</key>
+	<string>org.cocoapods.libffi.libffi-3.0.11</string>
+	<key>CFBundleName</key>
+	<string>libffi 3.0.11 Documentation</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
+	
+	
+	<key>DocSetDescription</key>
+	<string>A portable foreign-function interface library.</string>
+	
+	<key>DocSetFeedName</key>
+	<string>libffi 3.0.11 Documentation</string>
+	
+	<key>DocSetMinimumXcodeVersion</key>
+	<string>3.0</string>
+	
+	<key>DashDocSetFamily</key>
+	<string>appledoc</string>
+	<key>DocSetPublisherIdentifier</key>
+	<string>org.cocoapods.libffi.documentation</string>
+	<key>DocSetPublisherName</key>
+	<string>Anthony Green, Bo Thorsen, Jon Beniston, Landon Fuller, Raffaele Sena, and Zachary Waldowski</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>Anthony Green, Bo Thorsen, Jon Beniston, Landon Fuller, Raffaele Sena, and Zachary Waldowski</string>
+</dict>
+</plist>

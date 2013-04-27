@@ -1,0 +1,710 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		02F1ABA9E2D947748B0052CA /* fficonfig_i386.h in Headers */ = {isa = PBXBuildFile; fileRef = D5D5799B60BB4C1FB2B0A2D1 /* fficonfig_i386.h */; };
+		049D65456F8B4FCB88FEF1EB /* UIActionSheet+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 4085E0A506014EE48800E606 /* UIActionSheet+BlocksKit.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		085C7FB80D674DAF8777A987 /* raw_api.c in Sources */ = {isa = PBXBuildFile; fileRef = 017B27BE72D84614B6EBC86B /* raw_api.c */; };
+		0D9974D0C4604CE78A8019D2 /* ffi.c in Sources */ = {isa = PBXBuildFile; fileRef = 35BD0DFBA7E6405C8EE80FAB /* ffi.c */; };
+		0FA1E536F2F146BC920CE2B9 /* UIGestureRecognizer+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 33B8BFBFA79543B095F9A18D /* UIGestureRecognizer+BlocksKit.h */; };
+		13AE6C27B88E4F7BB20923F7 /* A2DynamicDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = F28142A937EA47B8848177ED /* A2DynamicDelegate.h */; };
+		19B1996F0D63410AB70412A5 /* closures.c in Sources */ = {isa = PBXBuildFile; fileRef = 459FDE679EB4411A8B082277 /* closures.c */; };
+		1B3FAD02B9FE408BA377D582 /* NSSet+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A383CA20E84513BADDC19D /* NSSet+BlocksKit.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		1BC38D99A20F493D84573958 /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E5F6CD22864DCCB10611DC /* Pods-dummy.m */; };
+		1E4D4101508C4A09A9D57F6F /* SHGameCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F06CF650DBD456EB351595B /* SHGameCenter.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		1FFB9BAE040D4010BE222A58 /* SHGameCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 9EED82F1FD034C38832C289B /* SHGameCenter.h */; };
+		21ACEBEF1835458298C87CB3 /* NSMutableArray+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EB98E440E4A42EF830220C5 /* NSMutableArray+BlocksKit.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		23E781D4785944919E484BD8 /* SHGameCenterBlockDefinitions.h in Headers */ = {isa = PBXBuildFile; fileRef = 34EF9B18E9044137A6C60E21 /* SHGameCenterBlockDefinitions.h */; };
+		24217985EB944740A52396B1 /* MFMessageComposeViewController+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686748BA33424DF094431B2C /* MFMessageComposeViewController+BlocksKit.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		26869AE868794F87A496234F /* UIAlertView+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1CA8AFD2D441F8AD287B6E /* UIAlertView+BlocksKit.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		26986C1C16454650AB53CCCD /* NSURLConnection+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AEF378D7BF34F12B810D164 /* NSURLConnection+BlocksKit.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		294B275C85D04C82B9903DBF /* BKMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = F699108891CE45D6951FBDCA /* BKMacros.h */; };
+		2C7420CD3E43422CB5A9421E /* ffi_common.h in Headers */ = {isa = PBXBuildFile; fileRef = AE0C0E6663F74A09A57D63F4 /* ffi_common.h */; };
+		2DBA828851D14357922EE410 /* NSInvocation+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = FF73257253644750BC06BCF0 /* NSInvocation+BlocksKit.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		2E2D3D40A2AA4603B9996703 /* UIActionSheet+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = D334CE109E744917BBAC4E82 /* UIActionSheet+BlocksKit.h */; };
+		30F21725B4CF40BDB35FBFFF /* fficonfig.h in Headers */ = {isa = PBXBuildFile; fileRef = DEF68A40C1D546EDB76DD8D6 /* fficonfig.h */; };
+		332A806884E94C9088BF07D9 /* NSObject+A2DynamicDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = A308ED80F26E4F6CBEEE18EB /* NSObject+A2DynamicDelegate.h */; };
+		375A862156D84D969F0B0DEA /* NSMutableDictionary+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 79CDBBBFC4B44E39B1C718DC /* NSMutableDictionary+BlocksKit.h */; };
+		3886C70079A641A9B1B00E78 /* MFMessageComposeViewController+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 05E4DB9E15DF4CA2A8A5A58F /* MFMessageComposeViewController+BlocksKit.h */; };
+		39957F9A064C419CB8FF3CFD /* A2BlockInvocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AF41F9DBEF541738A74AE27 /* A2BlockInvocation.h */; };
+		3ECDBDFAF3D4458E8B31B776 /* NSTimer+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD8CB513D7C4576B5D4B774 /* NSTimer+BlocksKit.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		4C16A85AED6847418564FDBF /* NSOrderedSet+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = F72E470D268C4934B4AD637F /* NSOrderedSet+BlocksKit.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		4EAF2827AB634A768F256960 /* MFMailComposeViewController+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 225CE4818E244BD58081EFF6 /* MFMailComposeViewController+BlocksKit.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		51EC56A1A28D45C9BE39A908 /* NSObject+AssociatedObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 8395B2B197A944BB9752DFA5 /* NSObject+AssociatedObjects.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		5B2EC24E2A5B4C5295D217F6 /* UIAlertView+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 75821640A0FC403EA97F6B2B /* UIAlertView+BlocksKit.h */; };
+		5ED2655A43CF4A0E92EC30E2 /* NSMutableOrderedSet+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4FBE5074C04D65A8DDDC18 /* NSMutableOrderedSet+BlocksKit.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		6031922D08C84E5B9CBEFA3E /* NSSet+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E8580CD6A18146D89EE88DE6 /* NSSet+BlocksKit.h */; };
+		61C3B752057F49E3AA13C3E4 /* NSInvocation+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B253AB1CD6E462297D39EEE /* NSInvocation+BlocksKit.h */; };
+		61E5A906BA1E47DBB2824720 /* NSMutableIndexSet+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 894F51CA8D0C496D90DF75CF /* NSMutableIndexSet+BlocksKit.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		67F6A7D2B6354D99A5097E0F /* NSMutableSet+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = AC34E9A29D8044E694972C1E /* NSMutableSet+BlocksKit.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		68A1E69AB1F4472F967F507D /* ffi.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C4F476CC182422CB3DF1249 /* ffi.h */; };
+		6EF73E43C3534A36BECB8EC5 /* NSObject+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = A6DCD4E925504C7AA677C7EB /* NSObject+BlocksKit.h */; };
+		6F992A87AA98425788A17BA9 /* UIBarButtonItem+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 6037A4CDFB9F49C3A173E6B0 /* UIBarButtonItem+BlocksKit.h */; };
+		701BEEDC3C464E458B7C0E9E /* UIControl+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B03A87FCD5343EBB2744CD1 /* UIControl+BlocksKit.h */; };
+		731878FC1FA844B2B5912591 /* NSObject+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D599037EBA415B8368874E /* NSObject+BlocksKit.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		743D12F20FB94F099CC9B833 /* UIWebView+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 63329B9243AB4311AAF1C386 /* UIWebView+BlocksKit.h */; };
+		7628820D34FC40CCA2F3BE9D /* A2BlockDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 944C5356DA5549C081929258 /* A2BlockDelegate.h */; };
+		7805C6C6ADDC428AAA3ECE7D /* NSArray+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DC5F40A833464BD5A0CE8D62 /* NSArray+BlocksKit.h */; };
+		7A7E6AFC16B44903BC68A9F2 /* sysv.S in Sources */ = {isa = PBXBuildFile; fileRef = 007AD8F662F64E299FA65278 /* sysv.S */; };
+		7C889BEBE3914890BB83E75D /* ffitarget_i386.h in Headers */ = {isa = PBXBuildFile; fileRef = C31187C258564FF29BC24C6A /* ffitarget_i386.h */; };
+		8296225D95F145C68E331C41 /* A2BlockInvocation.m in Sources */ = {isa = PBXBuildFile; fileRef = E5891BEE397845CCABFCEBB3 /* A2BlockInvocation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		8806B8CB281042A7B6FAA708 /* NSDictionary+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A80FA54A35140B19AE43F28 /* NSDictionary+BlocksKit.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		89105DD5DDD04BA59295FCAB /* SHPlayerProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = D553485641D94ED4A7FC9D30 /* SHPlayerProtocol.h */; };
+		8C662305DAD44D038BBC0BDB /* UIPopoverController+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E7585AF4637F42F19F833CD9 /* UIPopoverController+BlocksKit.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		8D284AF3E0D84E719D86DDC4 /* NSObject+BlockObservation.m in Sources */ = {isa = PBXBuildFile; fileRef = EF760D3A768C4D75A39067DB /* NSObject+BlockObservation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		8DC6C0899BCB49FD9787B68A /* NSCache+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E35CD336E9947FDA236D704 /* NSCache+BlocksKit.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		8DF8D198AD5042D2AFA7E831 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99ECF33E36A044CCB37830E8 /* Foundation.framework */; };
+		94561501F21C4176901FCEF0 /* ffi_i386.h in Headers */ = {isa = PBXBuildFile; fileRef = 10AB5ABAFBB74D53B0B9B0C0 /* ffi_i386.h */; };
+		949F1C78E5854B28BAF8E205 /* NSURLConnection+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CAAC04A8B0A49B2BD5D7E54 /* NSURLConnection+BlocksKit.h */; };
+		953AAFA3C3234BCB86239D89 /* NSEnumerable+Utilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D57D33424AE4A4D98C9D0AD /* NSEnumerable+Utilities.h */; };
+		969211B414C2455C8FCF62F1 /* NSMutableIndexSet+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 736D330847E041D79F7771E6 /* NSMutableIndexSet+BlocksKit.h */; };
+		98C760BC49B84231A211B6C2 /* ffitarget_armv7.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A7FF6C9DD924C3D9B9CEDE0 /* ffitarget_armv7.h */; };
+		9CB9D0398FB74C40A87930B2 /* A2DynamicDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E07B0768C341E595A3E80B /* A2DynamicDelegate.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		9F3AD474C9A548AC85484985 /* GKPlayer+SHGameCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 518E0EDAD340440CBC02ECF0 /* GKPlayer+SHGameCenter.h */; };
+		A06EDB4D542C407884A3917B /* UIBarButtonItem+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E57414FA5974AE5850929EE /* UIBarButtonItem+BlocksKit.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		A6817F4F9FFD421FB2F2F5AA /* UIWebView+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 682F038F4F5043AFB3DB7042 /* UIWebView+BlocksKit.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		A6CD19EC596241D38C3F6042 /* NSObject+BlockObservation.h in Headers */ = {isa = PBXBuildFile; fileRef = 3785ED9042D44A688F1E58DD /* NSObject+BlockObservation.h */; };
+		A8A5AC20AF724BC5B7671BF5 /* NSArray+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = B0B1326EF53F4BF08FB4816B /* NSArray+BlocksKit.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		AD5149E6511A46AFA87A4F38 /* NSCache+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 86CD030BF93447E48064471D /* NSCache+BlocksKit.h */; };
+		B0D731C71B064821A26EC2EA /* NSMutableSet+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 14A596556E42420D99D8376B /* NSMutableSet+BlocksKit.h */; };
+		B8E8698717F04C009C789437 /* GKTurnBasedParticipant+SHGameCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = BC410A994D534DF88D070367 /* GKTurnBasedParticipant+SHGameCenter.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		BC882EE2FF664A4C86216A80 /* BKGlobals.h in Headers */ = {isa = PBXBuildFile; fileRef = E952A86120D34B6D8396A09D /* BKGlobals.h */; };
+		C08DDBD37A3C4070ABBDA6FF /* darwin.S in Sources */ = {isa = PBXBuildFile; fileRef = 9BB71D9676D14FDAB647BCE9 /* darwin.S */; };
+		C532439259EA4F26B66C7413 /* types.c in Sources */ = {isa = PBXBuildFile; fileRef = 36D7DDB187F2484CAB59914E /* types.c */; };
+		CD0B3AA385344D9EB3ADDC57 /* NSDictionary+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = A40F1FBDD18E41C7ABF90FFB /* NSDictionary+BlocksKit.h */; };
+		CD5760C9A5214937B05DDD8A /* NSTimer+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E4D6D8A7D8C9475AB9FD4081 /* NSTimer+BlocksKit.h */; };
+		CE071D4E74FF47FA9C3D4F04 /* NSMutableDictionary+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F16EECE1CC44079D1FE065 /* NSMutableDictionary+BlocksKit.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		CEDBB07EB3544B858FA8DED7 /* prep_cif.c in Sources */ = {isa = PBXBuildFile; fileRef = 019105FB1D9E4E368F6F2824 /* prep_cif.c */; };
+		CF35484754C94DB4A296425F /* ffi_armv7.h in Headers */ = {isa = PBXBuildFile; fileRef = 2ADAD6C1A3EE4CDB9D97D5D2 /* ffi_armv7.h */; };
+		CFE2E8AFD82747FC941C8EA9 /* NSOrderedSet+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DF3D2849458640E1BE6C5E83 /* NSOrderedSet+BlocksKit.h */; };
+		D04D63B143CE48B881C90F2A /* UIGestureRecognizer+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E1264C693C3D497A8231C8A7 /* UIGestureRecognizer+BlocksKit.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		D7A8DB571A3C44F48679AA4E /* trampoline.S in Sources */ = {isa = PBXBuildFile; fileRef = 6F91E2B35CCF456A962770BC /* trampoline.S */; };
+		D8EDAD28EC534E529FB2EFE3 /* GKTurnBasedMatch+SHGameCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 800D939743DF44B48699041E /* GKTurnBasedMatch+SHGameCenter.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		D9973AC6C54A4B1B8D906801 /* NSIndexSet+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 701BCA252F684FF8A46327FF /* NSIndexSet+BlocksKit.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		DCE2CABC80C94C238F05CCAA /* NSIndexSet+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = D52DB36861CE4BA4A588499E /* NSIndexSet+BlocksKit.h */; };
+		DFA5C7DD24E44D54B6F6251D /* GKLocalPlayer+SHGameCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 37D43F354AA64E11B11D5A01 /* GKLocalPlayer+SHGameCenter.h */; };
+		E229DDA80BE04E03BABE7E51 /* GKTurnBasedMatch+SHGameCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 86FC80C2D4194E1A816FC18F /* GKTurnBasedMatch+SHGameCenter.h */; };
+		E29D2BBF796D49C3883CB101 /* UIControl+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C88B59FAE6457880F9154D /* UIControl+BlocksKit.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		E3B5FE0FB3CE44F88C4C3AEE /* ffi.c in Sources */ = {isa = PBXBuildFile; fileRef = 16CAF3E566C642A6B50EC9FB /* ffi.c */; };
+		E4F74EF60ED64CC09F223881 /* GKLocalPlayer+SHGameCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = A58C475816AF49E7AA63012E /* GKLocalPlayer+SHGameCenter.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		E60E3CF122ED4C578E7BAC67 /* NSMutableOrderedSet+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E11684D5A23B4EBD9F13561C /* NSMutableOrderedSet+BlocksKit.h */; };
+		E75D0AA12C0E49D9860A1A6A /* A2BlockDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A86AD00FDACF4B46A27A56D8 /* A2BlockDelegate.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		E7936D80A35E42EE96145464 /* GKTurnBasedParticipant+SHGameCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 2944259BA43049D29694D84A /* GKTurnBasedParticipant+SHGameCenter.h */; };
+		EC29C0E4C80449048DB3DA99 /* fficonfig_armv7.h in Headers */ = {isa = PBXBuildFile; fileRef = 71A907B5DC9242128A1977B6 /* fficonfig_armv7.h */; };
+		F208DA6A256041A699910AA2 /* NSObject+AssociatedObjects.h in Headers */ = {isa = PBXBuildFile; fileRef = C93C2E18C49642CD95B172A2 /* NSObject+AssociatedObjects.h */; };
+		F4A6E75CE11941C8A1B3501B /* NSEnumerable+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 93EE4B61EEB448FDAAB18A0A /* NSEnumerable+Utilities.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		F6698C125A714E24AF133288 /* MFMailComposeViewController+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DAD3BEDC32B240CEA4036922 /* MFMailComposeViewController+BlocksKit.h */; };
+		F6F847260AA04F11B97627AD /* NSMutableArray+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5CF1C9483771414FA42638E1 /* NSMutableArray+BlocksKit.h */; };
+		F9FD92FA9DDC45089B446860 /* UIView+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = F95F5C7627CC4EE583188357 /* UIView+BlocksKit.h */; };
+		FCC5B7D6C86940FC9947D565 /* UIPopoverController+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 684A727CE88C4E428311A5D4 /* UIPopoverController+BlocksKit.h */; };
+		FCD76F8A002C43D3A7F63556 /* UIView+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F8F1F6792D94E95A5AECDC8 /* UIView+BlocksKit.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		FD5AA1AEB2FE41AB9D928A8B /* NSObject+A2DynamicDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 26196D5CF3D240D582B82B14 /* NSObject+A2DynamicDelegate.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		FE247EFC948441F388927688 /* BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E8D1B01F1004ABC9F3023EF /* BlocksKit.h */; };
+		FEB6710D93484F7A86DDAEAD /* GKPlayer+SHGameCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1730B5632C1E4907BB525429 /* GKPlayer+SHGameCenter.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		FF1F106EF34443CDB60E9DB3 /* ffitarget.h in Headers */ = {isa = PBXBuildFile; fileRef = 85C13281DB3C48C8BA6D8728 /* ffitarget.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		007AD8F662F64E299FA65278 /* sysv.S */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.asm; name = sysv.S; path = libffi/ios/src/arm/sysv.S; sourceTree = SOURCE_ROOT; };
+		017B27BE72D84614B6EBC86B /* raw_api.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = raw_api.c; path = libffi/src/raw_api.c; sourceTree = SOURCE_ROOT; };
+		019105FB1D9E4E368F6F2824 /* prep_cif.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = prep_cif.c; path = libffi/src/prep_cif.c; sourceTree = SOURCE_ROOT; };
+		05E4DB9E15DF4CA2A8A5A58F /* MFMessageComposeViewController+BlocksKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MFMessageComposeViewController+BlocksKit.h"; path = "BlocksKit/BlocksKit/MessageUI/MFMessageComposeViewController+BlocksKit.h"; sourceTree = SOURCE_ROOT; };
+		0A7FF6C9DD924C3D9B9CEDE0 /* ffitarget_armv7.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ffitarget_armv7.h; path = libffi/ios/include/ffitarget_armv7.h; sourceTree = SOURCE_ROOT; };
+		0E57414FA5974AE5850929EE /* UIBarButtonItem+BlocksKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIBarButtonItem+BlocksKit.m"; path = "BlocksKit/BlocksKit/UIKit/UIBarButtonItem+BlocksKit.m"; sourceTree = SOURCE_ROOT; };
+		0E8D1B01F1004ABC9F3023EF /* BlocksKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BlocksKit.h; path = BlocksKit/BlocksKit/BlocksKit.h; sourceTree = SOURCE_ROOT; };
+		0EB98E440E4A42EF830220C5 /* NSMutableArray+BlocksKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSMutableArray+BlocksKit.m"; path = "BlocksKit/BlocksKit/NSMutableArray+BlocksKit.m"; sourceTree = SOURCE_ROOT; };
+		10AB5ABAFBB74D53B0B9B0C0 /* ffi_i386.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ffi_i386.h; path = libffi/ios/include/ffi_i386.h; sourceTree = SOURCE_ROOT; };
+		14A596556E42420D99D8376B /* NSMutableSet+BlocksKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSMutableSet+BlocksKit.h"; path = "BlocksKit/BlocksKit/NSMutableSet+BlocksKit.h"; sourceTree = SOURCE_ROOT; };
+		16CAF3E566C642A6B50EC9FB /* ffi.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = ffi.c; path = libffi/ios/src/x86/ffi.c; sourceTree = SOURCE_ROOT; };
+		1730B5632C1E4907BB525429 /* GKPlayer+SHGameCenter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "GKPlayer+SHGameCenter.m"; path = "../../SHGameCenter/GKPlayer+SHGameCenter.m"; sourceTree = SOURCE_ROOT; };
+		1CAAC04A8B0A49B2BD5D7E54 /* NSURLConnection+BlocksKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSURLConnection+BlocksKit.h"; path = "BlocksKit/BlocksKit/NSURLConnection+BlocksKit.h"; sourceTree = SOURCE_ROOT; };
+		1D760519A1F8417A85A96F83 /* SHGameCenter.private */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SHGameCenter.private; path = ../../SHGameCenter/SHGameCenter.private; sourceTree = SOURCE_ROOT; };
+		225CE4818E244BD58081EFF6 /* MFMailComposeViewController+BlocksKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "MFMailComposeViewController+BlocksKit.m"; path = "BlocksKit/BlocksKit/MessageUI/MFMailComposeViewController+BlocksKit.m"; sourceTree = SOURCE_ROOT; };
+		26196D5CF3D240D582B82B14 /* NSObject+A2DynamicDelegate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+A2DynamicDelegate.m"; path = "BlocksKit/BlocksKit/NSObject+A2DynamicDelegate.m"; sourceTree = SOURCE_ROOT; };
+		2944259BA43049D29694D84A /* GKTurnBasedParticipant+SHGameCenter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "GKTurnBasedParticipant+SHGameCenter.h"; path = "../../SHGameCenter/GKTurnBasedParticipant+SHGameCenter.h"; sourceTree = SOURCE_ROOT; };
+		2A80FA54A35140B19AE43F28 /* NSDictionary+BlocksKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+BlocksKit.m"; path = "BlocksKit/BlocksKit/NSDictionary+BlocksKit.m"; sourceTree = SOURCE_ROOT; };
+		2ADAD6C1A3EE4CDB9D97D5D2 /* ffi_armv7.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ffi_armv7.h; path = libffi/ios/include/ffi_armv7.h; sourceTree = SOURCE_ROOT; };
+		2C4F476CC182422CB3DF1249 /* ffi.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ffi.h; path = libffi/ios/include/ffi.h; sourceTree = SOURCE_ROOT; };
+		2D57D33424AE4A4D98C9D0AD /* NSEnumerable+Utilities.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSEnumerable+Utilities.h"; path = "../../SHGameCenter/Dependencies/NSEnumerable+Utilities.h"; sourceTree = SOURCE_ROOT; };
+		33B8BFBFA79543B095F9A18D /* UIGestureRecognizer+BlocksKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIGestureRecognizer+BlocksKit.h"; path = "BlocksKit/BlocksKit/UIKit/UIGestureRecognizer+BlocksKit.h"; sourceTree = SOURCE_ROOT; };
+		34EF9B18E9044137A6C60E21 /* SHGameCenterBlockDefinitions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SHGameCenterBlockDefinitions.h; path = ../../SHGameCenter/SHGameCenterBlockDefinitions.h; sourceTree = SOURCE_ROOT; };
+		34F16EECE1CC44079D1FE065 /* NSMutableDictionary+BlocksKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSMutableDictionary+BlocksKit.m"; path = "BlocksKit/BlocksKit/NSMutableDictionary+BlocksKit.m"; sourceTree = SOURCE_ROOT; };
+		35BD0DFBA7E6405C8EE80FAB /* ffi.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = ffi.c; path = libffi/ios/src/arm/ffi.c; sourceTree = SOURCE_ROOT; };
+		36D7DDB187F2484CAB59914E /* types.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = types.c; path = libffi/src/types.c; sourceTree = SOURCE_ROOT; };
+		3785ED9042D44A688F1E58DD /* NSObject+BlockObservation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+BlockObservation.h"; path = "BlocksKit/BlocksKit/NSObject+BlockObservation.h"; sourceTree = SOURCE_ROOT; };
+		37D43F354AA64E11B11D5A01 /* GKLocalPlayer+SHGameCenter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "GKLocalPlayer+SHGameCenter.h"; path = "../../SHGameCenter/GKLocalPlayer+SHGameCenter.h"; sourceTree = SOURCE_ROOT; };
+		37DFC45BCCCC4267A0571675 /* Pods-header.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-header.h"; sourceTree = SOURCE_ROOT; };
+		4085E0A506014EE48800E606 /* UIActionSheet+BlocksKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIActionSheet+BlocksKit.m"; path = "BlocksKit/BlocksKit/UIKit/UIActionSheet+BlocksKit.m"; sourceTree = SOURCE_ROOT; };
+		459FDE679EB4411A8B082277 /* closures.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = closures.c; path = libffi/src/closures.c; sourceTree = SOURCE_ROOT; };
+		48D599037EBA415B8368874E /* NSObject+BlocksKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+BlocksKit.m"; path = "BlocksKit/BlocksKit/NSObject+BlocksKit.m"; sourceTree = SOURCE_ROOT; };
+		4CD8CB513D7C4576B5D4B774 /* NSTimer+BlocksKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSTimer+BlocksKit.m"; path = "BlocksKit/BlocksKit/NSTimer+BlocksKit.m"; sourceTree = SOURCE_ROOT; };
+		4E35CD336E9947FDA236D704 /* NSCache+BlocksKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSCache+BlocksKit.m"; path = "BlocksKit/BlocksKit/NSCache+BlocksKit.m"; sourceTree = SOURCE_ROOT; };
+		50EF3FF4D04845259A7DCD0C /* Pods-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-prefix.pch"; sourceTree = SOURCE_ROOT; };
+		518E0EDAD340440CBC02ECF0 /* GKPlayer+SHGameCenter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "GKPlayer+SHGameCenter.h"; path = "../../SHGameCenter/GKPlayer+SHGameCenter.h"; sourceTree = SOURCE_ROOT; };
+		562FF3F49FB54B6292CE3175 /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		5AF41F9DBEF541738A74AE27 /* A2BlockInvocation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = A2BlockInvocation.h; path = BlocksKit/BlocksKit/A2BlockInvocation.h; sourceTree = SOURCE_ROOT; };
+		5B03A87FCD5343EBB2744CD1 /* UIControl+BlocksKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIControl+BlocksKit.h"; path = "BlocksKit/BlocksKit/UIKit/UIControl+BlocksKit.h"; sourceTree = SOURCE_ROOT; };
+		5CF1C9483771414FA42638E1 /* NSMutableArray+BlocksKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSMutableArray+BlocksKit.h"; path = "BlocksKit/BlocksKit/NSMutableArray+BlocksKit.h"; sourceTree = SOURCE_ROOT; };
+		6037A4CDFB9F49C3A173E6B0 /* UIBarButtonItem+BlocksKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIBarButtonItem+BlocksKit.h"; path = "BlocksKit/BlocksKit/UIKit/UIBarButtonItem+BlocksKit.h"; sourceTree = SOURCE_ROOT; };
+		63329B9243AB4311AAF1C386 /* UIWebView+BlocksKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIWebView+BlocksKit.h"; path = "BlocksKit/BlocksKit/UIKit/UIWebView+BlocksKit.h"; sourceTree = SOURCE_ROOT; };
+		682F038F4F5043AFB3DB7042 /* UIWebView+BlocksKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIWebView+BlocksKit.m"; path = "BlocksKit/BlocksKit/UIKit/UIWebView+BlocksKit.m"; sourceTree = SOURCE_ROOT; };
+		684A727CE88C4E428311A5D4 /* UIPopoverController+BlocksKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIPopoverController+BlocksKit.h"; path = "BlocksKit/BlocksKit/UIKit/UIPopoverController+BlocksKit.h"; sourceTree = SOURCE_ROOT; };
+		686748BA33424DF094431B2C /* MFMessageComposeViewController+BlocksKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "MFMessageComposeViewController+BlocksKit.m"; path = "BlocksKit/BlocksKit/MessageUI/MFMessageComposeViewController+BlocksKit.m"; sourceTree = SOURCE_ROOT; };
+		6A1CA8AFD2D441F8AD287B6E /* UIAlertView+BlocksKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIAlertView+BlocksKit.m"; path = "BlocksKit/BlocksKit/UIKit/UIAlertView+BlocksKit.m"; sourceTree = SOURCE_ROOT; };
+		6AEF378D7BF34F12B810D164 /* NSURLConnection+BlocksKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSURLConnection+BlocksKit.m"; path = "BlocksKit/BlocksKit/NSURLConnection+BlocksKit.m"; sourceTree = SOURCE_ROOT; };
+		6B4FBE5074C04D65A8DDDC18 /* NSMutableOrderedSet+BlocksKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSMutableOrderedSet+BlocksKit.m"; path = "BlocksKit/BlocksKit/NSMutableOrderedSet+BlocksKit.m"; sourceTree = SOURCE_ROOT; };
+		6F91E2B35CCF456A962770BC /* trampoline.S */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.asm; name = trampoline.S; path = libffi/ios/src/arm/trampoline.S; sourceTree = SOURCE_ROOT; };
+		701BCA252F684FF8A46327FF /* NSIndexSet+BlocksKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSIndexSet+BlocksKit.m"; path = "BlocksKit/BlocksKit/NSIndexSet+BlocksKit.m"; sourceTree = SOURCE_ROOT; };
+		70E5F6CD22864DCCB10611DC /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = SOURCE_ROOT; };
+		71A907B5DC9242128A1977B6 /* fficonfig_armv7.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = fficonfig_armv7.h; path = libffi/ios/include/fficonfig_armv7.h; sourceTree = SOURCE_ROOT; };
+		736D330847E041D79F7771E6 /* NSMutableIndexSet+BlocksKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSMutableIndexSet+BlocksKit.h"; path = "BlocksKit/BlocksKit/NSMutableIndexSet+BlocksKit.h"; sourceTree = SOURCE_ROOT; };
+		75821640A0FC403EA97F6B2B /* UIAlertView+BlocksKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIAlertView+BlocksKit.h"; path = "BlocksKit/BlocksKit/UIKit/UIAlertView+BlocksKit.h"; sourceTree = SOURCE_ROOT; };
+		79CDBBBFC4B44E39B1C718DC /* NSMutableDictionary+BlocksKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSMutableDictionary+BlocksKit.h"; path = "BlocksKit/BlocksKit/NSMutableDictionary+BlocksKit.h"; sourceTree = SOURCE_ROOT; };
+		800D939743DF44B48699041E /* GKTurnBasedMatch+SHGameCenter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "GKTurnBasedMatch+SHGameCenter.m"; path = "../../SHGameCenter/GKTurnBasedMatch+SHGameCenter.m"; sourceTree = SOURCE_ROOT; };
+		8395B2B197A944BB9752DFA5 /* NSObject+AssociatedObjects.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+AssociatedObjects.m"; path = "BlocksKit/BlocksKit/NSObject+AssociatedObjects.m"; sourceTree = SOURCE_ROOT; };
+		85C13281DB3C48C8BA6D8728 /* ffitarget.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ffitarget.h; path = libffi/ios/include/ffitarget.h; sourceTree = SOURCE_ROOT; };
+		86CD030BF93447E48064471D /* NSCache+BlocksKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSCache+BlocksKit.h"; path = "BlocksKit/BlocksKit/NSCache+BlocksKit.h"; sourceTree = SOURCE_ROOT; };
+		86FC80C2D4194E1A816FC18F /* GKTurnBasedMatch+SHGameCenter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "GKTurnBasedMatch+SHGameCenter.h"; path = "../../SHGameCenter/GKTurnBasedMatch+SHGameCenter.h"; sourceTree = SOURCE_ROOT; };
+		894F51CA8D0C496D90DF75CF /* NSMutableIndexSet+BlocksKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSMutableIndexSet+BlocksKit.m"; path = "BlocksKit/BlocksKit/NSMutableIndexSet+BlocksKit.m"; sourceTree = SOURCE_ROOT; };
+		8B253AB1CD6E462297D39EEE /* NSInvocation+BlocksKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSInvocation+BlocksKit.h"; path = "BlocksKit/BlocksKit/NSInvocation+BlocksKit.h"; sourceTree = SOURCE_ROOT; };
+		8F06CF650DBD456EB351595B /* SHGameCenter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SHGameCenter.m; path = ../../SHGameCenter/SHGameCenter.m; sourceTree = SOURCE_ROOT; };
+		8F8F1F6792D94E95A5AECDC8 /* UIView+BlocksKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+BlocksKit.m"; path = "BlocksKit/BlocksKit/UIKit/UIView+BlocksKit.m"; sourceTree = SOURCE_ROOT; };
+		91C88B59FAE6457880F9154D /* UIControl+BlocksKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIControl+BlocksKit.m"; path = "BlocksKit/BlocksKit/UIKit/UIControl+BlocksKit.m"; sourceTree = SOURCE_ROOT; };
+		93EE4B61EEB448FDAAB18A0A /* NSEnumerable+Utilities.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSEnumerable+Utilities.m"; path = "../../SHGameCenter/Dependencies/NSEnumerable+Utilities.m"; sourceTree = SOURCE_ROOT; };
+		944C5356DA5549C081929258 /* A2BlockDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = A2BlockDelegate.h; path = BlocksKit/BlocksKit/A2BlockDelegate.h; sourceTree = SOURCE_ROOT; };
+		99ECF33E36A044CCB37830E8 /* Foundation.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		9BB71D9676D14FDAB647BCE9 /* darwin.S */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.asm; name = darwin.S; path = libffi/ios/src/x86/darwin.S; sourceTree = SOURCE_ROOT; };
+		9EED82F1FD034C38832C289B /* SHGameCenter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SHGameCenter.h; path = ../../SHGameCenter/SHGameCenter.h; sourceTree = SOURCE_ROOT; };
+		A09F4BF1A98145EEBB05C741 /* MessageUI.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/MessageUI.framework; sourceTree = DEVELOPER_DIR; };
+		A308ED80F26E4F6CBEEE18EB /* NSObject+A2DynamicDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+A2DynamicDelegate.h"; path = "BlocksKit/BlocksKit/NSObject+A2DynamicDelegate.h"; sourceTree = SOURCE_ROOT; };
+		A40F1FBDD18E41C7ABF90FFB /* NSDictionary+BlocksKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+BlocksKit.h"; path = "BlocksKit/BlocksKit/NSDictionary+BlocksKit.h"; sourceTree = SOURCE_ROOT; };
+		A42043A871694CEE8960D752 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		A58C475816AF49E7AA63012E /* GKLocalPlayer+SHGameCenter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "GKLocalPlayer+SHGameCenter.m"; path = "../../SHGameCenter/GKLocalPlayer+SHGameCenter.m"; sourceTree = SOURCE_ROOT; };
+		A6DCD4E925504C7AA677C7EB /* NSObject+BlocksKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+BlocksKit.h"; path = "BlocksKit/BlocksKit/NSObject+BlocksKit.h"; sourceTree = SOURCE_ROOT; };
+		A86AD00FDACF4B46A27A56D8 /* A2BlockDelegate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = A2BlockDelegate.m; path = BlocksKit/BlocksKit/A2BlockDelegate.m; sourceTree = SOURCE_ROOT; };
+		AC34E9A29D8044E694972C1E /* NSMutableSet+BlocksKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSMutableSet+BlocksKit.m"; path = "BlocksKit/BlocksKit/NSMutableSet+BlocksKit.m"; sourceTree = SOURCE_ROOT; };
+		AE0C0E6663F74A09A57D63F4 /* ffi_common.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ffi_common.h; path = libffi/ios/include/ffi_common.h; sourceTree = SOURCE_ROOT; };
+		B0B1326EF53F4BF08FB4816B /* NSArray+BlocksKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSArray+BlocksKit.m"; path = "BlocksKit/BlocksKit/NSArray+BlocksKit.m"; sourceTree = SOURCE_ROOT; };
+		B5FB8FC51A244DDAAB76C466 /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = SOURCE_ROOT; };
+		B90D320F239D46698F8B4C9E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC410A994D534DF88D070367 /* GKTurnBasedParticipant+SHGameCenter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "GKTurnBasedParticipant+SHGameCenter.m"; path = "../../SHGameCenter/GKTurnBasedParticipant+SHGameCenter.m"; sourceTree = SOURCE_ROOT; };
+		C31187C258564FF29BC24C6A /* ffitarget_i386.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ffitarget_i386.h; path = libffi/ios/include/ffitarget_i386.h; sourceTree = SOURCE_ROOT; };
+		C3E07B0768C341E595A3E80B /* A2DynamicDelegate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = A2DynamicDelegate.m; path = BlocksKit/BlocksKit/A2DynamicDelegate.m; sourceTree = SOURCE_ROOT; };
+		C93C2E18C49642CD95B172A2 /* NSObject+AssociatedObjects.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+AssociatedObjects.h"; path = "BlocksKit/BlocksKit/NSObject+AssociatedObjects.h"; sourceTree = SOURCE_ROOT; };
+		D334CE109E744917BBAC4E82 /* UIActionSheet+BlocksKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIActionSheet+BlocksKit.h"; path = "BlocksKit/BlocksKit/UIKit/UIActionSheet+BlocksKit.h"; sourceTree = SOURCE_ROOT; };
+		D52DB36861CE4BA4A588499E /* NSIndexSet+BlocksKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSIndexSet+BlocksKit.h"; path = "BlocksKit/BlocksKit/NSIndexSet+BlocksKit.h"; sourceTree = SOURCE_ROOT; };
+		D553485641D94ED4A7FC9D30 /* SHPlayerProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SHPlayerProtocol.h; path = ../../SHGameCenter/SHPlayerProtocol.h; sourceTree = SOURCE_ROOT; };
+		D5D5799B60BB4C1FB2B0A2D1 /* fficonfig_i386.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = fficonfig_i386.h; path = libffi/ios/include/fficonfig_i386.h; sourceTree = SOURCE_ROOT; };
+		DAD3BEDC32B240CEA4036922 /* MFMailComposeViewController+BlocksKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MFMailComposeViewController+BlocksKit.h"; path = "BlocksKit/BlocksKit/MessageUI/MFMailComposeViewController+BlocksKit.h"; sourceTree = SOURCE_ROOT; };
+		DC5F40A833464BD5A0CE8D62 /* NSArray+BlocksKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+BlocksKit.h"; path = "BlocksKit/BlocksKit/NSArray+BlocksKit.h"; sourceTree = SOURCE_ROOT; };
+		DEF68A40C1D546EDB76DD8D6 /* fficonfig.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = fficonfig.h; path = libffi/ios/include/fficonfig.h; sourceTree = SOURCE_ROOT; };
+		DF3D2849458640E1BE6C5E83 /* NSOrderedSet+BlocksKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSOrderedSet+BlocksKit.h"; path = "BlocksKit/BlocksKit/NSOrderedSet+BlocksKit.h"; sourceTree = SOURCE_ROOT; };
+		E11684D5A23B4EBD9F13561C /* NSMutableOrderedSet+BlocksKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSMutableOrderedSet+BlocksKit.h"; path = "BlocksKit/BlocksKit/NSMutableOrderedSet+BlocksKit.h"; sourceTree = SOURCE_ROOT; };
+		E1264C693C3D497A8231C8A7 /* UIGestureRecognizer+BlocksKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIGestureRecognizer+BlocksKit.m"; path = "BlocksKit/BlocksKit/UIKit/UIGestureRecognizer+BlocksKit.m"; sourceTree = SOURCE_ROOT; };
+		E4D6D8A7D8C9475AB9FD4081 /* NSTimer+BlocksKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSTimer+BlocksKit.h"; path = "BlocksKit/BlocksKit/NSTimer+BlocksKit.h"; sourceTree = SOURCE_ROOT; };
+		E57EE5F694E14B79824AB8D5 /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = SOURCE_ROOT; };
+		E5891BEE397845CCABFCEBB3 /* A2BlockInvocation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = A2BlockInvocation.m; path = BlocksKit/BlocksKit/A2BlockInvocation.m; sourceTree = SOURCE_ROOT; };
+		E7585AF4637F42F19F833CD9 /* UIPopoverController+BlocksKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIPopoverController+BlocksKit.m"; path = "BlocksKit/BlocksKit/UIKit/UIPopoverController+BlocksKit.m"; sourceTree = SOURCE_ROOT; };
+		E8580CD6A18146D89EE88DE6 /* NSSet+BlocksKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSSet+BlocksKit.h"; path = "BlocksKit/BlocksKit/NSSet+BlocksKit.h"; sourceTree = SOURCE_ROOT; };
+		E952A86120D34B6D8396A09D /* BKGlobals.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BKGlobals.h; path = BlocksKit/BlocksKit/BKGlobals.h; sourceTree = SOURCE_ROOT; };
+		EF760D3A768C4D75A39067DB /* NSObject+BlockObservation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+BlockObservation.m"; path = "BlocksKit/BlocksKit/NSObject+BlockObservation.m"; sourceTree = SOURCE_ROOT; };
+		F0F8F3A378B64E23B89D6E0E /* SHPlayerProtocol.implementation */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SHPlayerProtocol.implementation; path = ../../SHGameCenter/SHPlayerProtocol.implementation; sourceTree = SOURCE_ROOT; };
+		F1A383CA20E84513BADDC19D /* NSSet+BlocksKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSSet+BlocksKit.m"; path = "BlocksKit/BlocksKit/NSSet+BlocksKit.m"; sourceTree = SOURCE_ROOT; };
+		F28142A937EA47B8848177ED /* A2DynamicDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = A2DynamicDelegate.h; path = BlocksKit/BlocksKit/A2DynamicDelegate.h; sourceTree = SOURCE_ROOT; };
+		F5B4DA8EB4D44537AE9AC324 /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = SOURCE_ROOT; };
+		F699108891CE45D6951FBDCA /* BKMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BKMacros.h; path = BlocksKit/BlocksKit/BKMacros.h; sourceTree = SOURCE_ROOT; };
+		F72E470D268C4934B4AD637F /* NSOrderedSet+BlocksKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSOrderedSet+BlocksKit.m"; path = "BlocksKit/BlocksKit/NSOrderedSet+BlocksKit.m"; sourceTree = SOURCE_ROOT; };
+		F95F5C7627CC4EE583188357 /* UIView+BlocksKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+BlocksKit.h"; path = "BlocksKit/BlocksKit/UIKit/UIView+BlocksKit.h"; sourceTree = SOURCE_ROOT; };
+		FEB59704F4274BC59F74131E /* GameKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/GameKit.framework; sourceTree = DEVELOPER_DIR; };
+		FF73257253644750BC06BCF0 /* NSInvocation+BlocksKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSInvocation+BlocksKit.m"; path = "BlocksKit/BlocksKit/NSInvocation+BlocksKit.m"; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		83A05BE058F84973903B554D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DF8D198AD5042D2AFA7E831 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0B63C6731BD5451C97D0D239 /* SHGameCenter */ = {
+			isa = PBXGroup;
+			children = (
+				2D57D33424AE4A4D98C9D0AD /* NSEnumerable+Utilities.h */,
+				93EE4B61EEB448FDAAB18A0A /* NSEnumerable+Utilities.m */,
+				37D43F354AA64E11B11D5A01 /* GKLocalPlayer+SHGameCenter.h */,
+				A58C475816AF49E7AA63012E /* GKLocalPlayer+SHGameCenter.m */,
+				518E0EDAD340440CBC02ECF0 /* GKPlayer+SHGameCenter.h */,
+				1730B5632C1E4907BB525429 /* GKPlayer+SHGameCenter.m */,
+				86FC80C2D4194E1A816FC18F /* GKTurnBasedMatch+SHGameCenter.h */,
+				800D939743DF44B48699041E /* GKTurnBasedMatch+SHGameCenter.m */,
+				2944259BA43049D29694D84A /* GKTurnBasedParticipant+SHGameCenter.h */,
+				BC410A994D534DF88D070367 /* GKTurnBasedParticipant+SHGameCenter.m */,
+				9EED82F1FD034C38832C289B /* SHGameCenter.h */,
+				8F06CF650DBD456EB351595B /* SHGameCenter.m */,
+				34EF9B18E9044137A6C60E21 /* SHGameCenterBlockDefinitions.h */,
+				D553485641D94ED4A7FC9D30 /* SHPlayerProtocol.h */,
+			);
+			name = SHGameCenter;
+			sourceTree = "<group>";
+		};
+		2FE83E4DC03A4D7C81DECA84 = {
+			isa = PBXGroup;
+			children = (
+				CA8529D70F734C8FA9070D3D /* Frameworks */,
+				E3763D6704EB404FAEFBC313 /* Local Pods */,
+				5FE7E76FACD84EEAB711B764 /* Pods */,
+				C96B7D374718431BADDCCE3C /* Products */,
+				F366F37A70D644DABF3B34B0 /* Resources */,
+				946385B4173345E2BA9220A6 /* Targets Support Files */,
+				562FF3F49FB54B6292CE3175 /* Podfile */,
+			);
+			sourceTree = "<group>";
+		};
+		5FE7E76FACD84EEAB711B764 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BA28BCBCCCD8492CAD1F2379 /* BlocksKit */,
+				83C75C0984864A578192BB32 /* libffi */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		83C75C0984864A578192BB32 /* libffi */ = {
+			isa = PBXGroup;
+			children = (
+				2C4F476CC182422CB3DF1249 /* ffi.h */,
+				2ADAD6C1A3EE4CDB9D97D5D2 /* ffi_armv7.h */,
+				AE0C0E6663F74A09A57D63F4 /* ffi_common.h */,
+				10AB5ABAFBB74D53B0B9B0C0 /* ffi_i386.h */,
+				DEF68A40C1D546EDB76DD8D6 /* fficonfig.h */,
+				71A907B5DC9242128A1977B6 /* fficonfig_armv7.h */,
+				D5D5799B60BB4C1FB2B0A2D1 /* fficonfig_i386.h */,
+				85C13281DB3C48C8BA6D8728 /* ffitarget.h */,
+				0A7FF6C9DD924C3D9B9CEDE0 /* ffitarget_armv7.h */,
+				C31187C258564FF29BC24C6A /* ffitarget_i386.h */,
+				35BD0DFBA7E6405C8EE80FAB /* ffi.c */,
+				007AD8F662F64E299FA65278 /* sysv.S */,
+				6F91E2B35CCF456A962770BC /* trampoline.S */,
+				9BB71D9676D14FDAB647BCE9 /* darwin.S */,
+				16CAF3E566C642A6B50EC9FB /* ffi.c */,
+				459FDE679EB4411A8B082277 /* closures.c */,
+				019105FB1D9E4E368F6F2824 /* prep_cif.c */,
+				017B27BE72D84614B6EBC86B /* raw_api.c */,
+				36D7DDB187F2484CAB59914E /* types.c */,
+			);
+			name = libffi;
+			sourceTree = "<group>";
+		};
+		946385B4173345E2BA9220A6 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				A9CE0F1BE748458C8BE81DDE /* Pods */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		A9CE0F1BE748458C8BE81DDE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A42043A871694CEE8960D752 /* Pods.xcconfig */,
+				37DFC45BCCCC4267A0571675 /* Pods-header.h */,
+				50EF3FF4D04845259A7DCD0C /* Pods-prefix.pch */,
+				B5FB8FC51A244DDAAB76C466 /* Pods-resources.sh */,
+				F5B4DA8EB4D44537AE9AC324 /* Pods-acknowledgements.plist */,
+				E57EE5F694E14B79824AB8D5 /* Pods-acknowledgements.markdown */,
+				70E5F6CD22864DCCB10611DC /* Pods-dummy.m */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		B230DBCCC3654FFB8048374F /* SHGameCenter */ = {
+			isa = PBXGroup;
+			children = (
+				1D760519A1F8417A85A96F83 /* SHGameCenter.private */,
+				F0F8F3A378B64E23B89D6E0E /* SHPlayerProtocol.implementation */,
+			);
+			name = SHGameCenter;
+			sourceTree = "<group>";
+		};
+		BA28BCBCCCD8492CAD1F2379 /* BlocksKit */ = {
+			isa = PBXGroup;
+			children = (
+				944C5356DA5549C081929258 /* A2BlockDelegate.h */,
+				A86AD00FDACF4B46A27A56D8 /* A2BlockDelegate.m */,
+				5AF41F9DBEF541738A74AE27 /* A2BlockInvocation.h */,
+				E5891BEE397845CCABFCEBB3 /* A2BlockInvocation.m */,
+				F28142A937EA47B8848177ED /* A2DynamicDelegate.h */,
+				C3E07B0768C341E595A3E80B /* A2DynamicDelegate.m */,
+				E952A86120D34B6D8396A09D /* BKGlobals.h */,
+				F699108891CE45D6951FBDCA /* BKMacros.h */,
+				0E8D1B01F1004ABC9F3023EF /* BlocksKit.h */,
+				DC5F40A833464BD5A0CE8D62 /* NSArray+BlocksKit.h */,
+				B0B1326EF53F4BF08FB4816B /* NSArray+BlocksKit.m */,
+				86CD030BF93447E48064471D /* NSCache+BlocksKit.h */,
+				4E35CD336E9947FDA236D704 /* NSCache+BlocksKit.m */,
+				A40F1FBDD18E41C7ABF90FFB /* NSDictionary+BlocksKit.h */,
+				2A80FA54A35140B19AE43F28 /* NSDictionary+BlocksKit.m */,
+				D52DB36861CE4BA4A588499E /* NSIndexSet+BlocksKit.h */,
+				701BCA252F684FF8A46327FF /* NSIndexSet+BlocksKit.m */,
+				8B253AB1CD6E462297D39EEE /* NSInvocation+BlocksKit.h */,
+				FF73257253644750BC06BCF0 /* NSInvocation+BlocksKit.m */,
+				5CF1C9483771414FA42638E1 /* NSMutableArray+BlocksKit.h */,
+				0EB98E440E4A42EF830220C5 /* NSMutableArray+BlocksKit.m */,
+				79CDBBBFC4B44E39B1C718DC /* NSMutableDictionary+BlocksKit.h */,
+				34F16EECE1CC44079D1FE065 /* NSMutableDictionary+BlocksKit.m */,
+				736D330847E041D79F7771E6 /* NSMutableIndexSet+BlocksKit.h */,
+				894F51CA8D0C496D90DF75CF /* NSMutableIndexSet+BlocksKit.m */,
+				E11684D5A23B4EBD9F13561C /* NSMutableOrderedSet+BlocksKit.h */,
+				6B4FBE5074C04D65A8DDDC18 /* NSMutableOrderedSet+BlocksKit.m */,
+				14A596556E42420D99D8376B /* NSMutableSet+BlocksKit.h */,
+				AC34E9A29D8044E694972C1E /* NSMutableSet+BlocksKit.m */,
+				A308ED80F26E4F6CBEEE18EB /* NSObject+A2DynamicDelegate.h */,
+				26196D5CF3D240D582B82B14 /* NSObject+A2DynamicDelegate.m */,
+				C93C2E18C49642CD95B172A2 /* NSObject+AssociatedObjects.h */,
+				8395B2B197A944BB9752DFA5 /* NSObject+AssociatedObjects.m */,
+				3785ED9042D44A688F1E58DD /* NSObject+BlockObservation.h */,
+				EF760D3A768C4D75A39067DB /* NSObject+BlockObservation.m */,
+				A6DCD4E925504C7AA677C7EB /* NSObject+BlocksKit.h */,
+				48D599037EBA415B8368874E /* NSObject+BlocksKit.m */,
+				DF3D2849458640E1BE6C5E83 /* NSOrderedSet+BlocksKit.h */,
+				F72E470D268C4934B4AD637F /* NSOrderedSet+BlocksKit.m */,
+				E8580CD6A18146D89EE88DE6 /* NSSet+BlocksKit.h */,
+				F1A383CA20E84513BADDC19D /* NSSet+BlocksKit.m */,
+				E4D6D8A7D8C9475AB9FD4081 /* NSTimer+BlocksKit.h */,
+				4CD8CB513D7C4576B5D4B774 /* NSTimer+BlocksKit.m */,
+				1CAAC04A8B0A49B2BD5D7E54 /* NSURLConnection+BlocksKit.h */,
+				6AEF378D7BF34F12B810D164 /* NSURLConnection+BlocksKit.m */,
+				D334CE109E744917BBAC4E82 /* UIActionSheet+BlocksKit.h */,
+				4085E0A506014EE48800E606 /* UIActionSheet+BlocksKit.m */,
+				75821640A0FC403EA97F6B2B /* UIAlertView+BlocksKit.h */,
+				6A1CA8AFD2D441F8AD287B6E /* UIAlertView+BlocksKit.m */,
+				6037A4CDFB9F49C3A173E6B0 /* UIBarButtonItem+BlocksKit.h */,
+				0E57414FA5974AE5850929EE /* UIBarButtonItem+BlocksKit.m */,
+				5B03A87FCD5343EBB2744CD1 /* UIControl+BlocksKit.h */,
+				91C88B59FAE6457880F9154D /* UIControl+BlocksKit.m */,
+				33B8BFBFA79543B095F9A18D /* UIGestureRecognizer+BlocksKit.h */,
+				E1264C693C3D497A8231C8A7 /* UIGestureRecognizer+BlocksKit.m */,
+				684A727CE88C4E428311A5D4 /* UIPopoverController+BlocksKit.h */,
+				E7585AF4637F42F19F833CD9 /* UIPopoverController+BlocksKit.m */,
+				F95F5C7627CC4EE583188357 /* UIView+BlocksKit.h */,
+				8F8F1F6792D94E95A5AECDC8 /* UIView+BlocksKit.m */,
+				63329B9243AB4311AAF1C386 /* UIWebView+BlocksKit.h */,
+				682F038F4F5043AFB3DB7042 /* UIWebView+BlocksKit.m */,
+				DAD3BEDC32B240CEA4036922 /* MFMailComposeViewController+BlocksKit.h */,
+				225CE4818E244BD58081EFF6 /* MFMailComposeViewController+BlocksKit.m */,
+				05E4DB9E15DF4CA2A8A5A58F /* MFMessageComposeViewController+BlocksKit.h */,
+				686748BA33424DF094431B2C /* MFMessageComposeViewController+BlocksKit.m */,
+			);
+			name = BlocksKit;
+			sourceTree = "<group>";
+		};
+		C96B7D374718431BADDCCE3C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B90D320F239D46698F8B4C9E /* libPods.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CA8529D70F734C8FA9070D3D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				99ECF33E36A044CCB37830E8 /* Foundation.framework */,
+				FEB59704F4274BC59F74131E /* GameKit.framework */,
+				A09F4BF1A98145EEBB05C741 /* MessageUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E3763D6704EB404FAEFBC313 /* Local Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0B63C6731BD5451C97D0D239 /* SHGameCenter */,
+			);
+			name = "Local Pods";
+			sourceTree = "<group>";
+		};
+		F366F37A70D644DABF3B34B0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B230DBCCC3654FFB8048374F /* SHGameCenter */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		E62C9700F79446F988DEE0EA /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7628820D34FC40CCA2F3BE9D /* A2BlockDelegate.h in Headers */,
+				39957F9A064C419CB8FF3CFD /* A2BlockInvocation.h in Headers */,
+				13AE6C27B88E4F7BB20923F7 /* A2DynamicDelegate.h in Headers */,
+				BC882EE2FF664A4C86216A80 /* BKGlobals.h in Headers */,
+				294B275C85D04C82B9903DBF /* BKMacros.h in Headers */,
+				FE247EFC948441F388927688 /* BlocksKit.h in Headers */,
+				7805C6C6ADDC428AAA3ECE7D /* NSArray+BlocksKit.h in Headers */,
+				AD5149E6511A46AFA87A4F38 /* NSCache+BlocksKit.h in Headers */,
+				CD0B3AA385344D9EB3ADDC57 /* NSDictionary+BlocksKit.h in Headers */,
+				DCE2CABC80C94C238F05CCAA /* NSIndexSet+BlocksKit.h in Headers */,
+				61C3B752057F49E3AA13C3E4 /* NSInvocation+BlocksKit.h in Headers */,
+				F6F847260AA04F11B97627AD /* NSMutableArray+BlocksKit.h in Headers */,
+				375A862156D84D969F0B0DEA /* NSMutableDictionary+BlocksKit.h in Headers */,
+				969211B414C2455C8FCF62F1 /* NSMutableIndexSet+BlocksKit.h in Headers */,
+				E60E3CF122ED4C578E7BAC67 /* NSMutableOrderedSet+BlocksKit.h in Headers */,
+				B0D731C71B064821A26EC2EA /* NSMutableSet+BlocksKit.h in Headers */,
+				332A806884E94C9088BF07D9 /* NSObject+A2DynamicDelegate.h in Headers */,
+				F208DA6A256041A699910AA2 /* NSObject+AssociatedObjects.h in Headers */,
+				A6CD19EC596241D38C3F6042 /* NSObject+BlockObservation.h in Headers */,
+				6EF73E43C3534A36BECB8EC5 /* NSObject+BlocksKit.h in Headers */,
+				CFE2E8AFD82747FC941C8EA9 /* NSOrderedSet+BlocksKit.h in Headers */,
+				6031922D08C84E5B9CBEFA3E /* NSSet+BlocksKit.h in Headers */,
+				CD5760C9A5214937B05DDD8A /* NSTimer+BlocksKit.h in Headers */,
+				949F1C78E5854B28BAF8E205 /* NSURLConnection+BlocksKit.h in Headers */,
+				2E2D3D40A2AA4603B9996703 /* UIActionSheet+BlocksKit.h in Headers */,
+				5B2EC24E2A5B4C5295D217F6 /* UIAlertView+BlocksKit.h in Headers */,
+				6F992A87AA98425788A17BA9 /* UIBarButtonItem+BlocksKit.h in Headers */,
+				701BEEDC3C464E458B7C0E9E /* UIControl+BlocksKit.h in Headers */,
+				0FA1E536F2F146BC920CE2B9 /* UIGestureRecognizer+BlocksKit.h in Headers */,
+				FCC5B7D6C86940FC9947D565 /* UIPopoverController+BlocksKit.h in Headers */,
+				F9FD92FA9DDC45089B446860 /* UIView+BlocksKit.h in Headers */,
+				743D12F20FB94F099CC9B833 /* UIWebView+BlocksKit.h in Headers */,
+				F6698C125A714E24AF133288 /* MFMailComposeViewController+BlocksKit.h in Headers */,
+				3886C70079A641A9B1B00E78 /* MFMessageComposeViewController+BlocksKit.h in Headers */,
+				953AAFA3C3234BCB86239D89 /* NSEnumerable+Utilities.h in Headers */,
+				DFA5C7DD24E44D54B6F6251D /* GKLocalPlayer+SHGameCenter.h in Headers */,
+				9F3AD474C9A548AC85484985 /* GKPlayer+SHGameCenter.h in Headers */,
+				E229DDA80BE04E03BABE7E51 /* GKTurnBasedMatch+SHGameCenter.h in Headers */,
+				E7936D80A35E42EE96145464 /* GKTurnBasedParticipant+SHGameCenter.h in Headers */,
+				1FFB9BAE040D4010BE222A58 /* SHGameCenter.h in Headers */,
+				23E781D4785944919E484BD8 /* SHGameCenterBlockDefinitions.h in Headers */,
+				89105DD5DDD04BA59295FCAB /* SHPlayerProtocol.h in Headers */,
+				68A1E69AB1F4472F967F507D /* ffi.h in Headers */,
+				CF35484754C94DB4A296425F /* ffi_armv7.h in Headers */,
+				2C7420CD3E43422CB5A9421E /* ffi_common.h in Headers */,
+				94561501F21C4176901FCEF0 /* ffi_i386.h in Headers */,
+				30F21725B4CF40BDB35FBFFF /* fficonfig.h in Headers */,
+				EC29C0E4C80449048DB3DA99 /* fficonfig_armv7.h in Headers */,
+				02F1ABA9E2D947748B0052CA /* fficonfig_i386.h in Headers */,
+				FF1F106EF34443CDB60E9DB3 /* ffitarget.h in Headers */,
+				98C760BC49B84231A211B6C2 /* ffitarget_armv7.h in Headers */,
+				7C889BEBE3914890BB83E75D /* ffitarget_i386.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		154E28BBDD514E14AB52F821 /* Pods */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 52827CF37F7E416BA36E2731 /* Build configuration list for PBXNativeTarget "Pods" */;
+			buildPhases = (
+				D8AF033148F846A3AC9460BB /* Sources */,
+				83A05BE058F84973903B554D /* Frameworks */,
+				E62C9700F79446F988DEE0EA /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Pods;
+			productName = Pods;
+			productReference = B90D320F239D46698F8B4C9E /* libPods.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		144A33F008ED4582A432E37E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+			};
+			buildConfigurationList = D88B803F14CB4D3AB70ED106 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 2FE83E4DC03A4D7C81DECA84;
+			productRefGroup = C96B7D374718431BADDCCE3C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				154E28BBDD514E14AB52F821 /* Pods */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D8AF033148F846A3AC9460BB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E75D0AA12C0E49D9860A1A6A /* A2BlockDelegate.m in Sources */,
+				8296225D95F145C68E331C41 /* A2BlockInvocation.m in Sources */,
+				9CB9D0398FB74C40A87930B2 /* A2DynamicDelegate.m in Sources */,
+				A8A5AC20AF724BC5B7671BF5 /* NSArray+BlocksKit.m in Sources */,
+				8DC6C0899BCB49FD9787B68A /* NSCache+BlocksKit.m in Sources */,
+				8806B8CB281042A7B6FAA708 /* NSDictionary+BlocksKit.m in Sources */,
+				D9973AC6C54A4B1B8D906801 /* NSIndexSet+BlocksKit.m in Sources */,
+				2DBA828851D14357922EE410 /* NSInvocation+BlocksKit.m in Sources */,
+				21ACEBEF1835458298C87CB3 /* NSMutableArray+BlocksKit.m in Sources */,
+				CE071D4E74FF47FA9C3D4F04 /* NSMutableDictionary+BlocksKit.m in Sources */,
+				61E5A906BA1E47DBB2824720 /* NSMutableIndexSet+BlocksKit.m in Sources */,
+				5ED2655A43CF4A0E92EC30E2 /* NSMutableOrderedSet+BlocksKit.m in Sources */,
+				67F6A7D2B6354D99A5097E0F /* NSMutableSet+BlocksKit.m in Sources */,
+				FD5AA1AEB2FE41AB9D928A8B /* NSObject+A2DynamicDelegate.m in Sources */,
+				51EC56A1A28D45C9BE39A908 /* NSObject+AssociatedObjects.m in Sources */,
+				8D284AF3E0D84E719D86DDC4 /* NSObject+BlockObservation.m in Sources */,
+				731878FC1FA844B2B5912591 /* NSObject+BlocksKit.m in Sources */,
+				4C16A85AED6847418564FDBF /* NSOrderedSet+BlocksKit.m in Sources */,
+				1B3FAD02B9FE408BA377D582 /* NSSet+BlocksKit.m in Sources */,
+				3ECDBDFAF3D4458E8B31B776 /* NSTimer+BlocksKit.m in Sources */,
+				26986C1C16454650AB53CCCD /* NSURLConnection+BlocksKit.m in Sources */,
+				049D65456F8B4FCB88FEF1EB /* UIActionSheet+BlocksKit.m in Sources */,
+				26869AE868794F87A496234F /* UIAlertView+BlocksKit.m in Sources */,
+				A06EDB4D542C407884A3917B /* UIBarButtonItem+BlocksKit.m in Sources */,
+				E29D2BBF796D49C3883CB101 /* UIControl+BlocksKit.m in Sources */,
+				D04D63B143CE48B881C90F2A /* UIGestureRecognizer+BlocksKit.m in Sources */,
+				8C662305DAD44D038BBC0BDB /* UIPopoverController+BlocksKit.m in Sources */,
+				FCD76F8A002C43D3A7F63556 /* UIView+BlocksKit.m in Sources */,
+				A6817F4F9FFD421FB2F2F5AA /* UIWebView+BlocksKit.m in Sources */,
+				4EAF2827AB634A768F256960 /* MFMailComposeViewController+BlocksKit.m in Sources */,
+				24217985EB944740A52396B1 /* MFMessageComposeViewController+BlocksKit.m in Sources */,
+				F4A6E75CE11941C8A1B3501B /* NSEnumerable+Utilities.m in Sources */,
+				E4F74EF60ED64CC09F223881 /* GKLocalPlayer+SHGameCenter.m in Sources */,
+				FEB6710D93484F7A86DDAEAD /* GKPlayer+SHGameCenter.m in Sources */,
+				D8EDAD28EC534E529FB2EFE3 /* GKTurnBasedMatch+SHGameCenter.m in Sources */,
+				B8E8698717F04C009C789437 /* GKTurnBasedParticipant+SHGameCenter.m in Sources */,
+				1E4D4101508C4A09A9D57F6F /* SHGameCenter.m in Sources */,
+				0D9974D0C4604CE78A8019D2 /* ffi.c in Sources */,
+				7A7E6AFC16B44903BC68A9F2 /* sysv.S in Sources */,
+				D7A8DB571A3C44F48679AA4E /* trampoline.S in Sources */,
+				C08DDBD37A3C4070ABBDA6FF /* darwin.S in Sources */,
+				E3B5FE0FB3CE44F88C4C3AEE /* ffi.c in Sources */,
+				19B1996F0D63410AB70412A5 /* closures.c in Sources */,
+				CEDBB07EB3544B858FA8DED7 /* prep_cif.c in Sources */,
+				085C7FB80D674DAF8777A987 /* raw_api.c in Sources */,
+				C532439259EA4F26B66C7413 /* types.c in Sources */,
+				1BC38D99A20F493D84573958 /* Pods-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		7CBD49A3584E425E860ED6BE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A42043A871694CEE8960D752 /* Pods.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pods-prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_LDFLAGS = "";
+				PODS_HEADERS_SEARCH_PATHS = "${PODS_BUILD_HEADERS_SEARCH_PATHS}";
+				PODS_ROOT = "${SRCROOT}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		E70C364A162F40AE9C87BBAD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A42043A871694CEE8960D752 /* Pods.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pods-prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "";
+				PODS_HEADERS_SEARCH_PATHS = "${PODS_BUILD_HEADERS_SEARCH_PATHS}";
+				PODS_ROOT = "${SRCROOT}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EB4AF1E2CCC8476F8ED85963 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		F6B92CDA464544BA940476C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		52827CF37F7E416BA36E2731 /* Build configuration list for PBXNativeTarget "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E70C364A162F40AE9C87BBAD /* Release */,
+				7CBD49A3584E425E860ED6BE /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D88B803F14CB4D3AB70ED106 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F6B92CDA464544BA940476C5 /* Release */,
+				EB4AF1E2CCC8476F8ED85963 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 144A33F008ED4582A432E37E /* Project object */;
+}

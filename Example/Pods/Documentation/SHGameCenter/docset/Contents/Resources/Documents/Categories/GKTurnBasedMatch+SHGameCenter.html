@@ -1,0 +1,665 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>GKTurnBasedMatch(SHGameCenter) Category Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.1 (build 840)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">SHGameCenter 0.1.0 </a></h1>
+				<a id="developerHome" href="../index.html">Seivan Heidari</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">GKTurnBasedMatch(SHGameCenter) Category Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/SH_hasIncompleteParticipants">&nbsp;&nbsp;&nbsp;&nbsp;SH_hasIncompleteParticipants</option>
+	
+	<option value="//api/name/SH_isMatchStatusEnded">&nbsp;&nbsp;&nbsp;&nbsp;SH_isMatchStatusEnded</option>
+	
+	<option value="//api/name/SH_isMatchStatusMatching">&nbsp;&nbsp;&nbsp;&nbsp;SH_isMatchStatusMatching</option>
+	
+	<option value="//api/name/SH_isMatchStatusOpen">&nbsp;&nbsp;&nbsp;&nbsp;SH_isMatchStatusOpen</option>
+	
+	<option value="//api/name/SH_isMatchStatusUnknown">&nbsp;&nbsp;&nbsp;&nbsp;SH_isMatchStatusUnknown</option>
+	
+	<option value="//api/name/SH_isMyTurn">&nbsp;&nbsp;&nbsp;&nbsp;SH_isMyTurn</option>
+	
+	<option value="//api/name/SH_meAsParticipant">&nbsp;&nbsp;&nbsp;&nbsp;SH_meAsParticipant</option>
+	
+	<option value="//api/name/SH_nextParticipantsInLine">&nbsp;&nbsp;&nbsp;&nbsp;SH_nextParticipantsInLine</option>
+	
+	<option value="//api/name/SH_participantsWithoutCurrentParticipant">&nbsp;&nbsp;&nbsp;&nbsp;SH_participantsWithoutCurrentParticipant</option>
+	
+	<option value="//api/name/SH_participantsWithoutMe">&nbsp;&nbsp;&nbsp;&nbsp;SH_participantsWithoutMe</option>
+	
+	<option value="//api/name/SH_playerIdentifiers">&nbsp;&nbsp;&nbsp;&nbsp;SH_playerIdentifiers</option>
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/SH_requestMatchesWithBlock:">&nbsp;&nbsp;&nbsp;&nbsp;+ SH_requestMatchesWithBlock:</option>
+	
+	<option value="//api/name/SH_setObserver:matchEventTurnBlock:matchEventEndedBlock:matchEventInvitesBlock:">&nbsp;&nbsp;&nbsp;&nbsp;+ SH_setObserver:matchEventTurnBlock:matchEventEndedBlock:matchEventInvitesBlock:</option>
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/SH_deleteWithBlock:">&nbsp;&nbsp;&nbsp;&nbsp;- SH_deleteWithBlock:</option>
+	
+	<option value="//api/name/SH_rejectParticipants:">&nbsp;&nbsp;&nbsp;&nbsp;- SH_rejectParticipants:</option>
+	
+	<option value="//api/name/SH_requestPlayersWithBlock:">&nbsp;&nbsp;&nbsp;&nbsp;- SH_requestPlayersWithBlock:</option>
+	
+	<option value="//api/name/SH_resignWithBlock:">&nbsp;&nbsp;&nbsp;&nbsp;- SH_resignWithBlock:</option>
+	
+	<option value="//api/name/isEqualToMatch:">&nbsp;&nbsp;&nbsp;&nbsp;- isEqualToMatch:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/SH_hasIncompleteParticipants">SH_hasIncompleteParticipants</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/SH_isMatchStatusEnded">SH_isMatchStatusEnded</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/SH_isMatchStatusMatching">SH_isMatchStatusMatching</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/SH_isMatchStatusOpen">SH_isMatchStatusOpen</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/SH_isMatchStatusUnknown">SH_isMatchStatusUnknown</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/SH_isMyTurn">SH_isMyTurn</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/SH_meAsParticipant">SH_meAsParticipant</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/SH_nextParticipantsInLine">SH_nextParticipantsInLine</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/SH_participantsWithoutCurrentParticipant">SH_participantsWithoutCurrentParticipant</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/SH_participantsWithoutMe">SH_participantsWithoutMe</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/SH_playerIdentifiers">SH_playerIdentifiers</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/SH_requestMatchesWithBlock:">SH_requestMatchesWithBlock:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/SH_setObserver:matchEventTurnBlock:matchEventEndedBlock:matchEventInvitesBlock:">SH_setObserver:matchEventTurnBlock:matchEventEndedBlock:matchEventInvitesBlock:</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/SH_deleteWithBlock:">SH_deleteWithBlock:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/SH_rejectParticipants:">SH_rejectParticipants:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/SH_requestPlayersWithBlock:">SH_requestPlayersWithBlock:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/SH_resignWithBlock:">SH_resignWithBlock:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isEqualToMatch:">isEqualToMatch:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="GKTurnBasedMatch(SHGameCenter) Category Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">GKTurnBasedMatch(SHGameCenter) Category Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">GKTurnBasedMatch+SHGameCenter.h</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/SH_meAsParticipant">&nbsp;&nbsp;SH_meAsParticipant</a></code>
+		
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/SH_participantsWithoutMe">&nbsp;&nbsp;SH_participantsWithoutMe</a></code>
+		
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/SH_participantsWithoutCurrentParticipant">&nbsp;&nbsp;SH_participantsWithoutCurrentParticipant</a></code>
+		
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/SH_nextParticipantsInLine">&nbsp;&nbsp;SH_nextParticipantsInLine</a></code>
+		
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/SH_playerIdentifiers">&nbsp;&nbsp;SH_playerIdentifiers</a></code>
+		
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/SH_isMyTurn">&nbsp;&nbsp;SH_isMyTurn</a></code>
+		
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/SH_hasIncompleteParticipants">&nbsp;&nbsp;SH_hasIncompleteParticipants</a></code>
+		
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/SH_isMatchStatusOpen">&nbsp;&nbsp;SH_isMatchStatusOpen</a></code>
+		
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/SH_isMatchStatusMatching">&nbsp;&nbsp;SH_isMatchStatusMatching</a></code>
+		
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/SH_isMatchStatusEnded">&nbsp;&nbsp;SH_isMatchStatusEnded</a></code>
+		
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/SH_isMatchStatusUnknown">&nbsp;&nbsp;SH_isMatchStatusUnknown</a></code>
+		
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/SH_setObserver:matchEventTurnBlock:matchEventEndedBlock:matchEventInvitesBlock:">+&nbsp;SH_setObserver:matchEventTurnBlock:matchEventEndedBlock:matchEventInvitesBlock:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/SH_requestPlayersWithBlock:">&ndash;&nbsp;SH_requestPlayersWithBlock:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/isEqualToMatch:">&ndash;&nbsp;isEqualToMatch:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/SH_requestMatchesWithBlock:">+&nbsp;SH_requestMatchesWithBlock:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/SH_resignWithBlock:">&ndash;&nbsp;SH_resignWithBlock:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/SH_deleteWithBlock:">&ndash;&nbsp;SH_deleteWithBlock:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/SH_rejectParticipants:">&ndash;&nbsp;SH_rejectParticipants:</a></code>
+		
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/SH_hasIncompleteParticipants" title="SH_hasIncompleteParticipants"></a>
+	<h3 class="subsubtitle method-title">SH_hasIncompleteParticipants</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) BOOL SH_hasIncompleteParticipants</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/SH_isMatchStatusEnded" title="SH_isMatchStatusEnded"></a>
+	<h3 class="subsubtitle method-title">SH_isMatchStatusEnded</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) BOOL SH_isMatchStatusEnded</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/SH_isMatchStatusMatching" title="SH_isMatchStatusMatching"></a>
+	<h3 class="subsubtitle method-title">SH_isMatchStatusMatching</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) BOOL SH_isMatchStatusMatching</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/SH_isMatchStatusOpen" title="SH_isMatchStatusOpen"></a>
+	<h3 class="subsubtitle method-title">SH_isMatchStatusOpen</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) BOOL SH_isMatchStatusOpen</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/SH_isMatchStatusUnknown" title="SH_isMatchStatusUnknown"></a>
+	<h3 class="subsubtitle method-title">SH_isMatchStatusUnknown</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) BOOL SH_isMatchStatusUnknown</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/SH_isMyTurn" title="SH_isMyTurn"></a>
+	<h3 class="subsubtitle method-title">SH_isMyTurn</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) BOOL SH_isMyTurn</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/SH_meAsParticipant" title="SH_meAsParticipant"></a>
+	<h3 class="subsubtitle method-title">SH_meAsParticipant</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) GKTurnBasedParticipant *SH_meAsParticipant</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/SH_nextParticipantsInLine" title="SH_nextParticipantsInLine"></a>
+	<h3 class="subsubtitle method-title">SH_nextParticipantsInLine</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSOrderedSet *SH_nextParticipantsInLine</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/SH_participantsWithoutCurrentParticipant" title="SH_participantsWithoutCurrentParticipant"></a>
+	<h3 class="subsubtitle method-title">SH_participantsWithoutCurrentParticipant</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSOrderedSet *SH_participantsWithoutCurrentParticipant</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/SH_participantsWithoutMe" title="SH_participantsWithoutMe"></a>
+	<h3 class="subsubtitle method-title">SH_participantsWithoutMe</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSOrderedSet *SH_participantsWithoutMe</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/SH_playerIdentifiers" title="SH_playerIdentifiers"></a>
+	<h3 class="subsubtitle method-title">SH_playerIdentifiers</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSOrderedSet *SH_playerIdentifiers</code></div>
+
+    
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/SH_requestMatchesWithBlock:" title="SH_requestMatchesWithBlock:"></a>
+	<h3 class="subsubtitle method-title">SH_requestMatchesWithBlock:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (void)SH_requestMatchesWithBlock:(SHGameListsBlock)<em>theBlock</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/SH_setObserver:matchEventTurnBlock:matchEventEndedBlock:matchEventInvitesBlock:" title="SH_setObserver:matchEventTurnBlock:matchEventEndedBlock:matchEventInvitesBlock:"></a>
+	<h3 class="subsubtitle method-title">SH_setObserver:matchEventTurnBlock:matchEventEndedBlock:matchEventInvitesBlock:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (void)SH_setObserver:(id)<em>theObserver</em> matchEventTurnBlock:(SHGameMatchEventTurnBlock)<em>theMatchEventTurnBlock</em> matchEventEndedBlock:(SHGameMatchEventEndedBlock)<em>theMatchEventEndedBlock</em> matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)<em>theMatchEventInvitesBlock</em></code></div>
+
+    
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/SH_deleteWithBlock:" title="SH_deleteWithBlock:"></a>
+	<h3 class="subsubtitle method-title">SH_deleteWithBlock:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)SH_deleteWithBlock:(SHGameMatchBlock)<em>theBlock</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/SH_rejectParticipants:" title="SH_rejectParticipants:"></a>
+	<h3 class="subsubtitle method-title">SH_rejectParticipants:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (NSOrderedSet *)SH_rejectParticipants:(NSSet *)<em>theParticipantsToRject</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/SH_requestPlayersWithBlock:" title="SH_requestPlayersWithBlock:"></a>
+	<h3 class="subsubtitle method-title">SH_requestPlayersWithBlock:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)SH_requestPlayersWithBlock:(SHGameListsBlock)<em>theBlock</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/SH_resignWithBlock:" title="SH_resignWithBlock:"></a>
+	<h3 class="subsubtitle method-title">SH_resignWithBlock:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)SH_resignWithBlock:(SHGameMatchBlock)<em>theBlock</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/isEqualToMatch:" title="isEqualToMatch:"></a>
+	<h3 class="subsubtitle method-title">isEqualToMatch:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)isEqualToMatch:(id)<em>object</em></code></div>
+
+    
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2013 Seivan Heidari. All rights reserved. (Last updated: 2013-04-26)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

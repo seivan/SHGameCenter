@@ -1,0 +1,4 @@
+Documentation set was installed to Xcode!
+
+Path: /Users/seivan/Library/Developer/Shared/Documentation/DocSets/org.cocoapods.libffi.libffi-3.0.11.docset
+Time: 2013-04-26 21:58:25 +0000

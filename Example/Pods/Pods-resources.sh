@@ -25,5 +25,5 @@ install_resource()
       ;;
   esac
 }
-install_resource '../../SHGameCenter/SHGameCenter.privates'
+install_resource '../../SHGameCenter/SHGameCenter.private'
 install_resource '../../SHGameCenter/SHPlayerProtocol.implementation'

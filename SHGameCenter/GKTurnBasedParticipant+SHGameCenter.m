@@ -1,7 +1,7 @@
 
 #import "GKTurnBasedParticipant+SHGameCenter.h"
 
-#include "SHGameCenter.privates"
+#include "SHGameCenter.private"
 
 @implementation GKTurnBasedParticipant (SHGameCenter)
 #pragma mark -

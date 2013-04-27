@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "SHGameCenter"
-  s.version      = "0.1.0"
+  s.version      = "0.1.1"
   s.summary      = "Block based patterns and properties for GameCenter."
   s.description  = <<-DESC
   Making GKTurnBasedEventHandlerDelegate and authentication block based.
@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   s.license      = {:type => 'MIT' } 
   s.author       = { "Seivan Heidari" => "seivan.heidari@icloud.com" }
   
-  s.source       = { :git => "https://github.com/seivan/SHGameCenter.git", :tag => "0.1.0"}
+  s.source       = { :git => "https://github.com/seivan/SHGameCenter.git", :tag => s.version.to_s}
   
 
   s.platform = :ios, "6.0"
@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
   s.ios.framework = "GameKit"
 
   s.source_files = 'SHGameCenter/**/*.{h,m}'
-  s.resources    = 'SHGameCenter/**/*.{implementation,privates}'
+  s.resources    = 'SHGameCenter/**/*.{implementation,private}'
   s.requires_arc = true
   s.dependency 'BlocksKit', '~> 1.8'
 end

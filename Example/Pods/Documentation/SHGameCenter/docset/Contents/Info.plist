@@ -5,9 +5,9 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleIdentifier</key>
-	<string>org.cocoapods.shgamecenter.SHGameCenter-0.1.0</string>
+	<string>org.cocoapods.shgamecenter.SHGameCenter-0.1.1</string>
 	<key>CFBundleName</key>
-	<string>SHGameCenter 0.1.0 Documentation</string>
+	<string>SHGameCenter 0.1.1 Documentation</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
@@ -18,7 +18,7 @@
 	<string>Block based patterns and properties for GameCenter.</string>
 	
 	<key>DocSetFeedName</key>
-	<string>SHGameCenter 0.1.0 Documentation</string>
+	<string>SHGameCenter 0.1.1 Documentation</string>
 	
 	<key>DocSetMinimumXcodeVersion</key>
 	<string>3.0</string>

@@ -23,39 +23,6 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/GKLocalPlayer(SHGameCenter)/SH_requestWithNotificationEnterForegroundBlock:matchesAndFriendsWithBlock:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>GKLocalPlayer+SHGameCenter.h</DeclaredIn>			
-			
-			<Declaration>+ (void)SH_requestWithNotificationEnterForegroundBlock:(SHGameNotificationWillEnterForegroundBlock)theWillEnterForegroundBlock matchesAndFriendsWithBlock:(SHGameAttributesBlock)theBlock</Declaration>
-			
-			
-			<Anchor>//api/name/SH_requestWithNotificationEnterForegroundBlock:matchesAndFriendsWithBlock:</Anchor>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/GKLocalPlayer(SHGameCenter)/SH_requestMatchesAndFriendsWithBlock:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>GKLocalPlayer+SHGameCenter.h</DeclaredIn>			
-			
-			<Declaration>+ (void)SH_requestMatchesAndFriendsWithBlock:(SHGameAttributesBlock)theBlock</Declaration>
-			
-			
-			<Anchor>//api/name/SH_requestMatchesAndFriendsWithBlock:</Anchor>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/GKLocalPlayer(SHGameCenter)/SH_recursiveRequestMatchesAndFriendsWithBlock:continuouslyEverySecond:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>GKLocalPlayer+SHGameCenter.h</DeclaredIn>			
-			
-			<Declaration>+ (void)SH_recursiveRequestMatchesAndFriendsWithBlock:(SHGameAttributesBlock)theBlock continuouslyEverySecond:(NSUInteger)theSeconds</Declaration>
-			
-			
-			<Anchor>//api/name/SH_recursiveRequestMatchesAndFriendsWithBlock:continuouslyEverySecond:</Anchor>
-		</Token>
-		
-		<Token>
 			<TokenIdentifier>//apple_ref/occ/intfm/GKLocalPlayer(SHGameCenter)/SH_me</TokenIdentifier>
 			<Abstract type="html"></Abstract>
 			<DeclaredIn>GKLocalPlayer+SHGameCenter.h</DeclaredIn>			

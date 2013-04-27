@@ -51,10 +51,16 @@
 
 
 @implementation GKLocalPlayer (SHGameCenter)
++(void)SH_authenticxateWithBlock:(SHGameAuthenticationBlock)theBlock
+         andLoginViewController:(void(^)(UIViewController * viewController))loginViewControllerHandler; {
+  
+}
 #pragma mark -
 #pragma mark Authentication
+
 +(void)SH_authenticateWithBlock:(SHGameAuthenticationBlock)theBlock
                      andLoginViewController:(void(^)(UIViewController * viewController))loginViewControllerHandler; {
+  
   if(SHLocalPlayerManager.sharedManager.moveToGameCenter == YES) {
     SHLocalPlayerManager.sharedManager.moveToGameCenter = NO;
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"gamecenter:/me"]];
@@ -65,7 +71,7 @@
       SHLocalPlayerManager.sharedManager.isAuthenticated = self.SH_me.isAuthenticated;
       loginViewControllerHandler(viewController);
     }
-    else if([error.domain isEqualToString:GKErrorDomain] && error.code == 2 && SHLocalPlayerManager.sharedManager.moveToGameCenter == NO) {
+    else if([error.domain isEqualToString:GKErrorDomain] && error.code == GKErrorCancelled && SHLocalPlayerManager.sharedManager.moveToGameCenter == NO) {
       SHLocalPlayerManager.sharedManager.isAuthenticated = self.SH_me.isAuthenticated;
       SHLocalPlayerManager.sharedManager.moveToGameCenter = YES;
     }
@@ -87,7 +93,7 @@
 #pragma mark -
 #pragma mark Player Getters
 +(GKLocalPlayer *)SH_me; {
-  return self.localPlayer.isAuthenticated ? self.localPlayer : nil;
+  return self.localPlayer;
 }
 
 +(void)SH_requestFriendsWithBlock:(SHGameListsBlock)theBlock; {

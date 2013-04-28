@@ -53,10 +53,11 @@
 @implementation GKLocalPlayer (SHGameCenter)
 #pragma mark -
 #pragma mark Authentication
++(void)SH_authenticateLoggedInBlock:(SHGameCompletionBlock)theLoggedInBlock
+                     loggedOutBlock:(SHGameCompletionBlock)theLoggedOutBlock
+                     withErrorBlock:(SHGameErrorBlock)theErroBlock
+            withLoginViewController:(SHGameViewControllerBlock)theLoginViewControllerBlock; {
 
-+(void)SH_authenticateWithBlock:(SHGameAuthenticationBlock)theBlock
-                     andLoginViewController:(void(^)(UIViewController * viewController))loginViewControllerHandler; {
-  
   if(SHLocalPlayerManager.sharedManager.moveToGameCenter == YES) {
     SHLocalPlayerManager.sharedManager.moveToGameCenter = NO;
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"gamecenter:/me"]];
@@ -64,26 +65,31 @@
   
   [self.SH_me setAuthenticateHandler:^(UIViewController * viewController, NSError * error) {
     if(viewController) {
+      if(SHLocalPlayerManager.sharedManager.isAuthenticated)
+        theLoggedOutBlock();
       SHLocalPlayerManager.sharedManager.isAuthenticated = self.SH_me.isAuthenticated;
-      loginViewControllerHandler(viewController);
+      theLoginViewControllerBlock(viewController);
     }
-    else if([error.domain isEqualToString:GKErrorDomain] && error.code == GKErrorCancelled && SHLocalPlayerManager.sharedManager.moveToGameCenter == NO) {
+    else if([error.domain isEqualToString:GKErrorDomain]
+            && error.code == GKErrorCancelled
+            && SHLocalPlayerManager.sharedManager.moveToGameCenter == NO) {
       SHLocalPlayerManager.sharedManager.isAuthenticated = self.SH_me.isAuthenticated;
       SHLocalPlayerManager.sharedManager.moveToGameCenter = YES;
     }
-    else if (error && error.code != 2) {
+    else if (error && error.code != GKErrorCancelled) {
       SHLocalPlayerManager.sharedManager.isAuthenticated = self.SH_me.isAuthenticated;
-      theBlock(GKLocalPlayer.localPlayer.isAuthenticated,error);
+      theErroBlock(error);
     }
     else {
-      if(self.SH_me.isAuthenticated != SHLocalPlayerManager.sharedManager.isAuthenticated) theBlock(self.SH_me.isAuthenticated,nil);
+      if(self.SH_me.isAuthenticated != SHLocalPlayerManager.sharedManager.isAuthenticated)
+        theLoggedInBlock();
+      
       SHLocalPlayerManager.sharedManager.isAuthenticated = self.SH_me.isAuthenticated;
       
     }
-    
   }];
+  
 }
-
 
 #pragma mark -
 #pragma mark Player Getters

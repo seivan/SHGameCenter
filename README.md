@@ -19,16 +19,16 @@ Don't forget to `#import "SHGameCenter.h"` in your prefix file or where it's nee
 
 ```objective-c
    __weak MyController * blockSelf = self;
-  [GKLocalPlayer SH_authenticateWithBlock:^(BOOL isAuthenticated, NSError *error) {
-    if(error)          [blockSelf showAlertWithError:error];
-    if(isAuthenticated)[blockSelf performSegueWithIdentifier:@"MyMatches" sender:blockSelf];
-    else               [blockSelf dismissViewControllerAnimated:NO completion:nil];
-    
-  } andLoginViewController:^(UIViewController *viewController) {
-    [blockSelf dismissViewControllerAnimated:NO completion:nil];
-    [blockSelf presentViewController:viewController animated:YES completion:nil];
-    
+  [GKLocalPlayer SH_authenticateLoggedInBlock:^{
+    [self performSegueWithIdentifier:@"SHLoggedIn" sender:self];
+  } loggedOutBlock:^{
+    [self dismissViewControllerAnimated:NO completion:nil];
+  } withErrorBlock:^(NSError *error) {
+    [self showAlertWithError:error];
+  } withLoginViewController:^(UIViewController *viewController) {
+    [self presentViewController:viewController animated:YES completion:nil];
   }];
+
 
 ```
 

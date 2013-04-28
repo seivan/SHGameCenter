@@ -16,7 +16,8 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
 
 @interface SHTurnBasedMatchManager : NSObject
 <GKTurnBasedEventHandlerDelegate>
-@property(nonatomic,strong) NSMapTable          * mapBlocks;
+@property(nonatomic,strong) NSMapTable          * mapAllMatchesBlocks;
+@property(nonatomic,strong) NSMapTable          * mapMatchBlocks;
 
 @property(nonatomic,assign)   NSNotification           * notificationEnterForeground;
 
@@ -38,7 +39,10 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
   self = [super init];
   if (self) {
     GKTurnBasedEventHandler.sharedTurnBasedEventHandler.delegate = self;
-    self.mapBlocks    = [NSMapTable weakToStrongObjectsMapTable];
+    
+    self.mapAllMatchesBlocks  = [NSMapTable weakToStrongObjectsMapTable];
+    self.mapMatchBlocks       = [NSMapTable weakToStrongObjectsMapTable];
+    
     self.notificationEnterForeground = [NSNotificationCenter.defaultCenter addObserverForName:UIApplicationWillEnterForegroundNotification object:nil queue:NSOperationQueue.mainQueue usingBlock:^(NSNotification *note) {
       self.notificationEnterForeground = note;
       [GKTurnBasedMatch SH_requestWithNotificationEnterForegroundBlock:self.notificationBlock matchesAndFriendsWithBlock:self.matchesAndFriendsBlock];
@@ -72,7 +76,7 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
 #pragma mark -
 #pragma mark <GKTurnBasedEventHandlerDelegate>
 -(void)handleInviteFromGameCenter:(NSArray *)playersToInvite; {
-  for (NSDictionary * blocks in self.mapBlocks.objectEnumerator) {
+  for (NSDictionary * blocks in self.mapAllMatchesBlocks.objectEnumerator) {
     SHGameMatchEventInvitesBlock block = blocks[SHGameMatchEventInvitesKey];
     block(playersToInvite.toOrderedSet);
   }
@@ -80,11 +84,21 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
 }
 
 -(void)handleTurnEventForMatch:(GKTurnBasedMatch *)match didBecomeActive:(BOOL)didBecomeActive; {
+  
   [SHGameCenter updateCachePlayersFromPlayerIdentifiers:match.SH_playerIdentifiers.set withCompletionBlock:^{
-    for (NSDictionary * blocks in self.mapBlocks.objectEnumerator) {
+
+    for (NSDictionary * blocks in self.mapAllMatchesBlocks.objectEnumerator) {
       SHGameMatchEventTurnBlock block = blocks[SHGameMatchEventTurnKey];
       block(match, didBecomeActive);
     }
+
+    for (NSDictionary * blocks in self.mapMatchBlocks.objectEnumerator) {
+      NSDictionary * matchBlock = blocks[match.matchID];
+      SHGameMatchEventTurnBlock block = matchBlock[SHGameMatchEventTurnKey];
+      if(block)
+        block(match, didBecomeActive);
+    }
+
   }];
   
   
@@ -92,10 +106,20 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
 
 // handleMatchEnded is called when the match has ended.
 -(void)handleMatchEnded:(GKTurnBasedMatch *)match; {
+  
+  
   [SHGameCenter updateCachePlayersFromPlayerIdentifiers:match.SH_playerIdentifiers.set withCompletionBlock:^{
-    for (NSDictionary * blocks in self.mapBlocks.objectEnumerator) {
+    
+    for (NSDictionary * blocks in self.mapAllMatchesBlocks.objectEnumerator) {
       SHGameMatchEventEndedBlock block = blocks[SHGameMatchEventEndedKey];
       block(match);
+    }
+
+    for (NSDictionary * blocks in self.mapMatchBlocks.objectEnumerator) {
+      NSDictionary * matchBlock = blocks[match.matchID];
+      SHGameMatchEventEndedBlock block = matchBlock[SHGameMatchEventEndedKey];
+      if(block)
+        block(match);
     }
   }];
   
@@ -132,7 +156,7 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
   return  participantsWithoutCurrentParticipant;
 }
 
--(NSOrderedSet *)SH_nextParticipantsInLine; {
+-(NSOrderedSet *)SH_nextParticipantsInLine; {  
   return [self.SH_participantsWithoutCurrentParticipant sortedArrayUsingComparator:^NSComparisonResult(GKTurnBasedParticipant * obj1, GKTurnBasedParticipant * obj2) {
     if(obj1.lastTurnDate == nil)
       return NSOrderedAscending;
@@ -149,6 +173,23 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
 
 #pragma mark -
 #pragma mark Observer
+-(void)SH_setObserver:(id)theObserver
+  matchEventTurnBlock:(SHGameMatchEventTurnBlock)theMatchEventTurnBlock
+ matchEventEndedBlock:(SHGameMatchEventEndedBlock)theMatchEventEndedBlock; {
+  
+  NSAssert(theObserver, @"Must pass an observer!");
+
+  NSMutableDictionary * blocks      = @{}.mutableCopy;
+  NSDictionary        * matchBlock  = @{self.matchID : blocks};
+  
+  if(theMatchEventTurnBlock)    blocks[SHGameMatchEventTurnKey]    = [theMatchEventTurnBlock copy];
+  if(theMatchEventEndedBlock)   blocks[SHGameMatchEventEndedKey]   = [theMatchEventEndedBlock copy];
+  
+  [SHTurnBasedMatchManager.sharedManager.mapMatchBlocks setObject:matchBlock.copy forKey:theObserver];
+  
+}
+
+
 +(void)SH_setObserver:(id)theObserver
 matchEventTurnBlock:(SHGameMatchEventTurnBlock)theMatchEventTurnBlock
 matchEventEndedBlock:(SHGameMatchEventEndedBlock)theMatchEventEndedBlock
@@ -162,7 +203,7 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock; 
   if(theMatchEventEndedBlock)   blocks[SHGameMatchEventEndedKey]   = [theMatchEventEndedBlock copy];
   if(theMatchEventInvitesBlock) blocks[SHGameMatchEventInvitesKey] = [theMatchEventInvitesBlock copy];
   
-  [SHTurnBasedMatchManager.sharedManager.mapBlocks setObject:blocks.copy forKey:theObserver];
+  [SHTurnBasedMatchManager.sharedManager.mapAllMatchesBlocks setObject:blocks.copy forKey:theObserver];
   
 }
 

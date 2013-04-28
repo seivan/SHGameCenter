@@ -34,6 +34,10 @@ static NSString * const SHGameCenterAttributeMatchesKey   = @"SHGameCenterAttrib
 
 #pragma mark -
 #pragma mark Observer
+-(void)SH_setObserver:(id)theObserver
+  matchEventTurnBlock:(SHGameMatchEventTurnBlock)theMatchEventTurnBlock
+ matchEventEndedBlock:(SHGameMatchEventEndedBlock)theMatchEventEndedBlock;
+
 +(void)SH_setObserver:(id)theObserver
 matchEventTurnBlock:(SHGameMatchEventTurnBlock)theMatchEventTurnBlock
 matchEventEndedBlock:(SHGameMatchEventEndedBlock)theMatchEventEndedBlock

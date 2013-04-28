@@ -315,7 +315,7 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock; 
 
 #pragma mark -
 #pragma mark Equal
--(BOOL)isEqualToMatch:(id)object; {
+-(BOOL)SH_isEqualToMatch:(id)object; {
   BOOL isEqual = NO;
   if([object respondsToSelector:@selector(matchID)])
    isEqual = [self.matchID isEqualToString:((GKTurnBasedMatch *)object).matchID];

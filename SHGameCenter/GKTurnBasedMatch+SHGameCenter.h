@@ -60,7 +60,7 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock;
 
 #pragma mark -
 #pragma mark Equal
--(BOOL)isEqualToMatch:(id)object;
+-(BOOL)SH_isEqualToMatch:(id)object;
 
 #pragma mark -
 #pragma mark Match Getters

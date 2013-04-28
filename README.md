@@ -60,6 +60,18 @@ Don't forget to `#import "SHGameCenter.h"` in your prefix file or where it's nee
 
 ```
 
+## Observe a single match
+
+```objective-c
+  __weak MyController * blockSelf = self;
+  [self.match SH_setObserver:self matchEventTurnBlock:^(GKTurnBasedMatch *match, BOOL didBecomeActive) {
+    [blockSelf handleTurnEventForMatch:match didBecomeActive:didBecomeActive];
+    
+  } matchEventEndedBlock:^(GKTurnBasedMatch *match) {
+    blockSelf.txtView.text = @"ENDED";
+  }];
+
+```
 ## And a ton of convenience properties and selectors on your favourite classes all prefixed with SH_
 
 ## License

@@ -51,10 +51,6 @@
 
 
 @implementation GKLocalPlayer (SHGameCenter)
-+(void)SH_authenticxateWithBlock:(SHGameAuthenticationBlock)theBlock
-         andLoginViewController:(void(^)(UIViewController * viewController))loginViewControllerHandler; {
-  
-}
 #pragma mark -
 #pragma mark Authentication
 
@@ -76,7 +72,6 @@
       SHLocalPlayerManager.sharedManager.moveToGameCenter = YES;
     }
     else if (error && error.code != 2) {
-
       SHLocalPlayerManager.sharedManager.isAuthenticated = self.SH_me.isAuthenticated;
       theBlock(GKLocalPlayer.localPlayer.isAuthenticated,error);
     }

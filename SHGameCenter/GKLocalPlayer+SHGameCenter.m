@@ -73,10 +73,15 @@
     else if([error.domain isEqualToString:GKErrorDomain]
             && error.code == GKErrorCancelled
             && SHLocalPlayerManager.sharedManager.moveToGameCenter == NO) {
+      if(SHLocalPlayerManager.sharedManager.isAuthenticated)
+        theLoggedOutBlock();
+
       SHLocalPlayerManager.sharedManager.isAuthenticated = self.SH_me.isAuthenticated;
       SHLocalPlayerManager.sharedManager.moveToGameCenter = YES;
     }
     else if (error && error.code != GKErrorCancelled) {
+      if(SHLocalPlayerManager.sharedManager.isAuthenticated)
+        theLoggedOutBlock();
       SHLocalPlayerManager.sharedManager.isAuthenticated = self.SH_me.isAuthenticated;
       theErroBlock(error);
     }

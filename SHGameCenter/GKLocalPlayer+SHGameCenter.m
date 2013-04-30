@@ -48,19 +48,20 @@
 
 @end
 
-
+@interface GKLocalPlayer()
+#pragma mark -
+#pragma mark Player Getters
++(void)SH_requestWithoutCacheFriendsWithBlock:(SHGameListsBlock)theBlock;
+@end
 
 @implementation GKLocalPlayer (SHGameCenter)
-+(void)SH_authenticxateWithBlock:(SHGameAuthenticationBlock)theBlock
-         andLoginViewController:(void(^)(UIViewController * viewController))loginViewControllerHandler; {
-  
-}
 #pragma mark -
 #pragma mark Authentication
++(void)SH_authenticateWithLoginViewControllerBlock:(SHGameViewControllerBlock)theLoginViewControllerBlock
+                                     didLoginBlock:(SHGameCompletionBlock)theLoginBlock
+                                    didLogoutBlock:(SHGameCompletionBlock)theLogoutBlock
+                                    withErrorBlock:(SHGameErrorBlock)theErrorBlock; {
 
-+(void)SH_authenticateWithBlock:(SHGameAuthenticationBlock)theBlock
-                     andLoginViewController:(void(^)(UIViewController * viewController))loginViewControllerHandler; {
-  
   if(SHLocalPlayerManager.sharedManager.moveToGameCenter == YES) {
     SHLocalPlayerManager.sharedManager.moveToGameCenter = NO;
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"gamecenter:/me"]];
@@ -68,27 +69,36 @@
   
   [self.SH_me setAuthenticateHandler:^(UIViewController * viewController, NSError * error) {
     if(viewController) {
+      if(SHLocalPlayerManager.sharedManager.isAuthenticated)
+        theLogoutBlock();
       SHLocalPlayerManager.sharedManager.isAuthenticated = self.SH_me.isAuthenticated;
-      loginViewControllerHandler(viewController);
+      theLoginViewControllerBlock(viewController);
     }
-    else if([error.domain isEqualToString:GKErrorDomain] && error.code == GKErrorCancelled && SHLocalPlayerManager.sharedManager.moveToGameCenter == NO) {
+    else if([error.domain isEqualToString:GKErrorDomain]
+            && error.code == GKErrorCancelled
+            && SHLocalPlayerManager.sharedManager.moveToGameCenter == NO) {
+      if(SHLocalPlayerManager.sharedManager.isAuthenticated)
+        theLogoutBlock();
+
       SHLocalPlayerManager.sharedManager.isAuthenticated = self.SH_me.isAuthenticated;
       SHLocalPlayerManager.sharedManager.moveToGameCenter = YES;
     }
-    else if (error && error.code != 2) {
-
+    else if (error && error.code != GKErrorCancelled) {
+      if(SHLocalPlayerManager.sharedManager.isAuthenticated)
+        theLogoutBlock();
       SHLocalPlayerManager.sharedManager.isAuthenticated = self.SH_me.isAuthenticated;
-      theBlock(GKLocalPlayer.localPlayer.isAuthenticated,error);
+      theErrorBlock(error);
     }
     else {
-      if(self.SH_me.isAuthenticated != SHLocalPlayerManager.sharedManager.isAuthenticated) theBlock(self.SH_me.isAuthenticated,nil);
+      if(self.SH_me.isAuthenticated != SHLocalPlayerManager.sharedManager.isAuthenticated)
+        theLoginBlock();
+      
       SHLocalPlayerManager.sharedManager.isAuthenticated = self.SH_me.isAuthenticated;
       
     }
-    
   }];
+  
 }
-
 
 #pragma mark -
 #pragma mark Player Getters
@@ -97,15 +107,29 @@
 }
 
 +(void)SH_requestFriendsWithBlock:(SHGameListsBlock)theBlock; {
-  [self.SH_me loadFriendsWithCompletionHandler:^(NSArray * friends, NSError * error) {
-    [self loadPlayersForIdentifiers:friends
-                  withCompletionHandler:^(NSArray *players, NSError *error) {
-                    theBlock(players.toOrderedSet, error);
-                  }];
+  [self.SH_me loadFriendsWithCompletionHandler:^(NSArray *friends, NSError *error) {
+    if(error) theBlock(nil, error);
+    else
+      [SHGameCenter updateCachePlayersFromPlayerIdentifiers:friends.toSet withCompletionBlock:^{
+        theBlock(friends.toOrderedSet,error);
+      }];
   }];
 
 }
 
+#pragma mark -
+#pragma mark Privates
+#pragma mark -
+#pragma mark Player Getters
++(void)SH_requestWithoutCacheFriendsWithBlock:(SHGameListsBlock)theBlock; {
+  [self.SH_me loadFriendsWithCompletionHandler:^(NSArray * friends, NSError * error) {
+    [self loadPlayersForIdentifiers:friends
+              withCompletionHandler:^(NSArray *players, NSError *error) {
+                theBlock(players.toOrderedSet, error);
+              }];
+  }];
+  
+}
 
 
 @end

@@ -8,9 +8,10 @@
 #pragma mark -
 #pragma mark Authentication
 //handles on foreground notifications
-+(void)SH_authenticateWithBlock:(SHGameAuthenticationBlock)theBlock
-                     andLoginViewController:(void(^)(UIViewController * viewController))loginViewControllerHandler;
-
++(void)SH_authenticateWithLoginViewControllerBlock:(SHGameViewControllerBlock)theLoginViewControllerBlock
+                                     didLoginBlock:(SHGameCompletionBlock)theLoginBlock
+                                    didLogoutBlock:(SHGameCompletionBlock)theLogoutBlock
+                                    withErrorBlock:(SHGameErrorBlock)theErrorBlock;
 
 #pragma mark -
 #pragma mark Player Getters

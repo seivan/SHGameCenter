@@ -49,21 +49,28 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
 
 #pragma mark -
 #pragma mark Cache
+//Need to clean this mess up
 +(void)updateCachePlayersFromPlayerIdentifiers:(NSSet *)thePlayerIdentifiers
                            withCompletionBlock:(SHGameCompletionBlock)theBlock; {
 
   thePlayerIdentifiers = [thePlayerIdentifiers reject:^BOOL(id obj) { return obj == [NSNull null]; }];
   
-  if ([self containsPlayersFromPlayerIdentifiers:thePlayerIdentifiers]) theBlock();
+  if ([self containsPlayersFromPlayerIdentifiers:thePlayerIdentifiers]) {
+    theBlock();
+    theBlock = nil;
+  }
+  
   
   [GKPlayer loadPlayersForIdentifiers:thePlayerIdentifiers.allObjects withCompletionHandler:^(NSArray *players, NSError *error) {
     
-    if(error) [self updateCachePlayersFromPlayerIdentifiers:thePlayerIdentifiers withCompletionBlock:theBlock];
+    if(error)
+      [self updateCachePlayersFromPlayerIdentifiers:thePlayerIdentifiers withCompletionBlock:theBlock];
     
     else {
       [self addToCacheFromPlayers:players.toSet];
-      if ([self containsPlayersFromPlayerIdentifiers:thePlayerIdentifiers])
-        theBlock();
+      if ([self containsPlayersFromPlayerIdentifiers:thePlayerIdentifiers]) {
+        if(theBlock) theBlock();
+      }
       else
         [self updateCachePlayersFromPlayerIdentifiers:thePlayerIdentifiers
                                   withCompletionBlock:theBlock];

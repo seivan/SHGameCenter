@@ -3,7 +3,7 @@
 
 #pragma mark -
 #pragma mark Authentication
-typedef void(^SHGameAuthenticationBlock)(BOOL isAuthenticated, NSError * error);
+typedef void(^SHGameViewControllerBlock)(UIViewController * viewController);
 
 #pragma mark - 
 #pragma mark - Lists: Matches or Friends,
@@ -13,6 +13,7 @@ typedef void(^SHGameListsBlock)(NSOrderedSet * responseSet, NSError * error);
 #pragma mark Bootstrap Lists, Matchens and Friends with errors
 typedef void(^SHGameAttributesBlock)(NSDictionary * attributes);
 typedef void (^SHGameNotificationWillEnterForegroundBlock)(NSNotification * notification);
+typedef void (^SHGameErrorBlock)(NSError * error);
 typedef void (^SHGameCompletionBlock)(void);
 
 #pragma mark - 

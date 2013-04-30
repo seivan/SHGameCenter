@@ -9,16 +9,33 @@
 #import "SHSessionViewController.h"
 
 @interface SHSessionViewController ()
-
 @end
 
 @implementation SHSessionViewController
 -(void)viewDidAppear:(BOOL)animated; {
   [super viewDidAppear:animated];
-  [GKLocalPlayer SH_authenticateWithBlock:^(BOOL isAuthenticated, NSError *error) {
-    
-  } andLoginViewController:^(UIViewController *viewController) {
-    
+  __weak SHSessionViewController * blockSelf = self;
+  [GKLocalPlayer SH_authenticateWithLoginViewControllerBlock:^(UIViewController *viewController) {
+    [blockSelf presentViewController:viewController animated:YES completion:nil];
+  } didLoginBlock:^{
+    [blockSelf performSegueWithIdentifier:@"SHLoggedIn" sender:self];
+  } didLogoutBlock:^{
+    [blockSelf dismissViewControllerAnimated:NO completion:nil];
+  } withErrorBlock:^(NSError *error) {
+    [blockSelf showAlertWithError:error];
   }];
 }
+
+
+
+
 @end
+
+    
+
+
+    
+
+    
+
+    

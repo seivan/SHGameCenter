@@ -34,6 +34,10 @@ static NSString * const SHGameCenterAttributeMatchesKey   = @"SHGameCenterAttrib
 
 #pragma mark -
 #pragma mark Observer
+-(void)SH_setObserver:(id)theObserver
+  matchEventTurnBlock:(SHGameMatchEventTurnBlock)theMatchEventTurnBlock
+ matchEventEndedBlock:(SHGameMatchEventEndedBlock)theMatchEventEndedBlock;
+
 +(void)SH_setObserver:(id)theObserver
 matchEventTurnBlock:(SHGameMatchEventTurnBlock)theMatchEventTurnBlock
 matchEventEndedBlock:(SHGameMatchEventEndedBlock)theMatchEventEndedBlock
@@ -43,9 +47,11 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock;
 #pragma mark -
 #pragma mark Preloaders
 //Just use one of these
++(void)SH_requestMatchesAndFriendsWithBlock:(SHGameAttributesBlock)theBlock;
+
 +(void)SH_requestWithNotificationEnterForegroundBlock:(SHGameNotificationWillEnterForegroundBlock)theWillEnterForegroundBlock matchesAndFriendsWithBlock:(SHGameAttributesBlock)theBlock;
 
-+(void)SH_requestMatchesAndFriendsWithBlock:(SHGameAttributesBlock)theBlock;
+
 
 +(void)SH_recursiveRequestMatchesAndFriendsWithBlock:(SHGameAttributesBlock)theBlock continuouslyEverySecond:(NSUInteger)theSeconds;
 
@@ -56,7 +62,7 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock;
 
 #pragma mark -
 #pragma mark Equal
--(BOOL)isEqualToMatch:(id)object;
+-(BOOL)SH_isEqualToMatch:(id)object;
 
 #pragma mark -
 #pragma mark Match Getters

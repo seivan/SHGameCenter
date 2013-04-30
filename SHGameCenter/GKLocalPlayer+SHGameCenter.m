@@ -48,15 +48,19 @@
 
 @end
 
-
+@interface GKLocalPlayer()
+#pragma mark -
+#pragma mark Player Getters
++(void)SH_requestWithoutCacheFriendsWithBlock:(SHGameListsBlock)theBlock;
+@end
 
 @implementation GKLocalPlayer (SHGameCenter)
 #pragma mark -
 #pragma mark Authentication
-+(void)SH_authenticateLoggedInBlock:(SHGameCompletionBlock)theLoggedInBlock
-                     loggedOutBlock:(SHGameCompletionBlock)theLoggedOutBlock
-                     withErrorBlock:(SHGameErrorBlock)theErroBlock
-            withLoginViewController:(SHGameViewControllerBlock)theLoginViewControllerBlock; {
++(void)SH_authenticateWithLoginViewControllerBlock:(SHGameViewControllerBlock)theLoginViewControllerBlock
+                                     didLoginBlock:(SHGameCompletionBlock)theLoginBlock
+                                    didLogoutBlock:(SHGameCompletionBlock)theLogoutBlock
+                                    withErrorBlock:(SHGameErrorBlock)theErrorBlock; {
 
   if(SHLocalPlayerManager.sharedManager.moveToGameCenter == YES) {
     SHLocalPlayerManager.sharedManager.moveToGameCenter = NO;
@@ -66,7 +70,7 @@
   [self.SH_me setAuthenticateHandler:^(UIViewController * viewController, NSError * error) {
     if(viewController) {
       if(SHLocalPlayerManager.sharedManager.isAuthenticated)
-        theLoggedOutBlock();
+        theLogoutBlock();
       SHLocalPlayerManager.sharedManager.isAuthenticated = self.SH_me.isAuthenticated;
       theLoginViewControllerBlock(viewController);
     }
@@ -74,20 +78,20 @@
             && error.code == GKErrorCancelled
             && SHLocalPlayerManager.sharedManager.moveToGameCenter == NO) {
       if(SHLocalPlayerManager.sharedManager.isAuthenticated)
-        theLoggedOutBlock();
+        theLogoutBlock();
 
       SHLocalPlayerManager.sharedManager.isAuthenticated = self.SH_me.isAuthenticated;
       SHLocalPlayerManager.sharedManager.moveToGameCenter = YES;
     }
     else if (error && error.code != GKErrorCancelled) {
       if(SHLocalPlayerManager.sharedManager.isAuthenticated)
-        theLoggedOutBlock();
+        theLogoutBlock();
       SHLocalPlayerManager.sharedManager.isAuthenticated = self.SH_me.isAuthenticated;
-      theErroBlock(error);
+      theErrorBlock(error);
     }
     else {
       if(self.SH_me.isAuthenticated != SHLocalPlayerManager.sharedManager.isAuthenticated)
-        theLoggedInBlock();
+        theLoginBlock();
       
       SHLocalPlayerManager.sharedManager.isAuthenticated = self.SH_me.isAuthenticated;
       
@@ -103,15 +107,29 @@
 }
 
 +(void)SH_requestFriendsWithBlock:(SHGameListsBlock)theBlock; {
-  [self.SH_me loadFriendsWithCompletionHandler:^(NSArray * friends, NSError * error) {
-    [self loadPlayersForIdentifiers:friends
-                  withCompletionHandler:^(NSArray *players, NSError *error) {
-                    theBlock(players.toOrderedSet, error);
-                  }];
+  [self.SH_me loadFriendsWithCompletionHandler:^(NSArray *friends, NSError *error) {
+    if(error) theBlock(nil, error);
+    else
+      [SHGameCenter updateCachePlayersFromPlayerIdentifiers:friends.toSet withCompletionBlock:^{
+        theBlock(friends.toOrderedSet,error);
+      }];
   }];
 
 }
 
+#pragma mark -
+#pragma mark Privates
+#pragma mark -
+#pragma mark Player Getters
++(void)SH_requestWithoutCacheFriendsWithBlock:(SHGameListsBlock)theBlock; {
+  [self.SH_me loadFriendsWithCompletionHandler:^(NSArray * friends, NSError * error) {
+    [self loadPlayersForIdentifiers:friends
+              withCompletionHandler:^(NSArray *players, NSError *error) {
+                theBlock(players.toOrderedSet, error);
+              }];
+  }];
+  
+}
 
 
 @end

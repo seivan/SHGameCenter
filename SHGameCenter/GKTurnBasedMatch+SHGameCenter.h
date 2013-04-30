@@ -47,9 +47,11 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock;
 #pragma mark -
 #pragma mark Preloaders
 //Just use one of these
++(void)SH_requestMatchesAndFriendsWithBlock:(SHGameAttributesBlock)theBlock;
+
 +(void)SH_requestWithNotificationEnterForegroundBlock:(SHGameNotificationWillEnterForegroundBlock)theWillEnterForegroundBlock matchesAndFriendsWithBlock:(SHGameAttributesBlock)theBlock;
 
-+(void)SH_requestMatchesAndFriendsWithBlock:(SHGameAttributesBlock)theBlock;
+
 
 +(void)SH_recursiveRequestMatchesAndFriendsWithBlock:(SHGameAttributesBlock)theBlock continuouslyEverySecond:(NSUInteger)theSeconds;
 

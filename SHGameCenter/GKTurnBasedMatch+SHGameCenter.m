@@ -10,6 +10,12 @@
 
 #include "SHGameCenter.private"
 
+@interface GKLocalPlayer()
+#pragma mark -
+#pragma mark Player Getters
++(void)SH_requestWithoutCacheFriendsWithBlock:(SHGameListsBlock)theBlock;
+@end
+
 static NSString * const SHGameMatchEventTurnKey     = @"SHGameMatchEventTurnKey";
 static NSString * const SHGameMatchEventEndedKey    = @"SHGameMatchEventEndedKey";
 static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesKey";
@@ -127,6 +133,10 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
 
 @end
 
+@interface GKTurnBasedMatch ()
++(void)SH_requestWithoutCacheMatchesWithBlock:(SHGameListsBlock)theBlock;
+@end
+
 @implementation GKTurnBasedMatch (SHGameCenter)
 
 
@@ -212,12 +222,12 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock; 
 +(void)SH_requestMatchesAndFriendsWithBlock:(SHGameAttributesBlock)theBlock; {
   NSAssert(theBlock, @"Must pass a SHGameAttributesBlock");
   
-  [GKTurnBasedMatch SH_requestMatchesWithBlock:^(NSOrderedSet * list, NSError * error) {
+  [GKTurnBasedMatch SH_requestWithoutCacheMatchesWithBlock:^(NSOrderedSet * list, NSError * error) {
     NSMutableDictionary   * attributeForMatches           = @{}.mutableCopy;
     attributeForMatches[SHGameCenterSetKey]  = list ? list : @[].toOrderedSet;
     if(error)               attributeForMatches[SHGameCenterErrorKey] = error;
     
-    [GKLocalPlayer SH_requestFriendsWithBlock:^(NSOrderedSet * list, NSError * error) {
+    [GKLocalPlayer SH_requestWithoutCacheFriendsWithBlock:^(NSOrderedSet * list, NSError * error) {
       NSMutableDictionary * attributeForFriends           = @{}.mutableCopy;
       attributeForFriends[SHGameCenterSetKey]  = list ? list : @[].toOrderedSet;
       if(error)             attributeForFriends[SHGameCenterErrorKey] = error;
@@ -376,6 +386,18 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock; 
    }];
   }].toOrderedSet;
 }
+
+#pragma mark -
+#pragma mark Privates
+
+#pragma mark -
+#pragma mark Match Getters
++(void)SH_requestWithoutCacheMatchesWithBlock:(SHGameListsBlock)theBlock; {
+  [GKTurnBasedMatch loadMatchesWithCompletionHandler:^(NSArray *matches, NSError *error) {
+    theBlock(matches.toOrderedSet, error);
+  }];
+}
+
 
 
 

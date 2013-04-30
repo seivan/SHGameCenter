@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Categories/GKLocalPlayer+SHGameCenter.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cat/GKLocalPlayer(SHGameCenter)</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GKLocalPlayer+SHGameCenter.h</DeclaredIn>
+			
+			<NodeRef refid="2"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/GKLocalPlayer(SHGameCenter)/SH_authenticateWithLoginViewControllerBlock:didLoginBlock:didLogoutBlock:withErrorBlock:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GKLocalPlayer+SHGameCenter.h</DeclaredIn>			
+			
+			<Declaration>+ (void)SH_authenticateWithLoginViewControllerBlock:(SHGameViewControllerBlock)theLoginViewControllerBlock didLoginBlock:(SHGameCompletionBlock)theLoginBlock didLogoutBlock:(SHGameCompletionBlock)theLogoutBlock withErrorBlock:(SHGameErrorBlock)theErrorBlock</Declaration>
+			
+			
+			<Anchor>//api/name/SH_authenticateWithLoginViewControllerBlock:didLoginBlock:didLogoutBlock:withErrorBlock:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/GKLocalPlayer(SHGameCenter)/SH_me</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GKLocalPlayer+SHGameCenter.h</DeclaredIn>			
+			
+			<Declaration>+ (GKLocalPlayer *)SH_me</Declaration>
+			
+			
+			<Anchor>//api/name/SH_me</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/GKLocalPlayer(SHGameCenter)/SH_requestFriendsWithBlock:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GKLocalPlayer+SHGameCenter.h</DeclaredIn>			
+			
+			<Declaration>+ (void)SH_requestFriendsWithBlock:(SHGameListsBlock)theBlock</Declaration>
+			
+			
+			<Anchor>//api/name/SH_requestFriendsWithBlock:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

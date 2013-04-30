@@ -133,7 +133,7 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
 
 @end
 
-@interface GKTurnBasedMatch ()
+@interface GKTurnBasedMatch (Privates)
 +(void)SH_requestWithoutCacheMatchesWithBlock:(SHGameListsBlock)theBlock;
 @end
 

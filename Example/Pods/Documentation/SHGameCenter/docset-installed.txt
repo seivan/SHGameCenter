@@ -1,0 +1,4 @@
+Documentation set was installed to Xcode!
+
+Path: /Users/seivan/Library/Developer/Shared/Documentation/DocSets/org.cocoapods.shgamecenter.SHGameCenter-0.2.0.docset
+Time: 2013-04-30 14:37:03 +0000

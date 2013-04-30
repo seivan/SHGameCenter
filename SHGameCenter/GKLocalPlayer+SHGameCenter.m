@@ -48,7 +48,7 @@
 
 @end
 
-@interface GKLocalPlayer()
+@interface GKLocalPlayer(Privates)
 #pragma mark -
 #pragma mark Player Getters
 +(void)SH_requestWithoutCacheFriendsWithBlock:(SHGameListsBlock)theBlock;

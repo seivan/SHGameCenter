@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Categories/GKTurnBasedParticipant+SHGameCenter.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cat/GKTurnBasedParticipant(SHGameCenter)</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GKTurnBasedParticipant+SHGameCenter.h</DeclaredIn>
+			
+			<NodeRef refid="5"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/GKTurnBasedParticipant(SHGameCenter)/setSH_alias:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GKTurnBasedParticipant+SHGameCenter.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) NSString *SH_alias</Declaration>
+			
+			
+			<Anchor>//api/name/SH_alias</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfp/GKTurnBasedParticipant(SHGameCenter)/SH_alias</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GKTurnBasedParticipant+SHGameCenter.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) NSString *SH_alias</Declaration>
+			
+			
+			<Anchor>//api/name/SH_alias</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/GKTurnBasedParticipant(SHGameCenter)/setSH_photo:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GKTurnBasedParticipant+SHGameCenter.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) UIImage *SH_photo</Declaration>
+			
+			
+			<Anchor>//api/name/SH_photo</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfp/GKTurnBasedParticipant(SHGameCenter)/SH_photo</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GKTurnBasedParticipant+SHGameCenter.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) UIImage *SH_photo</Declaration>
+			
+			
+			<Anchor>//api/name/SH_photo</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/GKTurnBasedParticipant(SHGameCenter)/setSH_isMe:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GKTurnBasedParticipant+SHGameCenter.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) BOOL SH_isMe</Declaration>
+			
+			
+			<Anchor>//api/name/SH_isMe</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfp/GKTurnBasedParticipant(SHGameCenter)/SH_isMe</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GKTurnBasedParticipant+SHGameCenter.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) BOOL SH_isMe</Declaration>
+			
+			
+			<Anchor>//api/name/SH_isMe</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/GKTurnBasedParticipant(SHGameCenter)/setSH_isActiveOrInvited:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GKTurnBasedParticipant+SHGameCenter.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) BOOL SH_isActiveOrInvited</Declaration>
+			
+			
+			<Anchor>//api/name/SH_isActiveOrInvited</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfp/GKTurnBasedParticipant(SHGameCenter)/SH_isActiveOrInvited</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GKTurnBasedParticipant+SHGameCenter.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) BOOL SH_isActiveOrInvited</Declaration>
+			
+			
+			<Anchor>//api/name/SH_isActiveOrInvited</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/GKTurnBasedParticipant(SHGameCenter)/setSH_isInvited:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GKTurnBasedParticipant+SHGameCenter.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) BOOL SH_isInvited</Declaration>
+			
+			
+			<Anchor>//api/name/SH_isInvited</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfp/GKTurnBasedParticipant(SHGameCenter)/SH_isInvited</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GKTurnBasedParticipant+SHGameCenter.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) BOOL SH_isInvited</Declaration>
+			
+			
+			<Anchor>//api/name/SH_isInvited</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/GKTurnBasedParticipant(SHGameCenter)/setSH_isActive:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GKTurnBasedParticipant+SHGameCenter.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) BOOL SH_isActive</Declaration>
+			
+			
+			<Anchor>//api/name/SH_isActive</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfp/GKTurnBasedParticipant(SHGameCenter)/SH_isActive</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GKTurnBasedParticipant+SHGameCenter.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) BOOL SH_isActive</Declaration>
+			
+			
+			<Anchor>//api/name/SH_isActive</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/GKTurnBasedParticipant(SHGameCenter)/setSH_isMatching:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GKTurnBasedParticipant+SHGameCenter.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) BOOL SH_isMatching</Declaration>
+			
+			
+			<Anchor>//api/name/SH_isMatching</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfp/GKTurnBasedParticipant(SHGameCenter)/SH_isMatching</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GKTurnBasedParticipant+SHGameCenter.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) BOOL SH_isMatching</Declaration>
+			
+			
+			<Anchor>//api/name/SH_isMatching</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/GKTurnBasedParticipant(SHGameCenter)/setSH_isDone:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GKTurnBasedParticipant+SHGameCenter.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) BOOL SH_isDone</Declaration>
+			
+			
+			<Anchor>//api/name/SH_isDone</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfp/GKTurnBasedParticipant(SHGameCenter)/SH_isDone</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GKTurnBasedParticipant+SHGameCenter.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) BOOL SH_isDone</Declaration>
+			
+			
+			<Anchor>//api/name/SH_isDone</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/GKTurnBasedParticipant(SHGameCenter)/setSH_hasMatchOutcomeNone:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GKTurnBasedParticipant+SHGameCenter.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) BOOL SH_hasMatchOutcomeNone</Declaration>
+			
+			
+			<Anchor>//api/name/SH_hasMatchOutcomeNone</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfp/GKTurnBasedParticipant(SHGameCenter)/SH_hasMatchOutcomeNone</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GKTurnBasedParticipant+SHGameCenter.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) BOOL SH_hasMatchOutcomeNone</Declaration>
+			
+			
+			<Anchor>//api/name/SH_hasMatchOutcomeNone</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/GKTurnBasedParticipant(SHGameCenter)/setSH_hasMatchOutcomeQuit:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GKTurnBasedParticipant+SHGameCenter.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) BOOL SH_hasMatchOutcomeQuit</Declaration>
+			
+			
+			<Anchor>//api/name/SH_hasMatchOutcomeQuit</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfp/GKTurnBasedParticipant(SHGameCenter)/SH_hasMatchOutcomeQuit</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GKTurnBasedParticipant+SHGameCenter.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) BOOL SH_hasMatchOutcomeQuit</Declaration>
+			
+			
+			<Anchor>//api/name/SH_hasMatchOutcomeQuit</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/GKTurnBasedParticipant(SHGameCenter)/setSH_hasMatchOutcomeWon:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GKTurnBasedParticipant+SHGameCenter.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) BOOL SH_hasMatchOutcomeWon</Declaration>
+			
+			
+			<Anchor>//api/name/SH_hasMatchOutcomeWon</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfp/GKTurnBasedParticipant(SHGameCenter)/SH_hasMatchOutcomeWon</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GKTurnBasedParticipant+SHGameCenter.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) BOOL SH_hasMatchOutcomeWon</Declaration>
+			
+			
+			<Anchor>//api/name/SH_hasMatchOutcomeWon</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/GKTurnBasedParticipant(SHGameCenter)/setSH_hasMatchOutcomeWithPosition:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GKTurnBasedParticipant+SHGameCenter.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) BOOL SH_hasMatchOutcomeWithPosition</Declaration>
+			
+			
+			<Anchor>//api/name/SH_hasMatchOutcomeWithPosition</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfp/GKTurnBasedParticipant(SHGameCenter)/SH_hasMatchOutcomeWithPosition</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GKTurnBasedParticipant+SHGameCenter.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) BOOL SH_hasMatchOutcomeWithPosition</Declaration>
+			
+			
+			<Anchor>//api/name/SH_hasMatchOutcomeWithPosition</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

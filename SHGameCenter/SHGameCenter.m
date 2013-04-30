@@ -2,6 +2,8 @@
 #import "NSSet+BlocksKit.h"
 #import "SHGameCenter.h"
 
+#include "SHGameCenter.private"
+
 static NSString * const SHGameMatchEventTurnKey     = @"SHGameMatchEventTurnKey";
 static NSString * const SHGameMatchEventEndedKey    = @"SHGameMatchEventEndedKey";
 static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesKey";
@@ -13,14 +15,8 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
 #pragma mark -
 #pragma mark Singleton Methods
 +(instancetype)sharedManager;
-#pragma mark -
-#pragma mark Cache
-+(void)updateCachePlayersFromPlayerIdentifiers:(NSSet *)thePlayerIdentifiers
-                           withCompletionBlock:(SHGameCompletionBlock)theBlock;
-
-+(BOOL)containsPlayersFromPlayerIdentifiers:(NSSet *)thePlayerIdentifiers;
-
 @end
+
 
 @implementation SHGameCenter
 #pragma mark -

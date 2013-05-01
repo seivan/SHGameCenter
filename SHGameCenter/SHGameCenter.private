@@ -9,6 +9,6 @@
 #pragma -
 #pragma Cache
 +(void)updateCachePlayersFromPlayerIdentifiers:(NSSet *)thePlayerIdentifiers
-                           withCompletionBlock:(SHGameCompletionBlock)theBlock;
-
+                           withResponseBlock:(SHGameListsBlock)theResponseBlock
+                           withCachedBlock:(SHGameCompletionBlock)theCachedBlock;
 @end

@@ -91,13 +91,12 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
 
 -(void)handleTurnEventForMatch:(GKTurnBasedMatch *)match didBecomeActive:(BOOL)didBecomeActive; {
   
-  [SHGameCenter updateCachePlayersFromPlayerIdentifiers:match.SH_playerIdentifiers.set withCompletionBlock:^{
-
+  [SHGameCenter updateCachePlayersFromPlayerIdentifiers:match.SH_playerIdentifiers.set withResponseBlock:^(NSOrderedSet *responseSet, NSError *error) {
     for (NSDictionary * blocks in self.mapAllMatchesBlocks.objectEnumerator) {
       SHGameMatchEventTurnBlock block = blocks[SHGameMatchEventTurnKey];
       block(match, didBecomeActive);
     }
-
+    
     for (NSDictionary * blocks in self.mapMatchBlocks.objectEnumerator) {
       NSDictionary * matchBlock = blocks[match.matchID];
       SHGameMatchEventTurnBlock block = matchBlock[SHGameMatchEventTurnKey];
@@ -105,7 +104,7 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
         block(match, didBecomeActive);
     }
 
-  }];
+  } withCachedBlock:nil];
   
   
 }
@@ -113,21 +112,20 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
 // handleMatchEnded is called when the match has ended.
 -(void)handleMatchEnded:(GKTurnBasedMatch *)match; {
   
-  
-  [SHGameCenter updateCachePlayersFromPlayerIdentifiers:match.SH_playerIdentifiers.set withCompletionBlock:^{
-    
+  [SHGameCenter updateCachePlayersFromPlayerIdentifiers:match.SH_playerIdentifiers.set withResponseBlock:^(NSOrderedSet *responseSet, NSError *error) {
     for (NSDictionary * blocks in self.mapAllMatchesBlocks.objectEnumerator) {
       SHGameMatchEventEndedBlock block = blocks[SHGameMatchEventEndedKey];
       block(match);
     }
-
+    
     for (NSDictionary * blocks in self.mapMatchBlocks.objectEnumerator) {
       NSDictionary * matchBlock = blocks[match.matchID];
       SHGameMatchEventEndedBlock block = matchBlock[SHGameMatchEventEndedKey];
       if(block)
         block(match);
     }
-  }];
+
+  } withCachedBlock:nil];
   
 }
 
@@ -222,38 +220,47 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock; 
 +(void)SH_requestMatchesAndFriendsWithBlock:(SHGameAttributesBlock)theBlock; {
   NSAssert(theBlock, @"Must pass a SHGameAttributesBlock");
   
-  [GKTurnBasedMatch SH_requestWithoutCacheMatchesWithBlock:^(NSOrderedSet * list, NSError * error) {
-    NSMutableDictionary   * attributeForMatches           = @{}.mutableCopy;
-    attributeForMatches[SHGameCenterSetKey]  = list ? list : @[].toOrderedSet;
+  [GKTurnBasedMatch loadMatchesWithCompletionHandler:^(NSArray *matches, NSError *error) {
+    NSMutableDictionary   * attributeForMatches = @{}.mutableCopy;
+    attributeForMatches[SHGameCenterSetKey]     = matches ? matches.toOrderedSet : @[].toOrderedSet;
     if(error)               attributeForMatches[SHGameCenterErrorKey] = error;
     
-    [GKLocalPlayer SH_requestWithoutCacheFriendsWithBlock:^(NSOrderedSet * list, NSError * error) {
-      NSMutableDictionary * attributeForFriends           = @{}.mutableCopy;
-      attributeForFriends[SHGameCenterSetKey]  = list ? list : @[].toOrderedSet;
+    [GKLocalPlayer.localPlayer loadFriendsWithCompletionHandler:^(NSArray *friends, NSError *error) {
+      NSMutableDictionary * attributeForFriends = @{}.mutableCopy;
+      attributeForFriends[SHGameCenterSetKey]   = friends ? friends.toOrderedSet : @[].toOrderedSet;
       if(error)             attributeForFriends[SHGameCenterErrorKey] = error;
       
+    
+      // Collect all playerIDs.
       NSMutableSet * setOfPlayerIds = @[].toSet.mutableCopy;
-      
       [attributeForMatches[SHGameCenterSetKey] each:^(GKTurnBasedMatch * match) {
         [setOfPlayerIds addObjectsFromArray:match.SH_playerIdentifiers.array];
       }];
-      
-      NSOrderedSet * friendsPlayerIds = [((NSOrderedSet*)attributeForFriends[SHGameCenterSetKey]) map:^id(GKPlayer * player) {
-        return player.playerID;
-      }];
-      
+      NSOrderedSet * friendsPlayerIds = attributeForFriends[SHGameCenterSetKey];
       [setOfPlayerIds addObjectsFromArray:friendsPlayerIds.array];
       
-      [SHGameCenter updateCachePlayersFromPlayerIdentifiers:setOfPlayerIds.copy withCompletionBlock:^{
+      
+      //Fetch and cache players via playerIds
+      [SHGameCenter updateCachePlayersFromPlayerIdentifiers:setOfPlayerIds withResponseBlock:^(NSOrderedSet *responseSet, NSError *error) {
         
+        //Find all players that are friends
+        NSSet * unfilteredFriends = [attributeForFriends[SHGameCenterSetKey] map:^id(NSString * playerIdentifier) {
+          return [responseSet match:^BOOL(GKPlayer * player) {
+            return [player.playerID isEqualToString:playerIdentifier];
+          }];
+        }];
         
+        //Get rid  of all NSNulls and set the friendsAttribute
+        attributeForFriends[SHGameCenterSetKey] = [unfilteredFriends reject:^BOOL(id obj) {
+          return obj == [NSNull null];
+        }].allObjects.toOrderedSet;
+        
+
         theBlock(@{SHGameCenterAttributeMatchesKey : attributeForMatches,
                    SHGameCenterAttributeFriendsKey : attributeForFriends,
                  });
-        
-        
-        
-      }];
+
+      } withCachedBlock:nil];
       
       
     }];
@@ -315,9 +322,9 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock; 
 #pragma mark -
 #pragma mark Player
 -(void)SH_requestPlayersWithBlock:(SHGameListsBlock)theBlock; {
-  [GKPlayer loadPlayersForIdentifiers:self.SH_playerIdentifiers.array withCompletionHandler:^(NSArray *players, NSError *error) {
-    theBlock(players.toOrderedSet, error);
-  }];
+  [SHGameCenter updateCachePlayersFromPlayerIdentifiers:self.SH_playerIdentifiers.set
+                                      withResponseBlock:theBlock withCachedBlock:nil];
+  
 }
 
 
@@ -336,7 +343,17 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock; 
 #pragma mark Match Getters
 +(void)SH_requestMatchesWithBlock:(SHGameListsBlock)theBlock; {
   [GKTurnBasedMatch loadMatchesWithCompletionHandler:^(NSArray *matches, NSError *error) {
-    theBlock(matches.toOrderedSet, error);
+    NSMutableSet * playerIdentifiers = @[].toSet.mutableCopy;
+    [matches each:^(GKTurnBasedMatch * match) {
+      [playerIdentifiers addObjectsFromArray:match.SH_playerIdentifiers.array];
+    }];
+    
+    if(error)theBlock(nil,error);
+    else 
+      [SHGameCenter updateCachePlayersFromPlayerIdentifiers:playerIdentifiers.copy withResponseBlock:nil withCachedBlock:^{
+      theBlock(matches.toOrderedSet, error);
+    }];
+
   }];
 }
 

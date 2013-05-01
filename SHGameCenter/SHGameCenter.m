@@ -45,32 +45,33 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
 
 #pragma mark -
 #pragma mark Cache
-//Need to clean this mess up
 +(void)updateCachePlayersFromPlayerIdentifiers:(NSSet *)thePlayerIdentifiers
-                           withCompletionBlock:(SHGameCompletionBlock)theBlock; {
+                           withResponseBlock:(SHGameListsBlock)theResponseBlock
+                           withCachedBlock:(SHGameCompletionBlock)theCachedBlock; {
 
+  NSString * assertMessage = @"Need either responseBlock or cachedBlock";
+
+  if(theCachedBlock == nil)
+    NSAssert(theResponseBlock, assertMessage);
+  if(theResponseBlock == nil)
+    NSAssert(theCachedBlock, assertMessage);
+  
+  
   thePlayerIdentifiers = [thePlayerIdentifiers reject:^BOOL(id obj) { return obj == [NSNull null]; }];
   
-  if ([self containsPlayersFromPlayerIdentifiers:thePlayerIdentifiers]) {
-    theBlock();
-    theBlock = nil;
-  }
+  if ([self containsPlayersFromPlayerIdentifiers:thePlayerIdentifiers] && theCachedBlock)
+    theCachedBlock();
   
   
   [GKPlayer loadPlayersForIdentifiers:thePlayerIdentifiers.allObjects withCompletionHandler:^(NSArray *players, NSError *error) {
-    
-    if(error)
-      [self updateCachePlayersFromPlayerIdentifiers:thePlayerIdentifiers withCompletionBlock:theBlock];
-    
-    else {
-      [self addToCacheFromPlayers:players.toSet];
-      if ([self containsPlayersFromPlayerIdentifiers:thePlayerIdentifiers]) {
-        if(theBlock) theBlock();
-      }
-      else
-        [self updateCachePlayersFromPlayerIdentifiers:thePlayerIdentifiers
-                                  withCompletionBlock:theBlock];
-    }
+    [self addToCacheFromPlayers:players.toSet];
+    if ([self containsPlayersFromPlayerIdentifiers:thePlayerIdentifiers] && theResponseBlock)
+      theResponseBlock(players.toOrderedSet,error);
+    else
+      [self updateCachePlayersFromPlayerIdentifiers:thePlayerIdentifiers
+                                  withResponseBlock:theResponseBlock
+                                    withCachedBlock:theCachedBlock];
+
     
   }];
 

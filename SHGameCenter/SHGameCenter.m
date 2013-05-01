@@ -47,7 +47,7 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
 #pragma mark Cache
 +(void)updateCachePlayersFromPlayerIdentifiers:(NSSet *)thePlayerIdentifiers
                            withResponseBlock:(SHGameListsBlock)theResponseBlock
-                           withCachedBlock:(SHGameCompletionBlock)theCachedBlock; {
+                           withCachedBlock:(SHGameErrorBlock)theCachedBlock; {
 
   NSString * assertMessage = @"Need either responseBlock or cachedBlock";
 
@@ -59,18 +59,20 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
   
   thePlayerIdentifiers = [thePlayerIdentifiers reject:^BOOL(id obj) { return obj == [NSNull null]; }];
   
-  if ([self containsPlayersFromPlayerIdentifiers:thePlayerIdentifiers] && theCachedBlock)
-    theCachedBlock();
+  if ([self containsPlayersFromPlayerIdentifiers:thePlayerIdentifiers] && theCachedBlock) {
+    theCachedBlock(nil);
+    theCachedBlock = nil;
+  }
   
   
   [GKPlayer loadPlayersForIdentifiers:thePlayerIdentifiers.allObjects withCompletionHandler:^(NSArray *players, NSError *error) {
+    
     [self addToCacheFromPlayers:players.toSet];
-    if ([self containsPlayersFromPlayerIdentifiers:thePlayerIdentifiers] && theResponseBlock)
+    BOOL isCached = [self containsPlayersFromPlayerIdentifiers:thePlayerIdentifiers];
+    if (isCached && theResponseBlock)
       theResponseBlock(players.toOrderedSet,error);
-    else
-      [self updateCachePlayersFromPlayerIdentifiers:thePlayerIdentifiers
-                                  withResponseBlock:theResponseBlock
-                                    withCachedBlock:theCachedBlock];
+    else if (isCached && theCachedBlock)
+      theCachedBlock(error);
 
     
   }];

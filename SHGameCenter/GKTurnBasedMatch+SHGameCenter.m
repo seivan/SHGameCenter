@@ -91,20 +91,23 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
 
 -(void)handleTurnEventForMatch:(GKTurnBasedMatch *)match didBecomeActive:(BOOL)didBecomeActive; {
   
-  [SHGameCenter updateCachePlayersFromPlayerIdentifiers:match.SH_playerIdentifiers.set withResponseBlock:^(NSOrderedSet *responseSet, NSError *error) {
-    for (NSDictionary * blocks in self.mapAllMatchesBlocks.objectEnumerator) {
-      SHGameMatchEventTurnBlock block = blocks[SHGameMatchEventTurnKey];
-      block(match, didBecomeActive);
-    }
-    
-    for (NSDictionary * blocks in self.mapMatchBlocks.objectEnumerator) {
-      NSDictionary * matchBlock = blocks[match.matchID];
-      SHGameMatchEventTurnBlock block = matchBlock[SHGameMatchEventTurnKey];
-      if(block)
+  [SHGameCenter updateCachePlayersFromPlayerIdentifiers:match.SH_playerIdentifiers.set withResponseBlock:nil withCachedBlock:^(NSError *error) {
+    if(error == nil) {
+      for (NSDictionary * blocks in self.mapAllMatchesBlocks.objectEnumerator) {
+        SHGameMatchEventTurnBlock block = blocks[SHGameMatchEventTurnKey];
         block(match, didBecomeActive);
-    }
+      }
+      
+      for (NSDictionary * blocks in self.mapMatchBlocks.objectEnumerator) {
+        NSDictionary * matchBlock = blocks[match.matchID];
+        SHGameMatchEventTurnBlock block = matchBlock[SHGameMatchEventTurnKey];
+        if(block)
+          block(match, didBecomeActive);
+      }
 
-  } withCachedBlock:nil];
+    }
+      
+  }];
   
   
 }
@@ -112,7 +115,7 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
 // handleMatchEnded is called when the match has ended.
 -(void)handleMatchEnded:(GKTurnBasedMatch *)match; {
   
-  [SHGameCenter updateCachePlayersFromPlayerIdentifiers:match.SH_playerIdentifiers.set withResponseBlock:^(NSOrderedSet *responseSet, NSError *error) {
+  [SHGameCenter updateCachePlayersFromPlayerIdentifiers:match.SH_playerIdentifiers.set withResponseBlock:nil withCachedBlock:^(NSError *error) {
     for (NSDictionary * blocks in self.mapAllMatchesBlocks.objectEnumerator) {
       SHGameMatchEventEndedBlock block = blocks[SHGameMatchEventEndedKey];
       block(match);
@@ -125,7 +128,7 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
         block(match);
     }
 
-  } withCachedBlock:nil];
+  }];
   
 }
 
@@ -350,9 +353,9 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock; 
     
     if(error)theBlock(nil,error);
     else 
-      [SHGameCenter updateCachePlayersFromPlayerIdentifiers:playerIdentifiers.copy withResponseBlock:nil withCachedBlock:^{
-      theBlock(matches.toOrderedSet, error);
-    }];
+      [SHGameCenter updateCachePlayersFromPlayerIdentifiers:playerIdentifiers.copy withResponseBlock:nil withCachedBlock:^(NSError *error){
+        theBlock(matches.toOrderedSet, error);
+      }];
 
   }];
 }
@@ -385,7 +388,6 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock; 
 
 -(void)SH_deleteWithBlock:(SHGameMatchBlock)theBlock; {
   
-  
   [self SH_resignWithBlock:^(GKTurnBasedMatch *match, NSError *error) {
     if(error) theBlock(match, error);
     else 
@@ -393,6 +395,7 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock; 
       theBlock(self, error);
     }];
   }];
+  
 }
 #pragma mark -
 #pragma mark Helpers

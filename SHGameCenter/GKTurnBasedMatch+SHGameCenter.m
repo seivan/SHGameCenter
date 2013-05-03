@@ -135,11 +135,22 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
 @end
 
 @interface GKTurnBasedMatch (Privates)
+#pragma mark - 
+#pragma mark Privates
+#pragma mark -
+#pragma mark Getters
 +(void)SH_requestWithoutCacheMatchesWithBlock:(SHGameListsBlock)theBlock;
+
+#pragma mark -
+#pragma mark Helpers
++(NSSet *)SH_collectPlayerIdsFromAttributeForMatches:(NSDictionary *)theMatchAttributes
+                              attributeForFriends:(NSDictionary *)theFriendAttributes;
+
++(NSOrderedSet *)SH_filterOutFriendsFromPlayers:(NSOrderedSet *)theSetOfPlayers
+                               withFriendIds:(NSOrderedSet *)theSetOfFriendIds;
 @end
 
 @implementation GKTurnBasedMatch (SHGameCenter)
-
 
 #pragma mark -
 #pragma mark Player Getters
@@ -233,30 +244,16 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock; 
       attributeForFriends[SHGameCenterSetKey]   = friends ? friends.toOrderedSet : @[].toOrderedSet;
       if(error)             attributeForFriends[SHGameCenterErrorKey] = error;
       
-    
-      // Collect all playerIDs.
-      NSMutableSet * setOfPlayerIds = @[].toSet.mutableCopy;
-      [attributeForMatches[SHGameCenterSetKey] each:^(GKTurnBasedMatch * match) {
-        [setOfPlayerIds addObjectsFromArray:match.SH_playerIdentifiers.array];
-      }];
-      NSOrderedSet * friendsPlayerIds = attributeForFriends[SHGameCenterSetKey];
-      [setOfPlayerIds addObjectsFromArray:friendsPlayerIds.array];
       
+      NSSet * setOfPlayerIds = [self SH_collectPlayerIdsFromAttributeForMatches:attributeForMatches attributeForFriends:attributeForFriends];
       
       //Fetch and cache players via playerIds
       [SHGameCenter updateCachePlayersFromPlayerIdentifiers:setOfPlayerIds withResponseBlock:^(NSOrderedSet *responseSet, NSError *error) {
+
         
-        //Find all players that are friends
-        NSSet * unfilteredFriends = [attributeForFriends[SHGameCenterSetKey] map:^id(NSString * playerIdentifier) {
-          return [responseSet match:^BOOL(GKPlayer * player) {
-            return [player.playerID isEqualToString:playerIdentifier];
-          }];
-        }];
+        attributeForFriends[SHGameCenterSetKey] = [self SH_filterOutFriendsFromPlayers:responseSet
+                                                                         withFriendIds:attributeForFriends[SHGameCenterSetKey]];
         
-        //Get rid  of all NSNulls and set the friendsAttribute
-        attributeForFriends[SHGameCenterSetKey] = [unfilteredFriends reject:^BOOL(id obj) {
-          return obj == [NSNull null];
-        }].allObjects.toOrderedSet;
         
 
         theBlock(@{SHGameCenterAttributeMatchesKey : attributeForMatches,
@@ -416,6 +413,38 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock; 
   [GKTurnBasedMatch loadMatchesWithCompletionHandler:^(NSArray *matches, NSError *error) {
     theBlock(matches.toOrderedSet, error);
   }];
+}
+
+#pragma mark -
+#pragma mark Helpers
++(NSSet *)SH_collectPlayerIdsFromAttributeForMatches:(NSDictionary *)theMatchAttributes
+                                 attributeForFriends:(NSDictionary *)theFriendAttributes; {
+  
+  // Collect all playerIDs.
+  NSMutableSet * setOfPlayerIds = @[].toSet.mutableCopy;
+  [theMatchAttributes[SHGameCenterSetKey] each:^(GKTurnBasedMatch * match) {
+    [setOfPlayerIds addObjectsFromArray:match.SH_playerIdentifiers.array];
+  }];
+  NSOrderedSet * friendsPlayerIds = theFriendAttributes[SHGameCenterSetKey];
+  [setOfPlayerIds addObjectsFromArray:friendsPlayerIds.array];
+  
+  return setOfPlayerIds.copy;
+}
+
++(NSOrderedSet *)SH_filterOutFriendsFromPlayers:(NSOrderedSet *)theSetOfPlayers
+                                  withFriendIds:(NSOrderedSet *)theSetOfFriendIds; {
+  //Find all players that are friends
+  NSSet * unfilteredFriends = [theSetOfFriendIds map:^id(NSString * playerIdentifier) {
+    return [theSetOfPlayers match:^BOOL(GKPlayer * player) {
+      return [player.playerID isEqualToString:playerIdentifier];
+    }];
+  }];
+  
+  //Get rid  of all NSNulls and set the friendsAttribute
+  return [unfilteredFriends reject:^BOOL(id obj) {
+    return obj == [NSNull null];
+  }].allObjects.toOrderedSet;
+  
 }
 
 

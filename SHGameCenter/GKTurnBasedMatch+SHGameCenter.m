@@ -348,7 +348,9 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock; 
       [playerIdentifiers addObjectsFromArray:match.SH_playerIdentifiers.array];
     }];
     
-    if(error)theBlock(nil,error);
+    if(error)dispatch_async(dispatch_get_main_queue(), ^{
+      theBlock(nil,error);
+    });
     else 
       [SHGameCenter updateCachePlayersFromPlayerIdentifiers:playerIdentifiers.copy withResponseBlock:nil withCachedBlock:^(NSError *error){
         theBlock(matches.toOrderedSet, error);
@@ -373,10 +375,16 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock; 
     [self endMatchInTurnWithMatchData:self.matchData completionHandler:^(NSError *error) {
       if(error)
         [self participantQuitOutOfTurnWithOutcome:GKTurnBasedMatchOutcomeQuit withCompletionHandler:^(NSError *error) {
-          theBlock(self, error);
+          dispatch_async(dispatch_get_main_queue(), ^{
+            theBlock(self, error);
+          });
+          
         }];
-      else
-        theBlock(self,error);
+      else dispatch_async(dispatch_get_main_queue(), ^{
+        theBlock(self, error);
+      });
+
+      
     }];
 
   
@@ -389,7 +397,9 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock; 
     if(error) theBlock(match, error);
     else 
     [self removeWithCompletionHandler:^(NSError *error) {
-      theBlock(self, error);
+      dispatch_async(dispatch_get_main_queue(), ^{
+        theBlock(self, error);
+      });
     }];
   }];
   
@@ -411,7 +421,11 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock; 
 #pragma mark Match Getters
 +(void)SH_requestWithoutCacheMatchesWithBlock:(SHGameListsBlock)theBlock; {
   [GKTurnBasedMatch loadMatchesWithCompletionHandler:^(NSArray *matches, NSError *error) {
-    theBlock(matches.toOrderedSet, error);
+    dispatch_async(dispatch_get_main_queue(), ^{
+      theBlock(matches.toOrderedSet, error);
+    });
+
+    
   }];
 }
 
@@ -434,7 +448,7 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock; 
 +(NSOrderedSet *)SH_filterOutFriendsFromPlayers:(NSOrderedSet *)theSetOfPlayers
                                   withFriendIds:(NSOrderedSet *)theSetOfFriendIds; {
   //Find all players that are friends
-  NSSet * unfilteredFriends = [theSetOfFriendIds map:^id(NSString * playerIdentifier) {
+  NSOrderedSet * unfilteredFriends = [theSetOfFriendIds map:^id(NSString * playerIdentifier) {
     return [theSetOfPlayers match:^BOOL(GKPlayer * player) {
       return [player.playerID isEqualToString:playerIdentifier];
     }];
@@ -443,7 +457,7 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock; 
   //Get rid  of all NSNulls and set the friendsAttribute
   return [unfilteredFriends reject:^BOOL(id obj) {
     return obj == [NSNull null];
-  }].allObjects.toOrderedSet;
+  }];
   
 }
 

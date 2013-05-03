@@ -51,17 +51,24 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
 
   NSString * assertMessage = @"Need either responseBlock or cachedBlock";
 
-  if(theCachedBlock == nil)
+  __block SHGameErrorBlock theCachedBlockOrError = [theCachedBlock copy];
+  if(theCachedBlockOrError == nil)
     NSAssert(theResponseBlock, assertMessage);
   if(theResponseBlock == nil)
-    NSAssert(theCachedBlock, assertMessage);
+    NSAssert(theCachedBlockOrError, assertMessage);
   
   
   thePlayerIdentifiers = [thePlayerIdentifiers reject:^BOOL(id obj) { return obj == [NSNull null]; }];
   
-  if ([self containsPlayersFromPlayerIdentifiers:thePlayerIdentifiers] && theCachedBlock) {
-    theCachedBlock(nil);
-    theCachedBlock = nil;
+  if ([self containsPlayersFromPlayerIdentifiers:thePlayerIdentifiers] && theCachedBlockOrError) {
+    dispatch_async(dispatch_get_main_queue(), ^{
+      theCachedBlockOrError(nil);
+      theCachedBlockOrError = nil;
+      
+      
+    });
+    
+
   }
   
   
@@ -69,10 +76,14 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
     
     [self addToCacheFromPlayers:players.toSet];
     BOOL isCached = [self containsPlayersFromPlayerIdentifiers:thePlayerIdentifiers];
-    if (isCached && theResponseBlock)
+    if (isCached && theResponseBlock) dispatch_async(dispatch_get_main_queue(), ^{
       theResponseBlock(players.toOrderedSet,error);
-    else if (isCached && theCachedBlock)
-      theCachedBlock(error);
+    });
+      
+    else if (isCached && theCachedBlockOrError) dispatch_async(dispatch_get_main_queue(), ^{
+      theCachedBlockOrError(error);
+    });
+      
 
     
   }];

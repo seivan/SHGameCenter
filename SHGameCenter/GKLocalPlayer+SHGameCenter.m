@@ -108,7 +108,9 @@
 
 +(void)SH_requestFriendsWithBlock:(SHGameListsBlock)theBlock; {
   [self.SH_me loadFriendsWithCompletionHandler:^(NSArray *friends, NSError *error) {
-    if(error)theBlock(nil,error);
+    if(error) dispatch_async(dispatch_get_main_queue(), ^{
+      theBlock(nil,error);
+    });
     else
       [SHGameCenter updateCachePlayersFromPlayerIdentifiers:friends.toSet
                                           withResponseBlock:theBlock withCachedBlock:nil];
@@ -125,7 +127,10 @@
   [self.SH_me loadFriendsWithCompletionHandler:^(NSArray * friends, NSError * error) {
     [self loadPlayersForIdentifiers:friends
               withCompletionHandler:^(NSArray *players, NSError *error) {
-                theBlock(players.toOrderedSet, error);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                  theBlock(players.toOrderedSet, error);
+                });
+                
               }];
   }];
   

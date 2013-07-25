@@ -8,7 +8,7 @@
 
 #import "SHViewController.h"
 
-#import "UIAlertView+BlocksKit.h"
+
 @interface SHViewController ()
 
 @end
@@ -41,7 +41,7 @@
     
     if(title == nil)   title   = @"Error";
     if(message == nil) message = @"Somethin' ain't right, son.";
-    [UIAlertView showAlertViewWithTitle:title message:message cancelButtonTitle:@"OK" otherButtonTitles:nil handler:nil];
+
     
   });
 }

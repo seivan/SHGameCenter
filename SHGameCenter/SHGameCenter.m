@@ -1,5 +1,6 @@
-#import "NSEnumerable+Utilities.h"
-#import "NSSet+BlocksKit.h"
+
+#import "NSSet+SHFastEnumerationProtocols.h"
+#import "NSArray+SHFastEnumerationProtocols.h"
 #import "SHGameCenter.h"
 
 #include "SHGameCenter.private"
@@ -58,7 +59,7 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
     NSAssert(theCachedBlockOrError, assertMessage);
   
   
-  thePlayerIdentifiers = [thePlayerIdentifiers reject:^BOOL(id obj) { return obj == [NSNull null]; }];
+  thePlayerIdentifiers = [thePlayerIdentifiers SH_reject:^BOOL(id obj) { return obj == [NSNull null]; }];
   
   if ([self containsPlayersFromPlayerIdentifiers:thePlayerIdentifiers] && theCachedBlockOrError) {
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -74,10 +75,10 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
   
   [GKPlayer loadPlayersForIdentifiers:thePlayerIdentifiers.allObjects withCompletionHandler:^(NSArray *players, NSError *error) {
     
-    [self addToCacheFromPlayers:players.toSet];
+    [self addToCacheFromPlayers:players.SH_toSet];
     BOOL isCached = [self containsPlayersFromPlayerIdentifiers:thePlayerIdentifiers];
     if (isCached && theResponseBlock) dispatch_async(dispatch_get_main_queue(), ^{
-      theResponseBlock(players.toOrderedSet,error);
+      theResponseBlock(players.SH_toOrderedSet,error);
     });
       
     else if (isCached && theCachedBlockOrError) dispatch_async(dispatch_get_main_queue(), ^{
@@ -111,7 +112,7 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
 #pragma mark Cache
 
 +(BOOL)containsPlayersFromPlayerIdentifiers:(NSSet *)thePlayerIdentifiers; {
-  return [thePlayerIdentifiers all:^BOOL(NSString * playerIdentifier) {
+  return [thePlayerIdentifiers SH_all:^BOOL(NSString * playerIdentifier) {
     return SHGameCenter.sharedManager.cachePlayers[playerIdentifier] != nil;
   }];
 
@@ -120,7 +121,7 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
 +(void)addToCacheFromPlayers:(NSSet*)thePlayers; {
 
   
-  [thePlayers each:^(GKPlayer * player) {
+  [thePlayers SH_each:^(GKPlayer * player) {
     NSMutableDictionary * playerAttributes = SHGameCenter.sharedManager.cachePlayers[player.playerID];
     
     if(playerAttributes == nil) playerAttributes = @{}.mutableCopy;

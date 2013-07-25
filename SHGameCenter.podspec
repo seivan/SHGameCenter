@@ -36,5 +36,5 @@ Pod::Spec.new do |s|
   s.source_files = "#{name}/**/*.{h,m}"
   s.resources    = "#{name}/**/*.{implementation,private}"
   s.requires_arc = true
-  s.dependency 'BlocksKit', '~> 1.8'
+  #s.dependency 'BlocksKit', '~> 1.8'
 end

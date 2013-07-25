@@ -1,20 +1,19 @@
 PODS:
-  - BlocksKit (1.8.2):
-    - libffi
-  - libffi (3.0.11)
-  - SHGameCenter (0.2.0):
-    - BlocksKit (~> 1.8)
+  - SHFastEnumerationProtocols (1.0.0)
+  - SHGameCenter (0.3.1)
 
 DEPENDENCIES:
+  - SHFastEnumerationProtocols (from `../../SHFastEnumerationProtocols`)
   - SHGameCenter (from `../`)
 
 EXTERNAL SOURCES:
+  SHFastEnumerationProtocols:
+    :path: ../../SHFastEnumerationProtocols
   SHGameCenter:
     :path: ../
 
 SPEC CHECKSUMS:
-  BlocksKit: 7396526b0816734103f6133fbb1a520c8b04e80c
-  libffi: 8a1d9ba43c0c84b546b42c6f742714e73aa07ae1
-  SHGameCenter: 62cf811f4b2138a6e39525f32757fdaf9e30ad78
+  SHFastEnumerationProtocols: 5f1567eb1f63fef4b28733e8decb1252f72153be
+  SHGameCenter: da119e95bd764233ebf2d1b265691abc8012ee78
 
-COCOAPODS: 0.19.0
+COCOAPODS: 0.22.2

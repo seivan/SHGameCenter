@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Pods-SHFastEnumerationProtocols.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>Pods-SHGameCenter.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -17,7 +27,37 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>2F9A92112EB947C188225A3A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>35743B2B37F54809923A0CE3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>66395301207B4F60AE7313F7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>71F84973E52340AD947A7238</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B384FB2CF0E5479C8B618A84</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C268ADFDFA25480DA3205F80</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DE32C6FAE99340CAA306EC9A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

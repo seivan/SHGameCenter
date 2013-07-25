@@ -1,7 +1,7 @@
-#import "NSEnumerable+Utilities.h"
 
-#import "NSOrderedSet+BlocksKit.h"
 
+#import "NSOrderedSet+SHFastEnumerationProtocols.h"
+#import "NSArray+SHFastEnumerationProtocols.h"
 #import "GKLocalPlayer+SHGameCenter.h"
 
 #include "SHGameCenter.private"
@@ -112,7 +112,7 @@
       theBlock(nil,error);
     });
     else
-      [SHGameCenter updateCachePlayersFromPlayerIdentifiers:friends.toSet
+      [SHGameCenter updateCachePlayersFromPlayerIdentifiers:friends.SH_toSet
                                           withResponseBlock:theBlock withCachedBlock:nil];
     
   }];
@@ -128,7 +128,7 @@
     [self loadPlayersForIdentifiers:friends
               withCompletionHandler:^(NSArray *players, NSError *error) {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                  theBlock(players.toOrderedSet, error);
+                  theBlock(players.SH_toOrderedSet, error);
                 });
                 
               }];

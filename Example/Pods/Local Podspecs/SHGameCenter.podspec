@@ -1,6 +1,10 @@
 Pod::Spec.new do |s|
-  s.name         = "SHGameCenter"
-  s.version      = "0.2.0"
+  name    = "SHGameCenter"
+  url     = "https://github.com/seivan/#{name}"
+  git_url = "#{url}.git"
+  s.name  = name
+
+  s.version      = "0.3.1"
   s.summary      = "Block based patterns and properties for GameCenter."
   s.description  = <<-DESC
   Making GKTurnBasedEventHandlerDelegate and authentication block based.
@@ -11,21 +15,26 @@ Pod::Spec.new do |s|
    * GKTurnBasedMatch
    * GKTurnBasedParticipant
 
+   * Auto loads images in a queue
+   * Always fetches names and caches them before callback (can persist the cache)
+   * Properties for most common scenarios
+
    Making Game Center easier to work with.
+
                    DESC
-  s.homepage     = "https://github.com/seivan/SHGameCenter"
-  s.license      = {:type => 'MIT' } 
+  s.homepage     = url
+  s.license      = 'MIT'
   s.author       = { "Seivan Heidari" => "seivan.heidari@icloud.com" }
   
-  s.source       = { :git => "https://github.com/seivan/SHGameCenter.git", :tag => s.version.to_s}
+  s.source       = { :git => git_url, :tag => s.version.to_s}
   
 
   s.platform = :ios, "6.0"
 
   s.ios.framework = "GameKit"
 
-  s.source_files = 'SHGameCenter/**/*.{h,m}'
-  s.resources    = 'SHGameCenter/**/*.{implementation,private}'
+  s.source_files = "#{name}/**/*.{h,m}"
+  s.resources    = "#{name}/**/*.{implementation,private}"
   s.requires_arc = true
-  s.dependency 'BlocksKit', '~> 1.8'
+  #s.dependency 'BlocksKit', '~> 1.8'
 end

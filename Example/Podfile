@@ -1,1 +1,2 @@
+pod 'SHFastEnumerationProtocols', :path => "../../SHFastEnumerationProtocols"
 pod 'SHGameCenter', :path => '../'

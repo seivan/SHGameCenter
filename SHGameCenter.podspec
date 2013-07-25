@@ -36,5 +36,5 @@ Pod::Spec.new do |s|
   s.source_files = "#{name}/**/*.{h,m}"
   s.resources    = "#{name}/**/*.{implementation,private}"
   s.requires_arc = true
-  s.dependency 'SHFastEnumerationProtocols', '~> 1.0.0'
+  s.dependency 'SHFastEnumerationProtocols', '1.0.0'
 end

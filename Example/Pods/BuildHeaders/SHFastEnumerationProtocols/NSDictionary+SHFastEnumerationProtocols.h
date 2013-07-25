@@ -1,1 +1,1 @@
-../../../../../SHFastEnumerationProtocols/SHFastEnumerationProtocols/NSDictionary+SHFastEnumerationProtocols.h
+../../SHFastEnumerationProtocols/SHFastEnumerationProtocols/NSDictionary+SHFastEnumerationProtocols.h

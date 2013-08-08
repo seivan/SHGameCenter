@@ -2,8 +2,8 @@ Pod::Spec.new do |s|
   name    = "SHGameCenter"
   url     = "https://github.com/seivan/#{name}"
   git_url = "#{url}.git"
-  s.name  = name
 
+  s.name         = name
   s.version      = "0.4.0"
   s.summary      = "Block based patterns and properties for GameCenter."
   s.description  = <<-DESC

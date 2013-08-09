@@ -1,5 +1,5 @@
 
-#import "SHPlayerProtocol.h"
+#import "SHPlayable.h"
 
 #import "SHGameCenterBlockDefinitions.h"
 
@@ -31,7 +31,7 @@ typedef NSInteger SHTurnBasedMatchOutcome;
 
 
 @interface GKTurnBasedParticipant (SHGameCenter)
-<SHPlayerProtocol>
+<SHPlayable>
 
 #pragma mark -
 #pragma mark Getter

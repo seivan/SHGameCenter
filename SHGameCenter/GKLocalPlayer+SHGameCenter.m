@@ -112,7 +112,7 @@
       theBlock(nil,error);
     });
     else
-      [SHGameCenter updateCachePlayersFromPlayerIdentifiers:friends.SH_toSet
+      [SHGameCenter updateCachePlayersFromPlayerIdentifiers:friends
                                           withResponseBlock:theBlock withCachedBlock:nil];
     
   }];
@@ -128,7 +128,7 @@
     [self loadPlayersForIdentifiers:friends
               withCompletionHandler:^(NSArray *players, NSError *error) {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                  theBlock(players.SH_toOrderedSet, error);
+                  theBlock(players, error);
                 });
                 
               }];

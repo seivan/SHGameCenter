@@ -47,11 +47,11 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
 #pragma mark -
 #pragma mark Cache
 +(void)updateCachePlayersFromPlayerIdentifiers:(NSSet *)thePlayerIdentifiers
-                           withResponseBlock:(SHGameListsBlock)theResponseBlock
-                           withCachedBlock:(SHGameErrorBlock)theCachedBlock; {
-
+                             withResponseBlock:(SHGameListsBlock)theResponseBlock
+                               withCachedBlock:(SHGameErrorBlock)theCachedBlock; {
+  
   NSString * assertMessage = @"Need either responseBlock or cachedBlock";
-
+  
   __block SHGameErrorBlock theCachedBlockOrError = [theCachedBlock copy];
   if(theCachedBlockOrError == nil)
     NSAssert(theResponseBlock, assertMessage);
@@ -69,26 +69,26 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
       
     });
     
-
+    
   }
   
   
   [GKPlayer loadPlayersForIdentifiers:thePlayerIdentifiers.allObjects withCompletionHandler:^(NSArray *players, NSError *error) {
     
-    [self addToCacheFromPlayers:players.SH_toSet];
+    [self addToCacheFromPlayers:players];
     BOOL isCached = [self containsPlayersFromPlayerIdentifiers:thePlayerIdentifiers];
     if (isCached && theResponseBlock) dispatch_async(dispatch_get_main_queue(), ^{
-      theResponseBlock(players.SH_toOrderedSet,error);
+      theResponseBlock(players,error);
     });
-      
+    
     else if (isCached && theCachedBlockOrError) dispatch_async(dispatch_get_main_queue(), ^{
       theCachedBlockOrError(error);
     });
-      
-
+    
+    
     
   }];
-
+  
 }
 
 
@@ -96,12 +96,12 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
 #pragma mark Getters
 
 +(NSString *)aliasForPlayerId:(NSString *)thePlayerId; {
-//  NSAssert(thePlayerId, @"Must pass an playerID");
+  //  NSAssert(thePlayerId, @"Must pass an playerID");
   return SHGameCenter.sharedManager.cachePlayers[thePlayerId][@"alias"];
 }
 
 +(UIImage *)photoForPlayerId:(NSString *)thePlayerId; {
-//  NSAssert(thePlayerId, @"Must pass an playerID");
+  //  NSAssert(thePlayerId, @"Must pass an playerID");
   return SHGameCenter.sharedManager.cachePlayers[thePlayerId][@"photo"];
 }
 
@@ -115,11 +115,11 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
   return [thePlayerIdentifiers SH_all:^BOOL(NSString * playerIdentifier) {
     return SHGameCenter.sharedManager.cachePlayers[playerIdentifier] != nil;
   }];
-
+  
 }
 
 +(void)addToCacheFromPlayers:(NSSet*)thePlayers; {
-
+  
   
   [thePlayers SH_each:^(GKPlayer * player) {
     NSMutableDictionary * playerAttributes = SHGameCenter.sharedManager.cachePlayers[player.playerID];
@@ -136,10 +136,10 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
              playerAttributes[@"photo"] = photo;
              SHGameCenter.sharedManager.cachePlayers[player.playerID] = playerAttributes;
            }
-      }];
+         }];
     
   }];
-
+  
   
 }
 

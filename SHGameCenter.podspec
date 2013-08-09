@@ -34,7 +34,7 @@ Pod::Spec.new do |s|
   s.ios.framework = "GameKit"
 
   s.source_files = "#{name}/**/*.{h,m}"
-  s.resources    = "#{name}/**/*.{implementation,private}"
+#  s.resources    = "#{name}/**/*.{implementation,private}"
   s.requires_arc = true
   s.dependency 'SHFastEnumerationProtocols', '~>1.2.0'
 end

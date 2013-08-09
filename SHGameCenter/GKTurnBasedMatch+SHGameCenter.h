@@ -15,10 +15,10 @@ static NSString * const SHGameCenterAttributeMatchesKey   = @"SHGameCenterAttrib
 #pragma mark -
 #pragma mark Participant Getters
 @property(nonatomic,readonly) GKTurnBasedParticipant  * SH_meAsParticipant;
-@property(nonatomic,readonly) NSOrderedSet            * SH_participantsWithoutMe;
-@property(nonatomic,readonly) NSOrderedSet            * SH_participantsWithoutCurrentParticipant;
-@property(nonatomic,readonly) NSOrderedSet            * SH_nextParticipantsInLine;
-@property(nonatomic,readonly) NSOrderedSet            * SH_playerIdentifiers;
+@property(nonatomic,readonly) NSArray                 * SH_participantsWithoutMe;
+@property(nonatomic,readonly) NSArray                 * SH_participantsWithoutCurrentParticipant;
+@property(nonatomic,readonly) NSArray                 * SH_nextParticipantsInLine;
+@property(nonatomic,readonly) NSArray                 * SH_playerIdentifiers;
 
 #pragma mark -
 #pragma mark Conditions

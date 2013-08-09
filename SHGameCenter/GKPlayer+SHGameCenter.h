@@ -1,9 +1,9 @@
 
-#import "SHPlayerProtocol.h"
+#import "SHPlayable.h"
 #import "SHGameCenterBlockDefinitions.h"
 
 @interface GKPlayer (SHGameCenter)
-<SHPlayerProtocol>
+<SHPlayable>
 #pragma mark -
 #pragma mark Getter
 

@@ -9,7 +9,6 @@ typedef void(^SHGameViewControllerBlock)(UIViewController * viewController);
 #pragma mark - Lists: Matches or Friends,
 typedef void(^SHGameListsBlock)(NSArray * response, NSError * error);
 
-typedef void(^SHGameNotificationWillEnterForegroundBlock)(NSNotification * notification);
 typedef void(^SHGameErrorBlock)(NSError * error);
 typedef void(^SHGameCompletionBlock)(void);
 

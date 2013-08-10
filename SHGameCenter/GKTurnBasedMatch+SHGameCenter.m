@@ -19,10 +19,6 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
 @property(nonatomic,strong) NSMapTable          * mapAllMatchesBlocks;
 @property(nonatomic,strong) NSMapTable          * mapMatchBlocks;
 
-//@property(nonatomic,assign)   NSNotification           * notificationEnterForeground;
-//
-//@property(nonatomic,copy) SHGameNotificationWillEnterForegroundBlock    notificationBlock;
-
 
 
 #pragma mark - Singleton Methods
@@ -41,20 +37,10 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
     self.mapAllMatchesBlocks  = [NSMapTable weakToStrongObjectsMapTable];
     self.mapMatchBlocks       = [NSMapTable weakToStrongObjectsMapTable];
     
-    //    self.notificationEnterForeground = [NSNotificationCenter.defaultCenter addObserverForName:UIApplicationWillEnterForegroundNotification object:nil queue:NSOperationQueue.mainQueue usingBlock:^(NSNotification *note) {
-    //      self.notificationEnterForeground = note;
-    ////      [GKTurnBasedMatch SH_requestWithNotificationEnterForegroundBlock:self.notificationBlock matchesAndFriendsWithBlock:self.matchesAndFriendsBlock];
-    //    }];
-    
   }
   
   return self;
 }
-
--(void)dealloc; {
-  //  [NSNotificationCenter.defaultCenter removeObserver:self.notificationEnterForeground];
-}
-
 
 
 #pragma mark - Singleton Methods
@@ -132,9 +118,6 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
 
 #pragma mark - Privates
 
-#pragma mark - Getters
-+(void)SH_requestWithoutCacheMatchesWithBlock:(SHGameListsBlock)theBlock;
-
 
 #pragma mark - Helpers
 +(NSArray *)SH_collectPlayerIdsFromMatches:(NSArray *)theMatches
@@ -144,7 +127,8 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
                              withFriendIds:(NSArray *)theFriends;
 
 
-+(NSArray *)SH_sortParticipants:(NSArray *)theParticipants withSelector:(SEL)theSelector;
++(NSArray *)SH_sortOnLastTurnDateForParticipants:(NSArray *)theParticipants;
+
 @end
 
 @implementation GKTurnBasedMatch (SHGameCenter)
@@ -158,26 +142,21 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
 }
 
 -(NSArray *)SH_participantsWithoutMe; {
-  NSArray * participantsWithoutMe = nil;
-  if(self.SH_meAsParticipant)
-    participantsWithoutMe = [self SH_rejectParticipants:@[self.SH_meAsParticipant]];
-  else
-    participantsWithoutMe = self.participants;
-  return [GKTurnBasedMatch SH_sortParticipants:participantsWithoutMe withSelector:@selector(lastTurnDate)];
+  return [GKTurnBasedMatch SH_sortOnLastTurnDateForParticipants:
+          [self.participants SH_reject:^BOOL(GKTurnBasedParticipant * obj) {
+    return [obj SH_isEqual:self.SH_meAsParticipant];
+  }]];
 }
 
 -(NSArray *)SH_participantsWithoutCurrentParticipant; {
-  NSArray * participantsWithoutCurrentParticipant = nil;
-  if(self.currentParticipant)
-    participantsWithoutCurrentParticipant = [self SH_rejectParticipants:@[self.currentParticipant]];
-  else
-    participantsWithoutCurrentParticipant = self.participants;
-  
-  return [GKTurnBasedMatch SH_sortParticipants:participantsWithoutCurrentParticipant withSelector:@selector(lastTurnDate)];
+  return [GKTurnBasedMatch SH_sortOnLastTurnDateForParticipants:
+          [self.participants SH_reject:^BOOL(GKTurnBasedParticipant * obj) {
+    return [obj SH_isEqual:self.currentParticipant];
+  }]];
 }
 
--(NSArray *)SH_nextParticipantsInLine; {
-  return [GKTurnBasedMatch SH_sortParticipants:self.participants withSelector:@selector(lastTurnDate)];
+-(NSArray *)SH_participantsInOrder; {
+  return [GKTurnBasedMatch SH_sortOnLastTurnDateForParticipants:self.participants];
 }
 
 
@@ -234,7 +213,7 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock; 
   NSParameterAssert(theCompletionBlock);
   
   [GKTurnBasedMatch loadMatchesWithCompletionHandler:^(NSArray *matches, NSError *matchesError) {
-    
+
     matches = matches ? matches : @[];
     dispatch_async(dispatch_get_main_queue(), ^{
       theMatchesBlock(matches,matchesError);
@@ -252,11 +231,13 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock; 
       NSArray * playerIds = [self SH_collectPlayerIdsFromMatches:matches withFriends:friends];
       
       
-      //Fetch and cache players via playerIds
+
       [SHGameCenter updateCachePlayersFromPlayerIdentifiers:playerIds withResponseBlock:^(NSArray *response, NSError *error) {
         
-        theFriendsBlock([self SH_filterOutFriendsFromPlayers:response withFriendIds:friends],
+        theFriendsBlock([self SH_filterOutFriendsFromPlayers:response
+                                               withFriendIds:friends],
                         error);
+        
         dispatch_async(dispatch_get_main_queue(), ^{
           theCompletionBlock();
         });
@@ -269,30 +250,6 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock; 
   
   
 }
-
-
-//+(void)SH_requestWithNotificationEnterForegroundBlock:(SHGameNotificationWillEnterForegroundBlock)theWillEnterForegroundBlock
-//                           matchesAndFriendsWithBlock:(SHGameAttributesBlock)theBlock; {
-//
-//  NSAssert(theWillEnterForegroundBlock, @"Must pass a SHGameNotificationWillEnterForegroundBlock");
-//  SHTurnBasedMatchManager.sharedManager.notificationBlock = theWillEnterForegroundBlock;
-//  theWillEnterForegroundBlock(SHTurnBasedMatchManager.sharedManager.notificationEnterForeground);
-//  [self SH_requestMatchesAndFriendsWithBlock:theBlock];
-//  SHTurnBasedMatchManager.sharedManager.matchesAndFriendsBlock = theBlock;
-//}
-//
-//+(void)SH_recursiveRequestMatchesAndFriendsWithBlock:(SHGameAttributesBlock)theBlock continuouslyEverySecond:(NSUInteger)theSeconds; {
-//  if(theSeconds < 3) theSeconds = 2;
-//  dispatch_async(dispatch_get_main_queue(), ^{
-//    [self SH_requestMatchesAndFriendsWithBlock:theBlock];
-//  });
-//  double delayInSeconds = 2.0;
-//  dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-//  dispatch_after(popTime, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^(void){
-//    [self SH_recursiveRequestMatchesAndFriendsWithBlock:theBlock continuouslyEverySecond:theSeconds];
-//  });
-//
-//}
 
 
 
@@ -407,33 +364,8 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock; 
   
 }
 
-#pragma mark - Helpers
--(NSArray *)SH_rejectParticipants:(NSArray *)theParticipantsToRject; {
-  NSParameterAssert([theParticipantsToRject SH_all:^BOOL(id<SHPlayable> obj) {
-    return [obj conformsToProtocol:@protocol(SHPlayable)];
-  }]);
-  
-  return [self.participants SH_reject:^BOOL(GKTurnBasedParticipant * participant) {
-    return[theParticipantsToRject SH_find:^BOOL(GKTurnBasedParticipant * participantToRemove) {
-      return [participant SH_isEqual:participantToRemove];
-    }];
-  }];
-}
-
 
 #pragma mark - Privates
-
-
-#pragma mark - Match Getters
-+(void)SH_requestWithoutCacheMatchesWithBlock:(SHGameListsBlock)theBlock; {
-  [GKTurnBasedMatch loadMatchesWithCompletionHandler:^(NSArray *matches, NSError *error) {
-    dispatch_async(dispatch_get_main_queue(), ^{
-      theBlock(matches, error);
-    });
-    
-    
-  }];
-}
 
 
 #pragma mark - Helpers
@@ -467,7 +399,7 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock; 
 }
 
 
-+(NSArray *)SH_sortParticipants:(NSArray *)theParticipants withSelector:(SEL)theSelector; {
++(NSArray *)SH_sortOnLastTurnDateForParticipants:(NSArray *)theParticipants; {
   return [theParticipants sortedArrayUsingComparator:^NSComparisonResult(GKTurnBasedParticipant * obj1, GKTurnBasedParticipant * obj2) {
     NSComparisonResult result = NSOrderedSame;
     if(obj1.lastTurnDate == nil)       result = NSOrderedAscending;

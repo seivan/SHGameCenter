@@ -8,7 +8,7 @@
 @property(nonatomic,readonly) GKTurnBasedParticipant  * SH_meAsParticipant;
 @property(nonatomic,readonly) NSArray                 * SH_participantsWithoutMe;
 @property(nonatomic,readonly) NSArray                 * SH_participantsWithoutCurrentParticipant;
-@property(nonatomic,readonly) NSArray                 * SH_nextParticipantsInLine;
+@property(nonatomic,readonly) NSArray                 * SH_participantsInOrder;
 @property(nonatomic,readonly) NSArray                 * SH_playerIdentifiers;
 
 
@@ -42,13 +42,6 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock;
               andFriendsWithBlock:(SHGameListsBlock)theFriendsBlock
               withCompletionBlock:(SHGameCompletionBlock)theCompletionBlock;
 
-//+(void)SH_requestWithNotificationEnterForegroundBlock:(SHGameNotificationWillEnterForegroundBlock)theWillEnterForegroundBlock matchesAndFriendsWithBlock:(SHGameAttributesBlock)theBlock;
-//
-//
-//
-//+(void)SH_recursiveRequestMatchesAndFriendsWithBlock:(SHGameAttributesBlock)theBlock continuouslyEverySecond:(NSUInteger)theSeconds;
-
-
 
 #pragma mark - Player
 -(void)SH_requestPlayersWithBlock:(SHGameListsBlock)theBlock;
@@ -71,8 +64,6 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock;
 
 
 
-#pragma mark - Helpers
--(NSArray *)SH_rejectParticipants:(NSArray *)theParticipantsToRject;
 
 
 @end

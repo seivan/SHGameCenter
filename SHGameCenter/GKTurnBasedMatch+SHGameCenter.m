@@ -4,11 +4,6 @@
 #import "SHGameCenter.h"
 #include "SHGameCenter.private"
 
-//@interface GKLocalPlayer()
-//
-//#pragma mark - Player Getters
-//+(void)SH_requestWithoutCacheFriendsWithBlock:(SHGameListsBlock)theBlock;
-//@end
 
 static NSString * const SHGameMatchEventTurnKey     = @"SHGameMatchEventTurnKey";
 static NSString * const SHGameMatchEventEndedKey    = @"SHGameMatchEventEndedKey";
@@ -60,7 +55,7 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
 
 #pragma mark - <GKTurnBasedEventHandlerDelegate>
 -(void)handleInviteFromGameCenter:(NSArray *)playersToInvite; {
-  [self.mapAllMatchesBlocks SH_each:^(NSDictionary * blocks) {
+  [self.mapAllMatchesBlocks.objectEnumerator.allObjects SH_each:^(NSDictionary * blocks) {
     SHGameMatchEventInvitesBlock block = blocks[SHGameMatchEventInvitesKey];
     block(playersToInvite);
   }];
@@ -306,16 +301,17 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock; 
 #pragma mark - Match Getters
 +(void)SH_requestMatchesWithBlock:(SHGameListsBlock)theBlock; {
   [GKTurnBasedMatch loadMatchesWithCompletionHandler:^(NSArray *matches, NSError *error) {
-    NSMutableSet * playerIdentifiers = @[].mutableCopy;
-    [matches SH_each:^(GKTurnBasedMatch * match) {
-      [playerIdentifiers addObjectsFromArray:match.SH_playerIdentifiers];
+
+    
+    NSArray * playerIdentifiers = [matches SH_reduceValue:@[] withBlock:^id(NSArray * memo, GKTurnBasedMatch * obj) {
+      return [memo arrayByAddingObjectsFromArray:obj.SH_playerIdentifiers];
     }];
     
     if(error)dispatch_async(dispatch_get_main_queue(), ^{
       theBlock(nil,error);
     });
-    else
-      [SHGameCenter updateCachePlayersFromPlayerIdentifiers:playerIdentifiers.copy withResponseBlock:nil withCachedBlock:^(NSError *error){
+    else [SHGameCenter updateCachePlayersFromPlayerIdentifiers:playerIdentifiers.copy
+                                             withResponseBlock:nil withCachedBlock:^(NSError *error){
         theBlock(matches, error);
       }];
     
@@ -336,8 +332,8 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock; 
   //    theBlock(self,nil);
   //  else
   [self endMatchInTurnWithMatchData:self.matchData completionHandler:^(NSError *error) {
-    if(error)
-      [self participantQuitOutOfTurnWithOutcome:GKTurnBasedMatchOutcomeQuit withCompletionHandler:^(NSError *error) {
+    if(error) [self participantQuitOutOfTurnWithOutcome:GKTurnBasedMatchOutcomeQuit
+                                  withCompletionHandler:^(NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
           theBlock(self, error);
         });
@@ -357,12 +353,11 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock; 
 -(void)SH_deleteWithBlock:(SHGameMatchBlock)theBlock; {
   [self SH_resignWithBlock:^(GKTurnBasedMatch *match, NSError *error) {
     if(error) theBlock(match, error);
-    else
-      [self removeWithCompletionHandler:^(NSError *error) {
+    else [self removeWithCompletionHandler:^(NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
           theBlock(self, error);
         });
-      }];
+    }];
   }];
   
 }
@@ -375,41 +370,39 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock; 
 +(NSArray *)SH_collectPlayerIdsFromMatches:(NSArray *)theMatches
                                withFriends:(NSArray *)theFriends; {
   
-  // Collect all playerIDs.
-  NSMutableArray * setOfPlayerIds = @[].mutableCopy;
-  [theMatches SH_each:^(GKTurnBasedMatch * match) {
-    [setOfPlayerIds addObjectsFromArray:match.SH_playerIdentifiers];
+  return [theMatches SH_reduceValue:theFriends withBlock:^id(NSArray * memo, GKTurnBasedMatch * obj) {
+    return [memo arrayByAddingObjectsFromArray:obj.SH_playerIdentifiers];
   }];
-  [setOfPlayerIds addObjectsFromArray:theFriends];
-  
-  return setOfPlayerIds;
 }
 
 +(NSArray *)SH_filterOutFriendsFromPlayers:(NSArray *)thePlayers
                              withFriendIds:(NSArray *)theFriendIds; {
   //Find all players that are friends
-  NSArray * unfilteredFriends = [theFriendIds SH_map:^id(NSString * playerIdentifier) {
+  NSArray * friends = [theFriendIds SH_map:^id(NSString * playerIdentifier) {
     return [thePlayers SH_find:^BOOL(GKPlayer * player) {
       return [player.playerID isEqualToString:playerIdentifier];
     }];
   }];
   
-  //Get rid  of all NSNulls and set the friendsAttribute
-  return [unfilteredFriends SH_reject:^BOOL(id obj) {
-    return obj == [NSNull null];
-  }];
+  
+  return friends;
   
 }
 
 
 +(NSArray *)SH_sortOnLastTurnDateForParticipants:(NSArray *)theParticipants; {
-  return [theParticipants sortedArrayUsingComparator:^NSComparisonResult(GKTurnBasedParticipant * obj1, GKTurnBasedParticipant * obj2) {
+  
+  NSMutableArray * participants =[theParticipants sortedArrayUsingComparator:^NSComparisonResult(GKTurnBasedParticipant * obj1, GKTurnBasedParticipant * obj2) {
     NSComparisonResult result = NSOrderedSame;
-    if(obj1.lastTurnDate == nil)       result = NSOrderedAscending;
-    else if (obj2.lastTurnDate  == nil) result = NSOrderedDescending;
-    else if(result == NSOrderedSame)   result = [obj1.lastTurnDate compare:obj2.lastTurnDate];
+    if(obj1.lastTurnDate == nil)   result = NSOrderedAscending;
+    if (obj2.lastTurnDate  == nil) result = NSOrderedDescending;
+    if(result == NSOrderedSame)    result = [obj1.lastTurnDate compare:obj2.lastTurnDate];
     return result;
-  }];
+  }].mutableCopy;
+  
+ GKTurnBasedParticipant * currentParticipant = [participants SH_popFirstObject];
+  [participants insertObject:currentParticipant atIndex:participants.count-1];
+  return participants.copy;
 }
 
 

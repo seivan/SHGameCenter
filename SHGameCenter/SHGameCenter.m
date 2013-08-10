@@ -58,7 +58,7 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
     NSAssert(theCachedBlockOrError, assertMessage);
   
   
-  thePlayerIdentifiers = [thePlayerIdentifiers SH_reject:^BOOL(id obj) { return obj == [NSNull null]; }];
+//  thePlayerIdentifiers = [thePlayerIdentifiers SH_reject:^BOOL(id obj) { return obj == [NSNull null]; }];
   
   if ([self containsPlayersFromPlayerIdentifiers:thePlayerIdentifiers] && theCachedBlockOrError) {
     dispatch_async(dispatch_get_main_queue(), ^{

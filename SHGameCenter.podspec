@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
   git_url = "#{url}.git"
 
   s.name         = name
-  s.version      = "0.5.0"
+  s.version      = "0.6.0"
   s.summary      = "Block based patterns and properties for GameCenter."
   s.description  = <<-DESC
   Making GKTurnBasedEventHandlerDelegate and authentication block based.
@@ -34,7 +34,7 @@ Pod::Spec.new do |s|
   s.ios.framework = "GameKit"
 
   s.source_files = "#{name}/**/*.{h,m}"
-  s.resources    = "#{name}/**/*.{implementation,private}"
+#  s.resources    = "#{name}/**/*.{implementation,private}"
   s.requires_arc = true
   s.dependency 'SHFastEnumerationProtocols', '~>1.2.0'
 end

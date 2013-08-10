@@ -1,24 +1,15 @@
 
 #import "SHGameCenterBlockDefinitions.h"
 
-#pragma mark -
-#pragma mark Keys
-static NSString * const SHGameCenterErrorKey = @"SHGameCenterError";
-static NSString * const SHGameCenterSetKey   = @"SHGameCenterSetKey";
-
-static NSString * const SHGameCenterAttributeFriendsKey   = @"SHGameCenterAttributeFriendsKey";
-static NSString * const SHGameCenterAttributeMatchesKey   = @"SHGameCenterAttributeMatchesKey";
-
-
 @interface GKTurnBasedMatch (SHGameCenter)
 
 #pragma mark -
 #pragma mark Participant Getters
 @property(nonatomic,readonly) GKTurnBasedParticipant  * SH_meAsParticipant;
-@property(nonatomic,readonly) NSOrderedSet            * SH_participantsWithoutMe;
-@property(nonatomic,readonly) NSOrderedSet            * SH_participantsWithoutCurrentParticipant;
-@property(nonatomic,readonly) NSOrderedSet            * SH_nextParticipantsInLine;
-@property(nonatomic,readonly) NSOrderedSet            * SH_playerIdentifiers;
+@property(nonatomic,readonly) NSArray                 * SH_participantsWithoutMe;
+@property(nonatomic,readonly) NSArray                 * SH_participantsWithoutCurrentParticipant;
+@property(nonatomic,readonly) NSArray                 * SH_nextParticipantsInLine;
+@property(nonatomic,readonly) NSArray                 * SH_playerIdentifiers;
 
 #pragma mark -
 #pragma mark Conditions
@@ -32,8 +23,8 @@ static NSString * const SHGameCenterAttributeMatchesKey   = @"SHGameCenterAttrib
 @property(nonatomic,readonly) BOOL SH_isMatchStatusUnknown;
 
 
-#pragma mark -
-#pragma mark Observer
+
+#pragma mark - Observer
 -(void)SH_setObserver:(id)theObserver
   matchEventTurnBlock:(SHGameMatchEventTurnBlock)theMatchEventTurnBlock
  matchEventEndedBlock:(SHGameMatchEventEndedBlock)theMatchEventEndedBlock;
@@ -44,16 +35,18 @@ matchEventEndedBlock:(SHGameMatchEventEndedBlock)theMatchEventEndedBlock
 matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock;
 
 
-#pragma mark -
-#pragma mark Preloaders
-//Just use one of these
-+(void)SH_requestMatchesAndFriendsWithBlock:(SHGameAttributesBlock)theBlock;
 
-+(void)SH_requestWithNotificationEnterForegroundBlock:(SHGameNotificationWillEnterForegroundBlock)theWillEnterForegroundBlock matchesAndFriendsWithBlock:(SHGameAttributesBlock)theBlock;
+#pragma mark - Preloaders
 
++(void)SH_requestMatchesWithBlock:(SHGameListsBlock)theMatchesBlock
+              andFriendsWithBlock:(SHGameListsBlock)theFriendsBlock
+              withCompletionBlock:(SHGameCompletionBlock)theCompletionBlock;
 
-
-+(void)SH_recursiveRequestMatchesAndFriendsWithBlock:(SHGameAttributesBlock)theBlock continuouslyEverySecond:(NSUInteger)theSeconds;
+//+(void)SH_requestWithNotificationEnterForegroundBlock:(SHGameNotificationWillEnterForegroundBlock)theWillEnterForegroundBlock matchesAndFriendsWithBlock:(SHGameAttributesBlock)theBlock;
+//
+//
+//
+//+(void)SH_recursiveRequestMatchesAndFriendsWithBlock:(SHGameAttributesBlock)theBlock continuouslyEverySecond:(NSUInteger)theSeconds;
 
 
 #pragma mark -
@@ -79,7 +72,7 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock;
 
 #pragma mark -
 #pragma mark Helpers
--(NSOrderedSet *)SH_rejectParticipants:(NSSet *)theParticipantsToRject;
+-(NSArray *)SH_rejectParticipants:(NSArray *)theParticipantsToRject;
 
 
 @end

@@ -7,11 +7,8 @@ typedef void(^SHGameViewControllerBlock)(UIViewController * viewController);
 
 #pragma mark - 
 #pragma mark - Lists: Matches or Friends,
-typedef void(^SHGameListsBlock)(NSOrderedSet * responseSet, NSError * error);
+typedef void(^SHGameListsBlock)(NSArray * response, NSError * error);
 
-#pragma mark - 
-#pragma mark Bootstrap Lists, Matchens and Friends with errors
-typedef void(^SHGameAttributesBlock)(NSDictionary * attributes);
 typedef void(^SHGameNotificationWillEnterForegroundBlock)(NSNotification * notification);
 typedef void(^SHGameErrorBlock)(NSError * error);
 typedef void(^SHGameCompletionBlock)(void);
@@ -21,6 +18,6 @@ typedef void(^SHGameCompletionBlock)(void);
 typedef void(^SHGameMatchBlock)(GKTurnBasedMatch * match, NSError * error);
 
 #pragma mark - <GKTurnBasedEventHandlerDelegate>
-typedef void(^SHGameMatchEventInvitesBlock)(NSOrderedSet * playersToInvite);
+typedef void(^SHGameMatchEventInvitesBlock)(NSArray * playersToInvite);
 typedef void(^SHGameMatchEventTurnBlock)(GKTurnBasedMatch * match, BOOL didBecomeActive);
 typedef void(^SHGameMatchEventEndedBlock)(GKTurnBasedMatch * match);

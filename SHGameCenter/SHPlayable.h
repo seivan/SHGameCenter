@@ -1,5 +1,5 @@
 
-@protocol SHPlayerProtocol <NSObject>
+@protocol SHPlayable <NSObject>
 @optional
 @property(nonatomic,strong) NSString * playerID;
 @required

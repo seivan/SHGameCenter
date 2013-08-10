@@ -3,16 +3,16 @@
 
 @interface GKTurnBasedMatch (SHGameCenter)
 
-#pragma mark -
-#pragma mark Participant Getters
+
+#pragma mark - Participant Getters
 @property(nonatomic,readonly) GKTurnBasedParticipant  * SH_meAsParticipant;
 @property(nonatomic,readonly) NSArray                 * SH_participantsWithoutMe;
 @property(nonatomic,readonly) NSArray                 * SH_participantsWithoutCurrentParticipant;
 @property(nonatomic,readonly) NSArray                 * SH_nextParticipantsInLine;
 @property(nonatomic,readonly) NSArray                 * SH_playerIdentifiers;
 
-#pragma mark -
-#pragma mark Conditions
+
+#pragma mark - Conditions
 @property(nonatomic,readonly) BOOL SH_isMyTurn;
 //Participants who are neither active nor invited - e.g done, declined and etc
 @property(nonatomic,readonly) BOOL SH_hasIncompleteParticipants;
@@ -49,29 +49,29 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock;
 //+(void)SH_recursiveRequestMatchesAndFriendsWithBlock:(SHGameAttributesBlock)theBlock continuouslyEverySecond:(NSUInteger)theSeconds;
 
 
-#pragma mark -
-#pragma mark Player
+
+#pragma mark - Player
 -(void)SH_requestPlayersWithBlock:(SHGameListsBlock)theBlock;
 
-#pragma mark -
-#pragma mark Equal
+
+#pragma mark - Equal
 -(BOOL)SH_isEqualToMatch:(id)object;
 
-#pragma mark -
-#pragma mark Match Getters
+
+#pragma mark - Match Getters
 +(void)SH_requestMatchesWithBlock:(SHGameListsBlock)theBlock;
 
 
 
-#pragma mark -
-#pragma mark Match Setters
+
+#pragma mark - Match Setters
 -(void)SH_resignWithBlock:(SHGameMatchBlock)theBlock;
 
 -(void)SH_deleteWithBlock:(SHGameMatchBlock)theBlock;
 
 
-#pragma mark -
-#pragma mark Helpers
+
+#pragma mark - Helpers
 -(NSArray *)SH_rejectParticipants:(NSArray *)theParticipantsToRject;
 
 

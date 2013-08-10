@@ -64,6 +64,6 @@
 
 #pragma mark -
 #pragma mark <SHPlayerProtocol>
-#include "SHPlayerProtocol.implementation"
+#include "SHPlayable.implementation"
 
 @end

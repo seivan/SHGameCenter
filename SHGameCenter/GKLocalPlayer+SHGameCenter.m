@@ -11,18 +11,16 @@
 @property(nonatomic,assign)   BOOL                       isAuthenticated;
 
 
-#pragma mark -
-#pragma mark Singleton Methods
+
+#pragma mark - Singleton Methods
 +(instancetype)sharedManager;
 @end
 
 @implementation SHLocalPlayerManager
 
-#pragma mark -
-#pragma mark Privates
 
-#pragma mark -
-#pragma mark Init & Dealloc
+#pragma mark -  Privates
+#pragma mark - Init & Dealloc
 -(instancetype)init; {
   self = [super init];
   if (self) {
@@ -47,15 +45,10 @@
 
 @end
 
-@interface GKLocalPlayer(Privates)
-#pragma mark -
-#pragma mark Player Getters
-+(void)SH_requestWithoutCacheFriendsWithBlock:(SHGameListsBlock)theBlock;
-@end
 
 @implementation GKLocalPlayer (SHGameCenter)
-#pragma mark -
-#pragma mark Authentication
+
+#pragma mark - Authentication
 +(void)SH_authenticateWithLoginViewControllerBlock:(SHGameViewControllerBlock)theLoginViewControllerBlock
                                      didLoginBlock:(SHGameCompletionBlock)theLoginBlock
                                     didLogoutBlock:(SHGameCompletionBlock)theLogoutBlock
@@ -111,8 +104,8 @@
   
 }
 
-#pragma mark -
-#pragma mark Player Getters
+
+#pragma mark - Player Getters
 +(GKLocalPlayer *)SH_me; {
   return self.localPlayer;
 }
@@ -124,28 +117,14 @@
     });
     else
       [SHGameCenter updateCachePlayersFromPlayerIdentifiers:friends
-                                          withResponseBlock:theBlock withCachedBlock:nil];
+                                          withResponseBlock:theBlock
+                                            withCachedBlock:nil];
     
   }];
 
 }
 
 
-#pragma mark - Privates
-
-#pragma mark - Player Getters
-+(void)SH_requestWithoutCacheFriendsWithBlock:(SHGameListsBlock)theBlock; {
-  [self.SH_me loadFriendsWithCompletionHandler:^(NSArray * friends, NSError * error) {
-    [self loadPlayersForIdentifiers:friends
-              withCompletionHandler:^(NSArray *players, NSError *error) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                  theBlock(players, error);
-                });
-                
-              }];
-  }];
-  
-}
 
 
 @end

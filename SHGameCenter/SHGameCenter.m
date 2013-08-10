@@ -12,15 +12,15 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
 @property(nonatomic,strong) NSMapTable          * mapBlocks;
 @property(nonatomic,strong) NSMutableDictionary * cachePlayers;
 
-#pragma mark -
-#pragma mark Singleton Methods
+
+#pragma mark - Singleton Methods
 +(instancetype)sharedManager;
 @end
 
 
 @implementation SHGameCenter
-#pragma mark -
-#pragma mark Init & Dealloc
+
+#pragma mark - Init & Dealloc
 -(instancetype)init; {
   self = [super init];
   if (self) {
@@ -43,8 +43,8 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
 }
 
 
-#pragma mark -
-#pragma mark Cache
+
+#pragma mark - Cache
 +(void)updateCachePlayersFromPlayerIdentifiers:(NSArray *)thePlayerIdentifiers
                              withResponseBlock:(SHGameListsBlock)theResponseBlock
                                withCachedBlock:(SHGameErrorBlock)theCachedBlock; {
@@ -91,8 +91,8 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
 }
 
 
-#pragma mark -
-#pragma mark Getters
+
+#pragma mark - Getters
 
 +(NSString *)aliasForPlayerId:(NSString *)thePlayerId; {
   //  NSAssert(thePlayerId, @"Must pass an playerID");
@@ -105,19 +105,19 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
 }
 
 
-#pragma mark -
-#pragma mark Privates
-#pragma mark -
-#pragma mark Cache
 
-+(BOOL)containsPlayersFromPlayerIdentifiers:(NSSet *)thePlayerIdentifiers; {
+#pragma mark - Privates
+
+#pragma mark - Cache
+
++(BOOL)containsPlayersFromPlayerIdentifiers:(NSArray *)thePlayerIdentifiers; {
   return [thePlayerIdentifiers SH_all:^BOOL(NSString * playerIdentifier) {
     return SHGameCenter.sharedManager.cachePlayers[playerIdentifier] != nil;
   }];
   
 }
 
-+(void)addToCacheFromPlayers:(NSSet*)thePlayers; {
++(void)addToCacheFromPlayers:(NSArray *)thePlayers; {
   
   
   [thePlayers SH_each:^(GKPlayer * player) {

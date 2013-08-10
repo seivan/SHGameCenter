@@ -4,11 +4,11 @@
 #import "SHGameCenter.h"
 #include "SHGameCenter.private"
 
-@interface GKLocalPlayer()
-
-#pragma mark - Player Getters
-+(void)SH_requestWithoutCacheFriendsWithBlock:(SHGameListsBlock)theBlock;
-@end
+//@interface GKLocalPlayer()
+//
+//#pragma mark - Player Getters
+//+(void)SH_requestWithoutCacheFriendsWithBlock:(SHGameListsBlock)theBlock;
+//@end
 
 static NSString * const SHGameMatchEventTurnKey     = @"SHGameMatchEventTurnKey";
 static NSString * const SHGameMatchEventEndedKey    = @"SHGameMatchEventEndedKey";
@@ -74,10 +74,10 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
 
 #pragma mark - <GKTurnBasedEventHandlerDelegate>
 -(void)handleInviteFromGameCenter:(NSArray *)playersToInvite; {
-  for (NSDictionary * blocks in self.mapAllMatchesBlocks.objectEnumerator) {
+  [self.mapAllMatchesBlocks SH_each:^(NSDictionary * blocks) {
     SHGameMatchEventInvitesBlock block = blocks[SHGameMatchEventInvitesKey];
     block(playersToInvite);
-  }
+  }];
   
 }
 
@@ -85,17 +85,18 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
   
   [SHGameCenter updateCachePlayersFromPlayerIdentifiers:match.SH_playerIdentifiers withResponseBlock:nil withCachedBlock:^(NSError *error) {
     if(error == nil) {
-      for (NSDictionary * blocks in self.mapAllMatchesBlocks.objectEnumerator) {
+
+      [self.mapAllMatchesBlocks SH_each:^(NSDictionary * blocks) {
         SHGameMatchEventTurnBlock block = blocks[SHGameMatchEventTurnKey];
         block(match, didBecomeActive);
-      }
+      }];
       
-      for (NSDictionary * blocks in self.mapMatchBlocks.objectEnumerator) {
+      
+      [self.mapAllMatchesBlocks SH_each:^(NSDictionary * blocks) {
         NSDictionary * matchBlock = blocks[match.matchID];
         SHGameMatchEventTurnBlock block = matchBlock[SHGameMatchEventTurnKey];
-        if(block)
-          block(match, didBecomeActive);
-      }
+        if(block) block(match, didBecomeActive);
+      }];
       
     }
     
@@ -127,14 +128,15 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
 @end
 
 @interface GKTurnBasedMatch (Privates)
-#pragma mark -
-#pragma mark Privates
-#pragma mark -
-#pragma mark Getters
+
+
+#pragma mark - Privates
+
+#pragma mark - Getters
 +(void)SH_requestWithoutCacheMatchesWithBlock:(SHGameListsBlock)theBlock;
 
-#pragma mark -
-#pragma mark Helpers
+
+#pragma mark - Helpers
 +(NSArray *)SH_collectPlayerIdsFromMatches:(NSArray *)theMatches
                                withFriends:(NSArray *)theFriends;
 
@@ -221,8 +223,8 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock; 
 
 
 
-#pragma mark -
-#pragma mark Preloaders
+
+#pragma mark - Preloaders
 +(void)SH_requestMatchesWithBlock:(SHGameListsBlock)theMatchesBlock
               andFriendsWithBlock:(SHGameListsBlock)theFriendsBlock
               withCompletionBlock:(SHGameCompletionBlock)theCompletionBlock; {
@@ -295,8 +297,8 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock; 
 
 
 
-#pragma mark -
-#pragma mark Conditions
+
+#pragma mark - Conditions
 -(BOOL)SH_isMyTurn; {
   return [self.currentParticipant SH_isEqual:GKLocalPlayer.SH_me];
 }
@@ -333,10 +335,10 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock; 
 
 
 #pragma mark - Equal
--(BOOL)SH_isEqualToMatch:(id)object; {
+-(BOOL)SH_isEqualToMatch:(GKTurnBasedMatch *)theMatch; {
   BOOL isEqual = NO;
-  if([object respondsToSelector:@selector(matchID)])
-    isEqual = [self.matchID isEqualToString:((GKTurnBasedMatch *)object).matchID];
+  if([theMatch respondsToSelector:@selector(matchID)])
+    isEqual = [self.matchID isEqualToString:theMatch.matchID];
   return isEqual;
 }
 
@@ -468,12 +470,9 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock; 
 +(NSArray *)SH_sortParticipants:(NSArray *)theParticipants withSelector:(SEL)theSelector; {
   return [theParticipants sortedArrayUsingComparator:^NSComparisonResult(GKTurnBasedParticipant * obj1, GKTurnBasedParticipant * obj2) {
     NSComparisonResult result = NSOrderedSame;
-    if([obj1 performSelector:theSelector] == nil)       result = NSOrderedAscending;
-    else if ([obj2 performSelector:theSelector]  == nil) result = NSOrderedDescending;
-    else if(result == NSOrderedSame)   result = [
-                                                 [obj1 performSelector:theSelector]
-                                                 compare:[obj2 performSelector:theSelector]
-                                                 ];
+    if(obj1.lastTurnDate == nil)       result = NSOrderedAscending;
+    else if (obj2.lastTurnDate  == nil) result = NSOrderedDescending;
+    else if(result == NSOrderedSame)   result = [obj1.lastTurnDate compare:obj2.lastTurnDate];
     return result;
   }];
 }

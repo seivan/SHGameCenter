@@ -6,20 +6,19 @@
 #include "SHGameCenter.private"
 
 @implementation GKPlayer (SHGameCenter)
-#pragma mark -
-#pragma mark Getter
 
+#pragma mark - Getter
 -(UIImage *)SH_photo; {
   return [SHGameCenter photoForPlayerId:self.playerID];
 }
 
 
-#pragma mark -
-#pragma mark Equal
 
+#pragma mark - Equal
 #pragma mark -
-#pragma mark <SHPlayerProtocol>
-#include "SHPlayerProtocol.implementation"
+#pragma mark <SHPlayable>
+#include "SHPlayable.implementation"
+
 
 
 @end

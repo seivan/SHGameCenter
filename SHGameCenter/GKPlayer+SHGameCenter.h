@@ -4,8 +4,7 @@
 
 @interface GKPlayer (SHGameCenter)
 <SHPlayable>
-#pragma mark -
-#pragma mark Getter
 
+#pragma mark - Getter
 @property(nonatomic,readonly) UIImage * SH_photo;
 @end

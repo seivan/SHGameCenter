@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
   git_url = "#{url}.git"
 
   s.name         = name
-  s.version      = "0.7.2"
+  s.version      = "0.7.3"
   s.summary      = "Block based patterns and properties for GameCenter."
   s.description  = <<-DESC
   Making GKTurnBasedEventHandlerDelegate and authentication block based.

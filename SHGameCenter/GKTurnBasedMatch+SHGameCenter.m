@@ -400,8 +400,9 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock; 
     return result;
   }].mutableCopy;
   
- GKTurnBasedParticipant * currentParticipant = [participants SH_popFirstObject];
-  [participants insertObject:currentParticipant atIndex:participants.count-1];
+  GKTurnBasedParticipant * currentParticipant = [participants SH_popFirstObject];
+  [participants insertObject:currentParticipant atIndex:participants.count];
+
   return participants.copy;
 }
 

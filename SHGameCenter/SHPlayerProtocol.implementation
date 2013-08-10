@@ -1,7 +1,4 @@
 
--(BOOL)SH_isEqual:(id)object; {
-  BOOL isEqual = NO;
-  if([object respondsToSelector:@selector(playerID)])
-    isEqual = [self.playerID isEqualToString:((id<SHPlayable>)object).playerID];
-    return isEqual;
+-(BOOL)SH_isEqual:(id<SHPlayable>)object; {
+  return [self.playerID isEqualToString:((id<SHPlayable>)object).playerID];
 }

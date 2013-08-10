@@ -1,6 +1,5 @@
 
-#import "NSSet+SHFastEnumerationProtocols.h"
-#import "NSArray+SHFastEnumerationProtocols.h"
+#import "SHFastEnumerationProtocols.h"
 #import "SHGameCenter.h"
 
 #include "SHGameCenter.private"
@@ -46,7 +45,7 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
 
 #pragma mark -
 #pragma mark Cache
-+(void)updateCachePlayersFromPlayerIdentifiers:(NSSet *)thePlayerIdentifiers
++(void)updateCachePlayersFromPlayerIdentifiers:(NSArray *)thePlayerIdentifiers
                              withResponseBlock:(SHGameListsBlock)theResponseBlock
                                withCachedBlock:(SHGameErrorBlock)theCachedBlock; {
   
@@ -73,7 +72,7 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
   }
   
   
-  [GKPlayer loadPlayersForIdentifiers:thePlayerIdentifiers.allObjects withCompletionHandler:^(NSArray *players, NSError *error) {
+  [GKPlayer loadPlayersForIdentifiers:thePlayerIdentifiers withCompletionHandler:^(NSArray *players, NSError *error) {
     
     [self addToCacheFromPlayers:players];
     BOOL isCached = [self containsPlayersFromPlayerIdentifiers:thePlayerIdentifiers];

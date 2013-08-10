@@ -174,6 +174,10 @@ static NSString * const SHGameMatchEventInvitesKey  = @"SHGameMatchEventInvitesK
   return [GKTurnBasedMatch SH_sortParticipants:participantsWithoutCurrentParticipant withSelector:@selector(lastTurnDate)];
 }
 
+-(NSArray *)SH_nextParticipantsInLine; {
+  return [GKTurnBasedMatch SH_sortParticipants:self.participants withSelector:@selector(lastTurnDate)];
+}
+
 
 -(NSArray *)SH_playerIdentifiers; {
   return [self.participants SH_map:^id(GKTurnBasedParticipant * obj) { return obj.playerID; }];

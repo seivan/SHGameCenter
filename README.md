@@ -3,9 +3,7 @@
 [![Version](http://cocoapod-badges.herokuapp.com/v/SHGameCenter/badge.png)](http://cocoadocs.org/docsets/SHGameCenter)
 [![Platform](http://cocoapod-badges.herokuapp.com/p/SHGameCenter/badge.png)](http://cocoadocs.org/docsets/SHGameCenter)
 
-
 ##### Prefixed category convenience selectors on the GameKit framework, also adding blocks instead of delegate calls.
-
 
 `SHGameCenter` adds class or instance observers on GKTurnBasedMatch for handling matches.
 Also authenticate state observers. It deals with caching images as well as display names. Takes of everything!
@@ -15,8 +13,14 @@ Also authenticate state observers. It deals with caching images as well as displ
 
 - [SHUIKitBlocks](https://github.com/seivan/SHUIKitBlocks)
 - [SHFoundationAdditions](https://github.com/seivan/SHFoundationAdditions)
-- [SHTestCaseAdditions](https://github.com/seivan/SHTestCaseAdditions)
 - [SHMessageUIBlocks](https://github.com/seivan/SHMessageUIBlocks)
+
+##Dependency Status
+
+| Library        | Tests           | Version  | Platform  |
+| ------------- |:-------------:| -----:|  -----:| 
+| [SHFastEnumerationProtocols](https://github.com/seivan/SHFastEnumerationProtocols)| [![Build Status](https://travis-ci.org/seivan/SHFastEnumerationProtocols.png?branch=master)](https://travis-ci.org/seivan/SHFastEnumerationProtocols)| [![Version](http://cocoapod-badges.herokuapp.com/v/SHFastEnumerationProtocols/badge.png)](http://cocoadocs.org/docsets/SHFastEnumerationProtocols) | [![Platform](http://cocoapod-badges.herokuapp.com/p/SHFastEnumerationProtocols/badge.png)](http://cocoadocs.org/docsets/SHFastEnumerationProtocols) |
+
 
 ##Setup
 ###Install
@@ -27,12 +31,6 @@ pod 'SHGameCenter'
 ```objective-c
 #import "SHGameCenter.h"
 ```
-
-##Dependency Status
-
-| Library        | Tests           | Version  | Platform  |
-| ------------- |:-------------:| -----:|  -----:| 
-| [SHFastEnumerationProtocols](https://github.com/seivan/SHFastEnumerationProtocols)| [![Build Status](https://travis-ci.org/seivan/SHFastEnumerationProtocols.png?branch=master)](https://travis-ci.org/seivan/SHFastEnumerationProtocols)| [![Version](http://cocoapod-badges.herokuapp.com/v/SHFastEnumerationProtocols/badge.png)](http://cocoadocs.org/docsets/SHFastEnumerationProtocols) | [![Platform](http://cocoapod-badges.herokuapp.com/p/SHFastEnumerationProtocols/badge.png)](http://cocoadocs.org/docsets/SHFastEnumerationProtocols) |
 
 ## GKLocalPlayer <SHPlayable>
 

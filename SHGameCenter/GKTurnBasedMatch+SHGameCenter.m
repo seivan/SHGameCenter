@@ -413,7 +413,7 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock; 
   if(firstParticipant.SH_isMe)
     [participants addObject:[participants SH_popFirstObject]];
   
-  NSLog(@"%@", participants);
+
   
   return [participants copy];
 }

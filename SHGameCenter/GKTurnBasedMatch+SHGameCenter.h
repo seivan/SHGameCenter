@@ -7,8 +7,8 @@
 #pragma mark - Participant Getters
 @property(nonatomic,readonly) GKTurnBasedParticipant  * SH_meAsParticipant;
 @property(nonatomic,readonly) NSArray                 * SH_participantsWithoutMe;
-@property(nonatomic,readonly) NSArray                 * SH_participantsWithoutCurrentParticipant;
-@property(nonatomic,readonly) NSArray                 * SH_participantsInOrder;
+@property(nonatomic,readonly) NSArray                 * SH_participantsWithoutCurrent;
+@property(nonatomic,readonly) NSArray                 * SH_participantsNextOrder;
 @property(nonatomic,readonly) NSArray                 * SH_playerIdentifiers;
 
 

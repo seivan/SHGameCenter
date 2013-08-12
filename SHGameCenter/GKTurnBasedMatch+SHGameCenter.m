@@ -393,20 +393,13 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock; 
 +(NSArray *)SH_sortOnLastTurnDateForParticipants:(NSArray *)theParticipants; {
   
 
-  NSMutableArray * participants =[[theParticipants sortedArrayUsingComparator:^NSComparisonResult(GKTurnBasedParticipant * obj1, GKTurnBasedParticipant * obj2) {
+  NSMutableArray * participants = [theParticipants sortedArrayUsingComparator:^NSComparisonResult(GKTurnBasedParticipant * obj1, GKTurnBasedParticipant * obj2) {
     NSComparisonResult result = NSOrderedSame;
     if(obj1.lastTurnDate == nil)   result = NSOrderedAscending;
     if (obj2.lastTurnDate  == nil) result = NSOrderedDescending;
     if(result == NSOrderedSame)    result = [obj1.lastTurnDate compare:obj2.lastTurnDate];
     return result;
-  }] mutableCopy];
-  
-
-  SHIteratorReturnTruthBlock block = ^BOOL(GKTurnBasedParticipant *  obj) {
-    return !!obj.lastTurnDate;
-  };
-  
-
+  }].copy;
   
   GKTurnBasedParticipant * firstParticipant = participants.SH_firstObject;
   
@@ -415,7 +408,7 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock; 
   
 
   
-  return [participants copy];
+  return participants.copy ;
 }
 
 

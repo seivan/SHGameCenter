@@ -2,7 +2,7 @@
 #pragma mark - Block Definitions
 //obj is the key for keyed indexed classes (NSDictionary, NSMapTable)
 typedef void (^SHIteratorBlock)(id obj);
-typedef void (^SHIteratorWithIndexBlock)(id obj, NSUInteger index) ;
+typedef void (^SHIteratorWithIndexBlock)(id obj, NSInteger index) ;
 
 typedef id (^SHIteratorReturnIdBlock)(id obj);
 typedef id (^SHIteratorReduceBlock)(id memo, id obj);
@@ -43,6 +43,13 @@ typedef BOOL (^SHIteratorReturnTruthBlock)(id obj);
 
 @property(nonatomic,readonly) NSHashTable  * SH_toHashTableWeak;
 @property(nonatomic,readonly) NSHashTable  * SH_toHashTableStrong;
+
+//https://gist.github.com/seivan/6086183
+@property(nonatomic,readonly) NSDecimalNumber  * SH_collectionAvg;
+@property(nonatomic,readonly) NSDecimalNumber  * SH_collectionSum;
+@property(nonatomic,readonly) id                 SH_collectionMax;
+@property(nonatomic,readonly) id                 SH_collectionMin;
+
 @end
 
 #pragma mark - <SHFastEnumerationOrderedBlocks>
@@ -79,7 +86,7 @@ typedef BOOL (^SHIteratorReturnTruthBlock)(id obj);
 @protocol SHMutableFastEnumerationOrdered <NSObject>
 @required
 -(void)SH_modifyReverse;
--(id)SH_popObjectAtIndex:(NSUInteger)theIndex;
+-(id)SH_popObjectAtIndex:(NSInteger)theIndex;
 -(id)SH_popFirstObject;
 -(id)SH_popLastObject;
 @end

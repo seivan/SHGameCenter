@@ -1,7 +1,7 @@
 PODS:
-  - SHFastEnumerationProtocols (1.0.0)
-  - SHGameCenter (0.3.1):
-    - SHFastEnumerationProtocols (= 1.0.0)
+  - SHFastEnumerationProtocols (1.2.0)
+  - SHGameCenter (0.7.3):
+    - SHFastEnumerationProtocols (~> 1.2.0)
 
 DEPENDENCIES:
   - SHGameCenter (from `../`)
@@ -11,7 +11,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  SHFastEnumerationProtocols: b90ffd1dcba2624553c099c28aeeda4f50ae5d1c
-  SHGameCenter: 29dffb3fc7cd789aac6f0ad58f28a99a70662ba1
+  SHFastEnumerationProtocols: 5dde0d343a6bf08bf43ec5db2e6dcd9505c50d06
+  SHGameCenter: fa3dc3504fc526d291d4bc37c786d491324946e2
 
-COCOAPODS: 0.22.2
+COCOAPODS: 0.22.3

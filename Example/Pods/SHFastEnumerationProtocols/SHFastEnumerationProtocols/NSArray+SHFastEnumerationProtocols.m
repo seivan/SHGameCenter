@@ -8,6 +8,8 @@
 
 #import "NSArray+SHFastEnumerationProtocols.h"
 
+#import "SHCommonEnumerationOperation.h"
+
 @interface NSArray (Private)
 -(NSMapTable *)mapTableWith:(NSMapTable *)theMapTable;
 @end
@@ -59,7 +61,7 @@
 -(id)SH_find:(SHIteratorReturnTruthBlock)theBlock; { NSParameterAssert(theBlock);
   id value = nil;
   
-	NSUInteger index = [self indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) { return theBlock(obj); }];
+	NSInteger index = [self indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) { return theBlock(obj); }];
 	
 	if (index != NSNotFound) value = self[index];
 	
@@ -148,6 +150,21 @@
   return hashTable;
 }
 
+-(NSDecimalNumber *)SH_collectionAvg; {
+  return [SHCommonEnumerationOperation avgForEnumeration:self];
+}
+
+-(NSDecimalNumber  *) SH_collectionSum; {
+  return [SHCommonEnumerationOperation sumForEnumeration:self];
+}
+
+-(id)SH_collectionMax; {
+  return [SHCommonEnumerationOperation maxForEnumeration:self];
+}
+
+-(id)SH_collectionMin; {
+  return [SHCommonEnumerationOperation minForEnumeration:self];
+}
 
 
 #pragma mark - <SHFastEnumerationOrderedBlocks>
@@ -202,7 +219,7 @@
 }
 
 
--(id)SH_popObjectAtIndex:(NSUInteger)theIndex; {
+-(id)SH_popObjectAtIndex:(NSInteger)theIndex; {
   id obj = [self objectAtIndex:theIndex];
   [self removeObjectAtIndex:theIndex];
   return obj;
@@ -229,7 +246,7 @@
 
 #pragma mark - Private
 -(NSMapTable *)mapTableWith:(NSMapTable *)theMapTable; {
-  [self SH_eachWithIndex:^(id obj, NSUInteger index) {
+  [self SH_eachWithIndex:^(id obj, NSInteger index) {
     [theMapTable setObject:obj forKey:@(index)];
   }];
   return theMapTable;

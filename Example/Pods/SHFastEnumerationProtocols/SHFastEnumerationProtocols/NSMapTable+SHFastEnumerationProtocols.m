@@ -8,6 +8,7 @@
 
 #import "NSMapTable+SHFastEnumerationProtocols.h"
 
+#import "SHCommonEnumerationOperation.h"
 
 @interface NSMapTable (Private)
 -(NSMapTable *)mapTableWith:(NSMapTable *)theMapTable;
@@ -170,6 +171,27 @@
   return hashTable;
   
 }
+
+-(NSDecimalNumber *)SH_collectionAvg; {
+  id<SHFastEnumerationProperties> values = (id<SHFastEnumerationProperties>)self.objectEnumerator.allObjects;
+  return [SHCommonEnumerationOperation avgForEnumeration:values];
+}
+
+-(NSDecimalNumber  *) SH_collectionSum; {
+  id<SHFastEnumerationProperties> values = (id<SHFastEnumerationProperties>)self.objectEnumerator.allObjects;
+  return [SHCommonEnumerationOperation sumForEnumeration:values];
+}
+
+-(id)SH_collectionMax; {
+  id<SHFastEnumerationProperties> values = (id<SHFastEnumerationProperties>)self.objectEnumerator.allObjects;
+  return [SHCommonEnumerationOperation maxForEnumeration:values];
+}
+
+-(id)SH_collectionMin; {
+  id<SHFastEnumerationProperties> values = (id<SHFastEnumerationProperties>)self.objectEnumerator.allObjects;
+  return [SHCommonEnumerationOperation minForEnumeration:values];
+}
+
 
 
 #pragma mark - <SHMutableFastEnumerationBlocks>

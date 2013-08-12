@@ -18,9 +18,14 @@ Also authenticate state observers. It deals with caching images as well as displ
 - [SHTestCaseAdditions](https://github.com/seivan/SHTestCaseAdditions)
 - [SHMessageUIBlocks](https://github.com/seivan/SHMessageUIBlocks)
 
-##Install
+##Setup
+###Install
 ```ruby
 pod 'SHGameCenter'
+```
+###Use
+```objective-c
+#import "SHGameCenter.h"
 ```
 
 ##Dependency Status
@@ -243,6 +248,15 @@ typedef NSInteger SHTurnBasedMatchOutcome;
 
 ```
 
+##Contact
+
+If you end up using SHFoundationAdditions in a project, I'd love to hear about it.
+
+email: [seivan.heidari@icloud.com](mailto:seivan.heidari@icloud.com)  
+twitter: [@seivanheidari](https://twitter.com/seivanheidari)
+
+
+##License
 
 SHGameCenter is © 2013 [Seivan](http://www.github.com/seivan) and may be freely
 distributed under the [MIT license](http://opensource.org/licenses/MIT).

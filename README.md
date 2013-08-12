@@ -29,9 +29,9 @@ pod 'SHGameCenter'
 | ------------- |:-------------:| -----:|  -----:| 
 | [SHFastEnumerationProtocols](https://github.com/seivan/SHFastEnumerationProtocols)| [![Build Status](https://travis-ci.org/seivan/SHFastEnumerationProtocols.png?branch=master)](https://travis-ci.org/seivan/SHFastEnumerationProtocols)| [![Version](http://cocoapod-badges.herokuapp.com/v/SHFastEnumerationProtocols/badge.png)](http://cocoadocs.org/docsets/SHFastEnumerationProtocols) | [![Platform](http://cocoapod-badges.herokuapp.com/p/SHFastEnumerationProtocols/badge.png)](http://cocoadocs.org/docsets/SHFastEnumerationProtocols) |
 
-## GKLocalPlayer <SHPlayable>
+### GKLocalPlayer <SHPlayable>
 
-######Api
+####Api
 
 ```objective-c
 #pragma mark - Authentication
@@ -47,7 +47,7 @@ pod 'SHGameCenter'
 +(void)SH_requestFriendsWithBlock:(SHGameListsBlock)theBlock;
 
 ```
-######Usage 
+#####Usage 
 ```objective-c
   __weak SHSessionViewController * blockSelf = self;
   [GKLocalPlayer SH_authenticateWithLoginViewControllerBlock:^(UIViewController *viewController) {
@@ -62,9 +62,9 @@ pod 'SHGameCenter'
 
 ```
 
-## GKPlayer <SHPlayable>
+### GKPlayer <SHPlayable>
 
-######Api
+####Api
 
 ```objective-c
 #pragma mark - Getter
@@ -72,7 +72,9 @@ pod 'SHGameCenter'
 
 ```
 
-##GKTurnBasedMatch
+###GKTurnBasedMatch
+
+####Api
 
 ```objective-c
 #pragma mark - Participant Getters
@@ -135,7 +137,9 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock;
 
 ```
 
-######Usage 
+####Usage 
+
+##### Instance
 ```objective-c
   __weak TELMatchShowViewController *blockSelf = self;
   [self.match SH_setObserver:self matchEventTurnBlock:^(GKTurnBasedMatch *match, BOOL didBecomeActive) {
@@ -145,6 +149,8 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock;
     blockSelf.txtView.text = @"ENDED";
   }];
 ```
+
+##### Class
 
 ```objective-c
   [GKTurnBasedMatch SH_setObserver:self matchEventTurnBlock:^(GKTurnBasedMatch *match, BOOL didBecomeActive) {
@@ -180,9 +186,9 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock;
 
 ```
 
-##GKTurnBasedParticipant <SHPlayable>
+###GKTurnBasedParticipant <SHPlayable>
 
-######Api
+####Api
 ```objective-c
 enum {
   SHTurnBasedMatchOutcomeNone         = 0,        // Participants who are not done with a match have this state

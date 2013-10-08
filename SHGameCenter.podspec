@@ -2,9 +2,9 @@ Pod::Spec.new do |s|
   name    = "SHGameCenter"
   url     = "https://github.com/seivan/#{name}"
   git_url = "#{url}.git"
-
+  version = "0.8.0"
   s.name         = name
-  s.version      = "0.8.0"
+  s.version      = version
   s.summary      = "Block based patterns and properties for GameCenter."
   s.description  = <<-DESC
   Making GKTurnBasedEventHandlerDelegate and authentication block based.
@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
   s.license      = 'MIT'
   s.author       = { "Seivan Heidari" => "seivan.heidari@icloud.com" }
   
-  s.source       = { :git => git_url, :tag => s.version.to_s}
+  s.source       = { :git => git_url, :tag => version}
   
 
   s.platform = :ios, "6.0"

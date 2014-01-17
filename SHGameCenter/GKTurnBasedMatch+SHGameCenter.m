@@ -377,13 +377,13 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock; 
 
 +(NSArray *)SH_filterOutFriendsFromPlayers:(NSArray *)thePlayers
                              withFriendIds:(NSArray *)theFriendIds; {
+
   //Find all players that are friends
   NSArray * friends = [theFriendIds SH_map:^id(NSString * playerIdentifier) {
     return [thePlayers SH_find:^BOOL(GKPlayer * player) {
       return [player.playerID isEqualToString:playerIdentifier];
     }];
   }];
-  
   
   return friends;
   
@@ -392,13 +392,16 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock; 
 
 +(NSArray *)SH_sortOnLastTurnDateForParticipants:(NSArray *)theParticipants; {
   
-
   NSMutableArray * participants = [theParticipants sortedArrayUsingComparator:^NSComparisonResult(GKTurnBasedParticipant * obj1, GKTurnBasedParticipant * obj2) {
+    
     NSComparisonResult result = NSOrderedSame;
+    
     if(obj1.lastTurnDate == nil)   result = NSOrderedAscending;
     if (obj2.lastTurnDate  == nil) result = NSOrderedDescending;
     if(result == NSOrderedSame)    result = [obj1.lastTurnDate compare:obj2.lastTurnDate];
     return result;
+    
+    
   }].copy;
   
   GKTurnBasedParticipant * firstParticipant = participants.SH_firstObject;

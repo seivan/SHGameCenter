@@ -159,32 +159,12 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock;
   [GKTurnBasedMatch SH_setObserver:self matchEventTurnBlock:^(GKTurnBasedMatch *match, BOOL didBecomeActive) {
     
     
-    BOOL isInList = [self.orderedSetsOfMatches containsObject:match];
-    
-    if(isInList)
-      [self.orderedSetsOfMatches replaceObjectAtIndex:[self.orderedSetsOfMatches
-                                                       indexOfObject:match]
-                                           withObject:match];
-    else
-      [self.orderedSetsOfMatches addObject:match];
-
-    
-    NSArray * indexPaths = @[[NSIndexPath
-                              indexPathForRow:[self.orderedSetsOfMatches indexOfObject:match]
-                              inSection:0]];
-    
-    if(self.currentSelectedOrderedSet == self.orderedSetsOfMatches)
-      [self.viewCollection performBatchUpdates:^{
-        if(isInList)
-          [self.viewCollection reloadItemsAtIndexPaths:indexPaths];
-        else
-          [self.viewCollection insertItemsAtIndexPaths:indexPaths];
-      } completion:nil];
+    NSLog(@"Match: %@ - active: %d", match, didBecomeActive);
 
   } matchEventEndedBlock:^(GKTurnBasedMatch *match) {
-    
+    NSLog(@"Match: %@ - ended", match);
   } matchEventInvitesBlock:^(NSArray *playersToInvite) {
-
+    NSLog(@"Players: %@ - ended", playersToInvite);
   }];
 
 ```

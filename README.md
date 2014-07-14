@@ -1,7 +1,9 @@
 # SHGameCenter
 
-[![Version](http://cocoapod-badges.herokuapp.com/v/SHGameCenter/badge.png)](http://cocoadocs.org/docsets/SHGameCenter)
-[![Platform](http://cocoapod-badges.herokuapp.com/p/SHGameCenter/badge.png)](http://cocoadocs.org/docsets/SHGameCenter)
+[![Version](https://img.shields.io/cocoapods/v/SHTransitionBlocks.svg?style=flat)](http://cocoadocs.org/docsets/SHGameCenter)
+[![Platform](https://img.shields.io/cocoapods/p/SHTransitionBlocks.svg?style=flat)](http://cocoadocs.org/docsets/SHGameCenter)
+[![License](https://img.shields.io/cocoapods/l/SHTransitionBlocks.svg?style=flat)](http://cocoadocs.org/docsets/SHGameCenter)
+
 
 ##### Prefixed category convenience selectors on the GameKit framework, also adding blocks instead of delegate calls.
 

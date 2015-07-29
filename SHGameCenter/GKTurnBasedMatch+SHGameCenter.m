@@ -402,7 +402,7 @@ matchEventInvitesBlock:(SHGameMatchEventInvitesBlock)theMatchEventInvitesBlock; 
     return result;
     
     
-  }].copy;
+  }].mutableCopy;
   
   GKTurnBasedParticipant * firstParticipant = participants.SH_firstObject;
   
